@@ -1,0 +1,78 @@
+/* /bentley — sales surface */
+
+.bentley-page nav.top {
+  position: sticky; top: 0; z-index: var(--mzm-z-sticky);
+  background: rgba(250, 249, 245, 0.92);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--mzm-ink-rule);
+}
+.bentley-page nav.top .inner { max-width: var(--mzm-max-content); margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.bentley-page .wordmark { font-family: var(--mzm-font-serif); font-size: 22px; font-weight: var(--mzm-weight-medium); letter-spacing: -0.02em; color: var(--mzm-ink); text-decoration: none; line-height: 1; }
+.bentley-page .wordmark .pivot { font-style: italic; font-weight: 400; color: var(--mzm-accent); border-bottom: 1.5px solid var(--mzm-accent); padding-bottom: 1px; }
+.bentley-page nav.top .links { display: flex; gap: 28px; font-family: var(--mzm-font-sans); font-size: 14px; }
+.bentley-page nav.top .links a { color: var(--mzm-ink-mute); text-decoration: none; transition: color var(--mzm-dur-fast) var(--mzm-ease-default); }
+.bentley-page nav.top .links a:hover { color: var(--mzm-ink); }
+.bentley-page .nav-cta { background: var(--mzm-ink); color: var(--mzm-paper); padding: 9px 18px; border-radius: var(--mzm-radius-pill); font-family: var(--mzm-font-sans); font-size: 13px; font-weight: var(--mzm-weight-medium); text-decoration: none; transition: background var(--mzm-dur-fast) var(--mzm-ease-default); }
+.bentley-page .nav-cta:hover { background: var(--mzm-accent); }
+@media (max-width: 720px) { .bentley-page nav.top .inner { padding: 14px 20px; } .bentley-page nav.top .links { display: none; } }
+
+.bentley-page .bentley-hero { max-width: var(--mzm-max-content); margin: 0 auto; padding: var(--mzm-space-30) 32px var(--mzm-space-12); }
+.bentley-page .bentley-hero h1 { font-family: var(--mzm-font-serif); font-weight: var(--mzm-weight-normal); font-size: var(--mzm-text-6xl); line-height: var(--mzm-leading-tight); letter-spacing: var(--mzm-tracking-tight); color: var(--mzm-ink); margin: var(--mzm-space-8) 0 var(--mzm-space-6); max-width: 14ch; }
+.bentley-page .bentley-hero h1 .em { font-style: italic; border-bottom: 3px double var(--mzm-underline); padding-bottom: 4px; }
+.bentley-page .bentley-hero .deck { font-family: var(--mzm-font-serif); font-size: var(--mzm-text-2xl); line-height: var(--mzm-leading-normal); color: var(--mzm-ink-soft); max-width: 60ch; }
+.bentley-page .bentley-hero .deck em { font-style: italic; color: var(--mzm-ink); border-bottom: 2px double var(--mzm-underline); padding-bottom: 2px; }
+
+.bentley-page .touchpoints { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--mzm-space-6); max-width: var(--mzm-max-content); margin: 0 auto; padding: 0 32px var(--mzm-space-12); }
+.bentley-page .touchpoint { background: var(--mzm-paper-warm); border: 1px solid var(--mzm-ink-rule); border-radius: var(--mzm-radius-md); padding: var(--mzm-space-6); text-decoration: none; color: inherit; display: block; transition: transform var(--mzm-dur-fast) var(--mzm-ease-default), border-color var(--mzm-dur-fast) var(--mzm-ease-default); position: relative; }
+.bentley-page .touchpoint:hover { transform: translateY(-2px); border-color: var(--mzm-accent); }
+.bentley-page .touchpoint .badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mzm-font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: var(--mzm-tracking-wide); color: var(--mzm-ink-fade); margin-bottom: var(--mzm-space-3); }
+.bentley-page .touchpoint .badge.live::before, .bentley-page .touchpoint .badge.available::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mzm-accent); box-shadow: 0 0 0 0 var(--mzm-accent-soft); animation: live-pulse 2s ease-in-out infinite; }
+.bentley-page .touchpoint .badge.live, .bentley-page .touchpoint .badge.available { color: var(--mzm-accent); font-weight: var(--mzm-weight-medium); }
+.bentley-page .touchpoint .badge.beta { color: var(--mzm-ink-mute); }
+.bentley-page .touchpoint .badge.beta::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mzm-ink-quiet); }
+.bentley-page .touchpoint .badge.offline::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mzm-ink-quiet); }
+.bentley-page .touchpoint h3 { font-family: var(--mzm-font-serif); font-weight: var(--mzm-weight-medium); font-size: var(--mzm-text-2xl); color: var(--mzm-ink); margin-bottom: var(--mzm-space-3); }
+.bentley-page .touchpoint p { font-size: var(--mzm-text-base); line-height: var(--mzm-leading-relaxed); color: var(--mzm-ink-soft); margin-bottom: var(--mzm-space-4); }
+.bentley-page .touchpoint .meta { font-family: var(--mzm-font-mono); font-size: 11px; color: var(--mzm-ink-fade); text-transform: uppercase; letter-spacing: var(--mzm-tracking-wide); display: block; }
+@media (max-width: 768px) { .bentley-page .touchpoints { grid-template-columns: 1fr; gap: var(--mzm-space-4); } }
+
+/* Chat surface */
+.bentley-page .chat-section { max-width: var(--mzm-max-prose); margin: 0 auto; padding: var(--mzm-space-12) 32px var(--mzm-space-20); }
+.bentley-page .chat-section h2 { font-family: var(--mzm-font-serif); font-weight: var(--mzm-weight-normal); font-size: var(--mzm-text-4xl); line-height: var(--mzm-leading-snug); letter-spacing: var(--mzm-tracking-snug); color: var(--mzm-ink); margin-bottom: var(--mzm-space-3); max-width: 22ch; }
+.bentley-page .chat-section h2 .em { font-style: italic; border-bottom: 2px double var(--mzm-underline); padding-bottom: 3px; }
+.bentley-page .chat-section .lede { font-size: var(--mzm-text-lg); color: var(--mzm-ink-soft); margin-bottom: var(--mzm-space-8); max-width: 56ch; }
+
+.bentley-chat { background: var(--mzm-paper-warm); border: 1px solid var(--mzm-ink-rule); border-radius: var(--mzm-radius-md); display: flex; flex-direction: column; min-height: 480px; max-height: 70vh; }
+.bentley-chat .messages { flex: 1; overflow-y: auto; padding: var(--mzm-space-6); display: flex; flex-direction: column; gap: var(--mzm-space-4); }
+.bentley-chat .msg { display: flex; flex-direction: column; gap: var(--mzm-space-2); max-width: 85%; }
+.bentley-chat .msg-user { align-self: flex-end; align-items: flex-end; }
+.bentley-chat .msg-assistant, .bentley-chat .msg-bentley, .bentley-chat .msg-system { align-self: flex-start; }
+.bentley-chat .msg .who { font-family: var(--mzm-font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: var(--mzm-tracking-wide); color: var(--mzm-ink-fade); }
+.bentley-chat .msg-user .who { color: var(--mzm-ink-mute); }
+.bentley-chat .msg-assistant .who, .bentley-chat .msg-bentley .who { color: var(--mzm-accent); }
+.bentley-chat .msg .body { font-family: var(--mzm-font-serif); font-size: var(--mzm-text-base); line-height: var(--mzm-leading-relaxed); color: var(--mzm-ink); padding: var(--mzm-space-4); border-radius: var(--mzm-radius-md); white-space: pre-wrap; }
+.bentley-chat .msg-user .body { background: var(--mzm-ink); color: var(--mzm-paper); }
+.bentley-chat .msg-assistant .body, .bentley-chat .msg-bentley .body { background: var(--mzm-paper); border: 1px solid var(--mzm-ink-rule); color: var(--mzm-ink); }
+.bentley-chat .msg-system .body { background: transparent; border: 1px dashed var(--mzm-accent-soft); color: var(--mzm-ink-mute); font-style: italic; font-size: var(--mzm-text-sm); }
+.bentley-chat .msg.thinking .body { padding: var(--mzm-space-3) var(--mzm-space-4); }
+.bentley-chat .dots { display: inline-flex; gap: 4px; }
+.bentley-chat .dots span { width: 6px; height: 6px; background: var(--mzm-ink-fade); border-radius: 50%; animation: dot-pulse 1.4s infinite ease-in-out both; }
+.bentley-chat .dots span:nth-child(2) { animation-delay: 0.16s; }
+.bentley-chat .dots span:nth-child(3) { animation-delay: 0.32s; }
+@keyframes dot-pulse { 0%, 80%, 100% { transform: scale(0.8); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
+
+.bentley-chat .composer { display: flex; gap: var(--mzm-space-3); padding: var(--mzm-space-4); border-top: 1px solid var(--mzm-ink-rule); background: var(--mzm-paper); border-radius: 0 0 var(--mzm-radius-md) var(--mzm-radius-md); }
+.bentley-chat .composer input { flex: 1; padding: var(--mzm-space-3) var(--mzm-space-4); border: 1px solid var(--mzm-ink-rule); border-radius: var(--mzm-radius-sm); font-family: var(--mzm-font-serif); font-size: var(--mzm-text-base); background: var(--mzm-paper); color: var(--mzm-ink); }
+.bentley-chat .composer input:focus { outline: none; border-color: var(--mzm-accent); box-shadow: var(--mzm-shadow-focus); }
+.bentley-chat .composer input:disabled { opacity: 0.6; }
+.bentley-chat .composer button { padding: var(--mzm-space-3) var(--mzm-space-5); background: var(--mzm-ink); color: var(--mzm-paper); border: none; border-radius: var(--mzm-radius-sm); font-family: var(--mzm-font-sans); font-size: var(--mzm-text-sm); font-weight: var(--mzm-weight-medium); cursor: pointer; transition: background var(--mzm-dur-fast) var(--mzm-ease-default); }
+.bentley-chat .composer button:hover:not(:disabled) { background: var(--mzm-accent); }
+.bentley-chat .composer button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 600px) { .bentley-page .bentley-hero { padding: var(--mzm-space-20) 20px var(--mzm-space-8); } .bentley-page .touchpoints { padding: 0 20px var(--mzm-space-8); } .bentley-page .chat-section { padding: var(--mzm-space-8) 20px var(--mzm-space-12); } }
+
+.bentley-page footer.site-foot { max-width: var(--mzm-max-content); margin: 0 auto; padding: var(--mzm-space-10) 32px var(--mzm-space-12); border-top: 1px solid var(--mzm-ink-rule); font-family: var(--mzm-font-sans); font-size: 13px; color: var(--mzm-ink-fade); }
+.bentley-page footer.site-foot .inner { display: flex; justify-content: space-between; gap: var(--mzm-space-8); flex-wrap: wrap; }
+.bentley-page footer.site-foot .left strong { color: var(--mzm-ink); font-weight: var(--mzm-weight-medium); }
+.bentley-page footer.site-foot .links { display: flex; gap: var(--mzm-space-6); flex-wrap: wrap; }
+.bentley-page footer.site-foot .links a { color: var(--mzm-ink-mute); text-decoration: none; border-bottom: 1px solid var(--mzm-ink-rule); padding-bottom: 1px; }

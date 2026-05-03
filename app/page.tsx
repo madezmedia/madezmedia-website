@@ -278,15 +278,15 @@ export default function HomePage() {
 
       {/* CONTACT */}
       <section className="contact reveal" id="contact">
-        <div className="eyebrow"><span className="num">N° 05</span>Talk to us</div>
-        <h2>Want to see if <span className="em">we&apos;re a fit?</span></h2>
+        <div className="eyebrow"><span className="num">N° 05</span>Talk to the studio</div>
+        <h2>Three ways <span className="em">to start.</span></h2>
         <p>
-          Twenty minutes. We listen, you talk, no decks. If we&apos;re not the right shop,
-          we&apos;ll tell you who is.
+          Chat with our AI sales agent. Voice when you&apos;d rather talk. Or book Duane
+          (real human, real calendar). Twenty minutes, no decks.
         </p>
         <div className="actions">
-          <a href="https://cal.com/duane-madezmedia" className="btn-primary">Book with Duane →</a>
-          <a href="mailto:duane@madezmedia.com" className="btn-quiet">duane@madezmedia.com</a>
+          <Link href="/bentley" className="btn-primary">Talk to Bentley →</Link>
+          <a href="https://cal.com/duane-madezmedia" className="btn-quiet">or book Duane direct</a>
         </div>
       </section>
 
