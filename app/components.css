@@ -1,0 +1,215 @@
+/*
+ * madezmedia · component patterns v1
+ *
+ * Reusable component styles built ON TOP of tokens.css. Import tokens.css
+ * FIRST, then this file. Components use --mzm-* variables exclusively —
+ * no hard-coded values.
+ *
+ * Pattern: each component is a single class (e.g. .mzm-btn-primary) that
+ * a renderer can apply without needing to import a framework. Vanilla CSS,
+ * no preprocessor.
+ */
+
+/* ─── EYEBROW LABEL ──────────────────────────────────────────────── */
+.mzm-eyebrow {
+  font-family: var(--mzm-font-mono);
+  font-size: var(--mzm-text-xs);
+  font-weight: var(--mzm-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--mzm-tracking-wide);
+  color: var(--mzm-ink-fade);
+}
+.mzm-eyebrow .num {
+  color: var(--mzm-accent);
+  margin-right: var(--mzm-space-2);
+}
+
+/* ─── BUTTONS ────────────────────────────────────────────────────── */
+.mzm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mzm-space-2);
+  padding: var(--mzm-space-3) var(--mzm-space-5);
+  font-family: var(--mzm-font-sans);
+  font-size: var(--mzm-text-sm);
+  font-weight: var(--mzm-weight-medium);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--mzm-dur-fast) var(--mzm-ease-default);
+  white-space: nowrap;
+}
+.mzm-btn-primary {
+  background: var(--mzm-ink);
+  color: var(--mzm-paper);
+}
+.mzm-btn-primary:hover {
+  background: var(--mzm-accent);
+}
+.mzm-btn-primary:focus-visible {
+  outline: none;
+  box-shadow: var(--mzm-shadow-focus);
+}
+.mzm-btn-quiet {
+  color: var(--mzm-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--mzm-ink);
+  padding: 0 0 1px 0;
+  background: transparent;
+}
+.mzm-btn-quiet:hover {
+  color: var(--mzm-accent);
+  border-bottom-color: var(--mzm-accent);
+}
+.mzm-btn-arrow {
+  transition: transform var(--mzm-dur-fast) var(--mzm-ease-default);
+}
+.mzm-btn:hover .mzm-btn-arrow { transform: translateX(2px); }
+
+/* ─── HEADLINES ──────────────────────────────────────────────────── */
+.mzm-h1 {
+  font-family: var(--mzm-font-serif);
+  font-weight: var(--mzm-weight-normal);
+  font-size: var(--mzm-text-6xl);
+  line-height: var(--mzm-leading-tight);
+  letter-spacing: var(--mzm-tracking-tight);
+  color: var(--mzm-ink);
+}
+.mzm-h2 {
+  font-family: var(--mzm-font-serif);
+  font-weight: var(--mzm-weight-normal);
+  font-size: var(--mzm-text-4xl);
+  line-height: var(--mzm-leading-snug);
+  letter-spacing: var(--mzm-tracking-snug);
+  color: var(--mzm-ink);
+}
+.mzm-h3 {
+  font-family: var(--mzm-font-serif);
+  font-weight: var(--mzm-weight-medium);
+  font-size: var(--mzm-text-3xl);
+  line-height: var(--mzm-leading-tight);
+  letter-spacing: var(--mzm-tracking-normal);
+  color: var(--mzm-ink);
+}
+
+/* ─── EMPHASIS · italic + double-underline ───────────────────────── */
+.mzm-em {
+  font-style: italic;
+  border-bottom: 3px double var(--mzm-underline);
+  padding-bottom: 4px;
+}
+.mzm-em-accent {
+  font-style: italic;
+  border-bottom: 2px double var(--mzm-underline-em);
+  padding-bottom: 3px;
+  color: var(--mzm-accent);
+}
+
+/* ─── BODY COPY ──────────────────────────────────────────────────── */
+.mzm-body {
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-lg);
+  line-height: var(--mzm-leading-relaxed);
+  color: var(--mzm-ink-soft);
+}
+.mzm-deck {
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-2xl);
+  line-height: var(--mzm-leading-normal);
+  color: var(--mzm-ink-soft);
+}
+.mzm-body strong { font-weight: var(--mzm-weight-semibold); color: var(--mzm-ink); }
+.mzm-body em { color: var(--mzm-ink); }
+
+/* ─── LINK · accent-underlined ───────────────────────────────────── */
+.mzm-link {
+  color: var(--mzm-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--mzm-ink);
+  padding-bottom: 1px;
+  transition: all var(--mzm-dur-fast) var(--mzm-ease-default);
+}
+.mzm-link:hover {
+  color: var(--mzm-accent);
+  border-bottom-color: var(--mzm-accent);
+}
+
+/* ─── CARD · paper-warm surface with hairline border ─────────────── */
+.mzm-card {
+  background: var(--mzm-paper-warm);
+  border: 1px solid var(--mzm-ink-rule);
+  border-radius: var(--mzm-radius-md);
+  padding: var(--mzm-space-8);
+}
+
+/* ─── CODE BLOCK · install-command style ─────────────────────────── */
+.mzm-code-block {
+  font-family: var(--mzm-font-mono);
+  font-size: var(--mzm-text-sm);
+  background: var(--mzm-paper-warm);
+  border: 1px solid var(--mzm-ink-rule);
+  border-radius: var(--mzm-radius-sm);
+  padding: var(--mzm-space-3) var(--mzm-space-4);
+  color: var(--mzm-ink);
+}
+.mzm-code-block .prompt { color: var(--mzm-ink-quiet); }
+
+/* ─── QUOTE · archive-rule on left ───────────────────────────────── */
+.mzm-quote {
+  font-family: var(--mzm-font-serif);
+  font-style: italic;
+  color: var(--mzm-ink-mute);
+  border-left: 2px solid var(--mzm-quote-rule);
+  padding-left: var(--mzm-space-4);
+  font-size: var(--mzm-text-base);
+}
+
+/* ─── ENGAGE QUOTE · accent-rule (heavier, for engagements) ──────── */
+.mzm-engage-quote {
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-2xl);
+  line-height: var(--mzm-leading-normal);
+  font-style: italic;
+  color: var(--mzm-ink);
+  border-left: 3px solid var(--mzm-accent);
+  padding-left: var(--mzm-space-6);
+}
+
+/* ─── LIVE INDICATOR · accent dot with pulse ─────────────────────── */
+.mzm-live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--mzm-accent);
+  box-shadow: 0 0 0 0 var(--mzm-accent-soft);
+  animation: mzm-live-pulse 2s ease-in-out infinite;
+}
+@keyframes mzm-live-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--mzm-accent-soft); }
+  50%      { box-shadow: 0 0 0 6px transparent; }
+}
+
+/* ─── REVEAL · scroll-triggered fade-up ──────────────────────────── */
+.mzm-reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--mzm-dur-slow) var(--mzm-ease-enter),
+    transform var(--mzm-dur-slow) var(--mzm-ease-enter);
+}
+.mzm-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── FOOTNOTE · sup-citation w/ accent-soft underline ───────────── */
+.mzm-footnote-ref {
+  font-size: 0.6em;
+  vertical-align: super;
+  color: var(--mzm-accent);
+  margin-left: 1px;
+  font-feature-settings: "sups";
+}
+.mzm-footnote-ref a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--mzm-accent-soft);
+}

@@ -1,7 +1,8 @@
 {
   "name": "madezmedia-website",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
+  "description": "madezmedia.com — A studio that ships AI-native media systems.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,8 +13,10 @@
     "next": "^14.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "framer-motion": "^11.0.0",
-    "lucide-react": "^0.344.0"
+    "gray-matter": "^4.0.3",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -26,10 +29,5 @@
     "tailwindcss": "^3.4.0",
     "typescript": "^5"
   },
-  "description": "AI-powered digital marketing agency website with Kinetic Brutalism design.",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "license": "UNLICENSED"
 }

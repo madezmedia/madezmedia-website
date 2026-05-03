@@ -1,27 +1,19 @@
 import type { Config } from 'tailwindcss';
 
+/**
+ * Minimal Tailwind config — kept primarily for utility classes
+ * (flex, grid, spacing). All theming + typography lives in
+ * `app/tokens.css` + `app/components.css` as the single source
+ * of truth. Do NOT extend the Tailwind theme here — use the
+ * design tokens directly via CSS custom properties.
+ */
 const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './content/**/*.{md,mdx}',
   ],
   theme: {
-    extend: {
-      colors: {
-        primary: '#2563EB',
-        secondary: '#3B82F6',
-        cta: '#F97316',
-        'acid-yellow': '#DFE104',
-        dark: '#0F172A',
-        background: '#F8FAFC',
-        text: '#1E293B',
-      },
-      fontFamily: {
-        heading: ['Exo', 'sans-serif'],
-        body: ['Roboto Mono', 'monospace'],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

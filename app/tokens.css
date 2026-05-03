@@ -1,0 +1,146 @@
+/*
+ * madezmedia · design tokens v1
+ *
+ * Canonical CSS variables for the editorial-tech direction (v3 locked).
+ * Import this file FIRST on any madezmedia surface (homepage, product pages,
+ * email-template renderers, cowork-kanban v3-themed surfaces). Override at
+ * lower scopes if a surface needs context-specific adjustments — but the
+ * defaults below are the studio's locked baseline.
+ *
+ * Spec: ~/clawd/projects/madezmedia-rebrand/BRAND-IDENTITY-v1.md
+ * Doctrine: ~/clawd/docs/MADEZMEDIA-DOCTRINE.md
+ * Lock CID: mikey-lock-v3-editorial-tech-1777742367520
+ *
+ * Changes to these values cascade to every imported surface. Treat this file
+ * the way you'd treat a JSON Schema: small changes get a patch bump in the
+ * companion tokens.json; structural changes need a roundtable.
+ */
+
+:root {
+  /* ─── Color · paper foundation ─────────────────────────────────── */
+  --mzm-paper:        #faf9f5;  /* page bg — warm ivory, NOT white */
+  --mzm-paper-warm:   #f4f2eb;  /* elevated surfaces, code blocks, footers */
+  --mzm-paper-shadow: #ebe8de;  /* deepest paper shade — section dividers */
+
+  /* ─── Color · ink scale (text + foreground) ────────────────────── */
+  --mzm-ink:       #1a1a1a;  /* primary text, hero headlines */
+  --mzm-ink-soft:  #2c2c2a;  /* body copy under headlines */
+  --mzm-ink-mute:  #4a4a48;  /* secondary text, captions */
+  --mzm-ink-fade:  #7a7a76;  /* tertiary, dates, meta */
+  --mzm-ink-quiet: #9a9a96;  /* timestamps, deemphasized monospace */
+  --mzm-ink-rule:  #d4d2cc;  /* hairline borders, dividers */
+
+  /* ─── Color · accent (the single signal color) ─────────────────── */
+  --mzm-accent:        #2d4a3e;  /* deep forest — the studio's voice color */
+  --mzm-accent-soft:   #5a7d6f;  /* hover, glow halo, secondary accent */
+  --mzm-accent-quiet:  #1c3027;  /* deeper still, for very emphatic moments */
+
+  /* ─── Color · archive (for older content, quotes, footnotes) ───── */
+  --mzm-quote-rule:   #b8b0a0;  /* archive-bone, the "memory" color */
+  --mzm-quote-deep:   #5c5648;  /* deeper archive for serif emphasis in quotes */
+
+  /* ─── Underline · the typographic-emphasis tool ────────────────── */
+  --mzm-underline:    #1a1a1a;  /* default thick double-underline (matches ink) */
+  --mzm-underline-em: #2d4a3e;  /* accent underline (for wordmark, key emphasis) */
+
+  /* ─── Type · families ──────────────────────────────────────────── */
+  --mzm-font-serif:   'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --mzm-font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+  --mzm-font-mono:    'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* ─── Type · scale (clamp-based; lower bound = mobile, upper = desktop) */
+  --mzm-text-xs:      0.75rem;        /* 12px — meta-labels, footnotes */
+  --mzm-text-sm:      0.875rem;       /* 14px — small body, footer */
+  --mzm-text-base:    1rem;           /* 16px — body */
+  --mzm-text-lg:      1.0625rem;      /* 17px — primary body in essay sections */
+  --mzm-text-xl:      1.125rem;       /* 18px — deck, larger body */
+  --mzm-text-2xl:     1.25rem;        /* 20px — sub-hero deck */
+  --mzm-text-3xl:     clamp(1.375rem, 2.2vw, 1.875rem);  /* H3 */
+  --mzm-text-4xl:     clamp(1.875rem, 3vw, 2.5rem);      /* H2 */
+  --mzm-text-5xl:     clamp(2.25rem, 4.5vw, 3.5rem);     /* contact section H */
+  --mzm-text-6xl:     clamp(2.5rem, 5.6vw, 4.5rem);      /* hero H1 */
+
+  /* ─── Type · weights ───────────────────────────────────────────── */
+  --mzm-weight-normal:    400;
+  --mzm-weight-medium:    500;
+  --mzm-weight-semibold:  600;
+  --mzm-weight-bold:      700;
+
+  /* ─── Type · line heights ──────────────────────────────────────── */
+  --mzm-leading-tight:   1.05;   /* hero, section heads */
+  --mzm-leading-snug:    1.15;   /* H2 */
+  --mzm-leading-normal:  1.45;   /* deck-size text */
+  --mzm-leading-relaxed: 1.6;    /* body */
+  --mzm-leading-loose:   1.7;    /* monospace logs */
+
+  /* ─── Type · tracking ──────────────────────────────────────────── */
+  --mzm-tracking-tight:   -0.025em;  /* hero */
+  --mzm-tracking-snug:    -0.018em;  /* H2 */
+  --mzm-tracking-normal:  -0.015em;  /* H3 + wordmark */
+  --mzm-tracking-wide:     0.16em;   /* meta-label uppercase */
+  --mzm-tracking-wider:    0.18em;   /* eyebrow uppercase */
+
+  /* ─── Layout · max-widths ──────────────────────────────────────── */
+  --mzm-max-prose:    720px;   /* essay sections, optimal reading measure */
+  --mzm-max-content:  1080px;  /* nav, hero, footer container */
+  --mzm-max-wide:     1240px;  /* full-bleed grid layouts (lab cards) */
+
+  /* ─── Layout · spacing scale ───────────────────────────────────── */
+  --mzm-space-1:  4px;
+  --mzm-space-2:  8px;
+  --mzm-space-3:  12px;
+  --mzm-space-4:  16px;
+  --mzm-space-5:  20px;
+  --mzm-space-6:  24px;
+  --mzm-space-8:  32px;
+  --mzm-space-10: 40px;
+  --mzm-space-12: 48px;
+  --mzm-space-16: 64px;
+  --mzm-space-20: 80px;
+  --mzm-space-24: 96px;
+  --mzm-space-30: 120px;
+
+  /* ─── Layout · radii ───────────────────────────────────────────── */
+  --mzm-radius-xs:    2px;   /* very tight, used in eyebrow pills */
+  --mzm-radius-sm:    3px;   /* code blocks */
+  --mzm-radius-md:    4px;   /* card frames in editorial direction */
+  --mzm-radius-lg:    8px;   /* larger cards */
+  --mzm-radius-pill:  999px; /* nav-cta on dark surfaces */
+
+  /* ─── Motion · timing tokens ───────────────────────────────────── */
+  --mzm-dur-xfast:   100ms;  /* feedback */
+  --mzm-dur-fast:    180ms;  /* micro-interactions, hover */
+  --mzm-dur-normal:  320ms;  /* transitions */
+  --mzm-dur-slow:    560ms;  /* section reveals */
+  --mzm-dur-slowest: 900ms;  /* page-load stagger */
+
+  /* ─── Motion · easings ─────────────────────────────────────────── */
+  --mzm-ease-default: cubic-bezier(0.16, 1, 0.3, 1);   /* settles into place */
+  --mzm-ease-enter:   cubic-bezier(0.22, 1, 0.36, 1);  /* gentle fade-in-from-below */
+  --mzm-ease-exit:    cubic-bezier(0.7, 0, 0.84, 0);   /* sharp acceleration */
+
+  /* ─── Effects · shadows (sparingly used in editorial direction) ── */
+  --mzm-shadow-sm: 0 1px 2px rgba(26, 26, 26, 0.04);
+  --mzm-shadow-md: 0 2px 8px rgba(26, 26, 26, 0.06);
+  --mzm-shadow-focus: 0 0 0 3px rgba(45, 74, 62, 0.15);  /* accent halo */
+
+  /* ─── Effects · z-index scale ──────────────────────────────────── */
+  --mzm-z-base:     1;
+  --mzm-z-sticky:   50;
+  --mzm-z-overlay:  100;
+  --mzm-z-modal:    200;
+  --mzm-z-toast:    300;
+}
+
+/* ─── Reset to use the system everywhere by default ─────────────── */
+.mzm-base {
+  background: var(--mzm-paper);
+  color: var(--mzm-ink);
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-xl);
+  line-height: var(--mzm-leading-relaxed);
+  font-feature-settings: "ss01", "salt", "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--mzm-ink); color: var(--mzm-paper); }
