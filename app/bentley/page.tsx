@@ -70,14 +70,15 @@ export default function BentleyPage() {
           <span className="meta">Human · cal.com</span>
         </a>
 
-        <a className="touchpoint" href="mailto:duane@madezmedia.com?subject=Bentley%20voice%20agent%20interest">
-          <div className="badge beta">Voice · launching this week</div>
+        <a className="touchpoint" href="tel:+17049011026">
+          <div className="badge live">Live now · call any time</div>
           <h3>Voice with Bentley</h3>
           <p>
-            Same agent, voice-first. Call it like a phone call. Currently in private beta
-            with our existing clients — drop your number and we&apos;ll wave you in.
+            Same agent, voice-first. Call <strong>+1 (704) 901-1026</strong> like a phone
+            call — Bentley picks up, takes the conversation, and writes it back to ACMI so
+            the next channel remembers.
           </p>
-          <span className="meta">Agent · voice-first · Vapi</span>
+          <span className="meta">Agent · voice · Vapi · 24/7</span>
         </a>
       </div>
 
