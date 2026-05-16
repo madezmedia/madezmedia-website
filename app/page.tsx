@@ -15,6 +15,7 @@ export default function HomePage() {
           <div className="links">
             <Link href="/#approach">Approach</Link>
             <Link href="/#lab">Lab</Link>
+            <Link href="/voice-ai">Voice AI</Link>
             <Link href="/#work">Work</Link>
             <Link href="/acmi">ACMI</Link>
             <Link href="/blog">Notes</Link>
