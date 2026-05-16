@@ -1,0 +1,178 @@
+/*
+ * madezmedia · site shell styles
+ *
+ * Global SiteHeader + SiteFooter — applied via app/layout.tsx so every route
+ * inherits the shell without ceremony. Uses v1.4 tokens (--ember, --ink-950,
+ * --font-display, --font-body-v14) and legacy --mzm-paper/--mzm-paper-warm
+ * (color tokens already align to v1.4; font aliases in tokens.css route
+ * --mzm-font-serif → Montserrat, --mzm-font-sans → Raleway).
+ */
+
+/* ─── Site Header ─────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 249, 245, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.site-header__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-header__logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.site-header__wordmark {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--mzm-ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.site-header__pivot {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ember);
+  border-bottom: 1.5px solid var(--ember);
+  padding-bottom: 1px;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.site-header__link {
+  font-family: var(--font-body-v14);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mzm-ink);
+  text-decoration: none;
+  transition: color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header__link:hover {
+  color: var(--ember);
+}
+
+.site-header__cta {
+  display: inline-flex;
+  align-items: center;
+  background: var(--ember);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 9999px;
+  font-family: var(--font-body-v14);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header__cta:hover {
+  background: var(--forest-800);
+}
+
+@media (max-width: 768px) {
+  .site-header__nav {
+    display: none;
+  }
+  .site-header__inner {
+    padding: 12px 20px;
+  }
+  .site-header__logo {
+    height: 36px;
+  }
+  .site-header__wordmark {
+    font-size: 18px;
+  }
+  .site-header__cta {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* ─── Site Footer ─────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--mzm-paper-warm, #f4f2eb);
+  padding: 56px 32px;
+  margin-top: 96px;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.site-footer__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.site-footer__left {
+  font-family: var(--font-body-v14);
+  font-size: 14px;
+  color: var(--mzm-ink-soft, #2c2c2a);
+}
+
+.site-footer__left strong {
+  font-weight: 700;
+  color: var(--mzm-ink);
+}
+
+.site-footer__links {
+  display: flex;
+  gap: 24px;
+  font-family: var(--mzm-font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.site-footer__links a {
+  color: var(--mzm-ink-soft, #2c2c2a);
+  text-decoration: none;
+  transition: color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-footer__links a:hover {
+  color: var(--ember);
+}
+
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 40px 20px;
+    margin-top: 64px;
+  }
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
