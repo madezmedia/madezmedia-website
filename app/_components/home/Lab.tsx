@@ -17,13 +17,13 @@ export function Lab() {
             <div className="home-lab__card-head">
               <div className="home-lab__label-tag">An open protocol</div>
               <h3 className="home-lab__card-h3">ACMI</h3>
-              <div className="home-lab__status">v1.2.0 · MIT</div>
+              <div className="home-lab__status">v1.4.0 · MIT</div>
             </div>
             <div className="home-lab__card-body">
               <p>
                 The protocol for agent memory. Three keys per entity — <em>Profile</em>,{' '}
                 <em>Signals</em>, <em>Timeline</em>. Three reference adapters. A 31-test conformance
-                suite. Published to npm 2026-05-01.
+                suite. Published to npm 2026-05-14.
               </p>
               <div className="home-lab__install"><span className="home-lab__prompt">$</span> npm install @madezmedia/acmi</div>
               <div className="home-lab__links">
@@ -50,7 +50,7 @@ export function Lab() {
               </div>
               <div className="home-lab__links">
                 <Link href="/blog/avatar-is-the-orchestrator">The Avatar IS the Orchestrator →</Link>
-                <a href="#">folana.live</a>
+                <Link href="/blog/avatar-is-the-orchestrator">folana.live</Link>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ export function Lab() {
                 tones to long-form podcast intros.
               </p>
               <div className="home-lab__links">
-                <a href="#">Selected work</a>
+                <span style={{ color: 'var(--fg-muted)', fontStyle: 'italic' }}>Selected work · private portfolio</span>
               </div>
             </div>
           </div>
