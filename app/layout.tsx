@@ -1,5 +1,20 @@
 import type { Metadata, Viewport } from 'next';
+import { Montserrat, Raleway } from 'next/font/google';
 import './globals.css';
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '700', '900'],
+  variable: '--font-montserrat',
+  display: 'swap',
+});
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-raleway',
+  display: 'swap',
+});
 
 export const viewport: Viewport = {
   themeColor: '#faf9f5',
@@ -61,7 +76,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${montserrat.variable} ${raleway.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
