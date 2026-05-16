@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import '../page.css';
-import { BlogNav, BlogFooter, BlogShell } from '../_BlogChrome';
+import { BlogShell } from '../_BlogChrome';
 import { getPostBySlug, getPostSlugs } from '@/lib/posts';
 
 export async function generateStaticParams() {
@@ -54,8 +54,6 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <BlogShell>
-      <BlogNav />
-
       <section className="post-hero">
         <Link href="/blog" className="back-link">← All notes</Link>
         <div className="mzm-eyebrow">
@@ -110,8 +108,6 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <section className="post-foot">
         <Link href="/blog">← All notes</Link>
       </section>
-
-      <BlogFooter />
     </BlogShell>
   );
 }
