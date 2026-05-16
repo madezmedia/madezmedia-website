@@ -130,6 +130,20 @@
   --mzm-z-overlay:  100;
   --mzm-z-modal:    200;
   --mzm-z-toast:    300;
+
+  /* ─── v1.4 bundle palette (additive — homepage + voice-ai use these; legacy routes keep --mzm-*) ── */
+  --ink-950: #0a0a0b;
+  --forest-800: #2d4a3e;
+  --forest-600: #5a7d6f;
+  --ember: #C25670;
+  --mist: #7BA2B8;
+  --moss: #6FA08C;
+  --ochre: #C99A3D;
+  --plum: #7A4C73;
+  --bone: #E8DFC8;
+
+  --font-display: var(--font-montserrat, 'Montserrat', system-ui, sans-serif);
+  --font-body-v14: var(--font-raleway, 'Raleway', system-ui, sans-serif);
 }
 
 /* ─── Reset to use the system everywhere by default ─────────────── */
