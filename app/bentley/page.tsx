@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import './page.css';
 import { BentleyChat } from './_BentleyChat';
 import { getDuaneAvailability } from '@/lib/availability';
@@ -24,22 +23,7 @@ export default function BentleyPage() {
   const duane = getDuaneAvailability();
 
   return (
-    <div className="bentley-page">
-      <nav className="top">
-        <div className="inner">
-          <Link href="/" className="wordmark">made<span className="pivot">z</span>media</Link>
-          <div className="links">
-            <Link href="/#approach">Approach</Link>
-            <Link href="/#lab">Lab</Link>
-            <Link href="/#work">Work</Link>
-            <Link href="/acmi">ACMI</Link>
-            <Link href="/blog">Notes</Link>
-            <Link href="/system">System</Link>
-          </div>
-          <Link href="/bentley" className="nav-cta">Talk to Bentley</Link>
-        </div>
-      </nav>
-
+    <main className="bentley-page">
       <section className="bentley-hero">
         <div className="mzm-eyebrow"><span className="num">N° 05</span>Talk to the studio</div>
         <h1>Three ways <span className="em">to start.</span></h1>
@@ -92,21 +76,6 @@ export default function BentleyPage() {
         <BentleyChat />
       </section>
 
-      <footer className="site-foot">
-        <div className="inner">
-          <div className="left">
-            <strong>madezmedia</strong> · Mad EZ Media &amp; Technology Partners · NC · © 2026
-          </div>
-          <div className="links">
-            <a href="https://github.com/madezmedia">github</a>
-            <a href="https://npmjs.com/~madezmedia">npm</a>
-            <Link href="/acmi">ACMI</Link>
-            <Link href="/blog">notes</Link>
-            <Link href="/system">system</Link>
-            <Link href="/">home</Link>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </main>
   );
 }
