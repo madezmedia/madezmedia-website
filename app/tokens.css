@@ -44,8 +44,12 @@
   --mzm-underline-em: #2d4a3e;  /* accent underline (for wordmark, key emphasis) */
 
   /* ─── Type · families ──────────────────────────────────────────── */
-  --mzm-font-serif:   'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --mzm-font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+  /* v1.4 unification: legacy font tokens now alias to v1.4 fonts so all
+   * --mzm-font-serif / --mzm-font-sans references across legacy routes
+   * resolve to Montserrat / Raleway loaded via next/font in layout.tsx.
+   * Source Serif 4 and Inter are no longer loaded. */
+  --mzm-font-serif:   var(--font-display);     /* v1.4 alias — Montserrat */
+  --mzm-font-sans:    var(--font-body-v14);    /* v1.4 alias — Raleway */
   --mzm-font-mono:    'JetBrains Mono', 'SF Mono', Consolas, monospace;
 
   /* ─── Type · scale (clamp-based; lower bound = mobile, upper = desktop) */
