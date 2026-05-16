@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from 'next';
-import { Montserrat, Raleway } from 'next/font/google';
+import { Montserrat, Raleway, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import './_components/site/site.css';
+import { SiteHeader } from './_components/site/SiteHeader';
+import { SiteFooter } from './_components/site/SiteFooter';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -13,6 +16,13 @@ const raleway = Raleway({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
   variable: '--font-raleway',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-jetbrains-mono',
   display: 'swap',
 });
 
@@ -44,13 +54,8 @@ export const metadata: Metadata = {
   creator: 'Mad EZ Media & Technology Partners',
   publisher: 'Mad EZ Media & Technology Partners',
   icons: {
-    icon: [
-      { url: '/acmi/glyph.svg', type: 'image/svg+xml' },
-      { url: '/acmi/favicon-32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/acmi/favicon-16.png', type: 'image/png', sizes: '16x16' },
-    ],
-    apple: '/acmi/apple-touch-icon.png',
-    shortcut: '/acmi/favicon.ico',
+    icon: '/brand/logo-splatter.png',
+    apple: '/brand/logo-splatter.png',
   },
   openGraph: {
     title: 'madezmedia — A studio that ships AI-native media systems.',
@@ -76,16 +81,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${raleway.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${montserrat.variable} ${raleway.variable} ${jetbrainsMono.variable}`}
+    >
+      <body>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
