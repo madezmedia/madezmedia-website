@@ -1,22 +1,22 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { slideDown } from '../ui/Animations';
 
 export function HomeNav() {
   return (
     <nav className="home-nav">
-      <div className="home-nav__inner">
+      <motion.div
+        className="home-nav__inner"
+        initial="hidden"
+        animate="visible"
+        variants={slideDown}
+      >
         <Link href="/" className="home-nav__wordmark" aria-label="Mad EZ Media home">
-          <Image
-            src="/brand/logo-minimal-nav.jpg"
-            alt="Mad EZ Media"
-            width={160}
-            height={40}
-            className="home-nav__logo-img"
-            priority
-          />
+         <span className="home-nav__wordmark-madz">Mad EZ</span>
+          <span className="home-nav__wordmark-slash">/</span>
+          <span className="home-nav__wordmark-media">Media</span>
         </Link>
         <div className="home-nav__links">
           <Link href="/#approach">Approach</Link>
@@ -28,7 +28,7 @@ export function HomeNav() {
           <Link href="/system">System</Link>
         </div>
         <Link href="/#contact" className="home-nav__cta">Talk to Bentley</Link>
-      </div>
+      </motion.div>
     </nav>
   );
 }

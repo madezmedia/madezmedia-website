@@ -3,12 +3,13 @@ import './page.css';
 import { CopyInstallButton } from './_CopyInstallButton';
 
 export const metadata: Metadata = {
-  title: 'ACMI — the agent memory protocol',
+  title: 'ACMI — the agent memory protocol for AI fleets',
   description:
-    'Three keys per entity. That\'s the whole protocol. Open-source agent memory for any AI system, on npm, MIT-licensed.',
+    "Your AI agents remember everything. Do you? ACMI gives any fleet persistent, queryable memory using three Redis keys per entity. Open-source on npm.",
   openGraph: {
-    title: 'ACMI — three keys per entity. That\'s the whole protocol.',
-    description: 'Open-source agent memory protocol. Profile · Signals · Timeline. On npm.',
+    title: 'Your agents remember everything. Do you?',
+    description:
+      'ACMI — three-key agent memory protocol for multi-agent fleets. Profile · Signals · Timeline. On npm.',
     type: 'website',
     url: 'https://www.madezmedia.com/acmi',
     images: [{ url: '/acmi/og.png', width: 1200, height: 630, alt: 'ACMI — Three keys per entity' }],
@@ -16,8 +17,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ACMI — three keys per entity. That\'s the whole protocol.',
-    description: 'Open-source agent memory protocol. Profile · Signals · Timeline. On npm.',
+    title: 'Your agents remember everything. Do you?',
+    description:
+      'ACMI — three-key agent memory protocol for multi-agent fleets. Profile · Signals · Timeline. On npm.',
     site: '@madezmedia',
     images: ['/acmi/og.png'],
   },
@@ -36,11 +38,16 @@ export default function AcmiPage() {
           </svg>
         </div>
         <div className="mzm-eyebrow"><span className="num">N° 01</span>An open protocol · v1.2 · MIT</div>
-        <h1>Three keys per entity. <span className="em">That&apos;s the whole protocol.</span></h1>
+        <h1>
+          Your agents remember everything.
+          <br /><span className="em">Do you?</span>
+        </h1>
         <p className="deck">
-          ACMI gives any AI agent persistent, queryable memory using exactly three Redis keys
-          per entity. <strong>No vector index. No knowledge graph. No fact-extraction LLM
-          pass.</strong> On npm, MIT-licensed, <em>run it yourself</em>.
+          Run two or more AI agents and you already know the problem: your fleet generates
+          decisions, events, and lessons every hour — and none of it survives the next session.
+          Or worse: it survives, but you can&apos;t see it. ACMI is the{' '}
+          <strong>agent memory protocol</strong> that gives every entity in your fleet
+          persistent, queryable memory — three keys, one pattern, zero lock-in.
         </p>
 
         <div className="install-card">
@@ -60,8 +67,8 @@ export default function AcmiPage() {
         <div className="mzm-eyebrow"><span className="num">N° 02</span>The protocol</div>
         <h2>Profile. Signals. <span className="em-accent">Timeline.</span></h2>
         <p className="deck">
-          Every entity in ACMI — a project, an agent, a contact, a deal — is stored using exactly
-          three Redis keys. Each key answers one question an LLM needs to make a decision.
+          Every entity in your fleet — agent, project, contact, deal — lives in exactly three
+          Redis keys. Each answers one question an LLM needs to make its next decision.
         </p>
 
         <div className="three-keys-grid">
@@ -224,7 +231,36 @@ const acmi = createAcmi(
       </section>
 
       <section>
-        <div className="mzm-eyebrow"><span className="num">N° 07</span>Roadmap</div>
+        <div className="mzm-eyebrow"><span className="num">N° 07</span>Fleet visibility</div>
+        <h2>See what your fleet <span className="em">is actually doing.</span></h2>
+        <p className="deck">
+          Memory is only half the problem. The other half: <em>your agents are doing important
+          work right now and you can&apos;t see it</em>. Logs scroll, timelines grow, and the operator
+          — you — is flying blind.
+        </p>
+        <p>
+          <strong>Antigravity</strong> is the fleet&apos;s visual layer. A dedicated UI agent that
+          wakes on a schedule, reads the shared timeline, and renders a live operational view —
+          Kanban boards, signal dashboards, correlation-chain maps — so you can see the whole
+          fleet at a glance instead of stitching together terminal output.
+        </p>
+        <p>
+          Built into the Mad EZ fleet from day one. Open-source components coming to the ACMI
+          repo as a reference implementation — a dashboard adapter that speaks the same
+          Profile/Signals/Timeline schema your agents already write to.
+        </p>
+        <div style={{ marginTop: 'var(--mzm-space-12)', padding: '24px', background: 'var(--mzm-paper)', borderRadius: '12px', border: '1px solid var(--mzm-ink-rule)' }}>
+          <div style={{ fontFamily: 'var(--mzm-font-mono)', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--process-cyan)', marginBottom: '12px' }}>Fleet operator · Antigravity</div>
+          <div style={{ fontSize: '15px', lineHeight: 1.6, color: 'var(--mzm-ink)', fontStyle: 'italic' }}>
+            &ldquo;Memory without visibility is just a better forgotten log. The moment your agents
+            remember <em>and</em> you can see what they remember — that&apos;s when a fleet stops
+            being a collection of black boxes and becomes a system you actually trust.&rdquo;
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="mzm-eyebrow"><span className="num">N° 08</span>Roadmap</div>
         <h2>What&apos;s next. <span className="em">In version order.</span></h2>
         <ul className="roadmap-list">
           <li className="shipped">

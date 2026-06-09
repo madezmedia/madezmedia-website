@@ -7,7 +7,7 @@ import { SiteFooter } from './_components/site/SiteFooter';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
+  weight: ['400', '700', '800', '900'],  /* 800 added for section H2 per director review */
   variable: '--font-montserrat',
   display: 'swap',
 });
@@ -65,6 +65,12 @@ export const metadata: Metadata = {
     siteName: 'madezmedia',
     locale: 'en_US',
     type: 'website',
+    images: [{
+      url: '/og-default.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'madezmedia — AI-native media systems',
+    }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -72,6 +78,7 @@ export const metadata: Metadata = {
     description:
       'We build AI-native media systems for companies whose audiences live online.',
     site: '@madezmedia',
+    images: ['/og-default.jpg'],
   },
 };
 
