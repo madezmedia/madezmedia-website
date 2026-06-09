@@ -63,6 +63,7 @@
   --mzm-text-4xl:     clamp(1.875rem, 3vw, 2.5rem);      /* H2 */
   --mzm-text-5xl:     clamp(2.25rem, 4.5vw, 3.5rem);     /* contact section H */
   --mzm-text-6xl:     clamp(2.5rem, 5.6vw, 4.5rem);      /* hero H1 */
+  --mzm-text-7xl:     clamp(3.5rem, 8vw, 6rem);       /* hero headline (large moments) */
 
   /* ─── Type · weights ───────────────────────────────────────────── */
   --mzm-weight-normal:    400;
@@ -165,6 +166,7 @@
 
   /* ─── Brand v2 motion overrides ────────────────────────────────── */
   --mzm-dur-slowest: 1000ms;  /* page-load stagger — brand v2 is more dramatic */
+  --mzm-dur-hero:    1200ms;  /* hero title entrance, splatter slow reveal */
   --mzm-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);  /* spring overshoot for cards */
 }
 

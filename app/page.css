@@ -66,7 +66,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--moss);
+  /* process-cyan signals "system is on" per brand direction */
+  background: var(--process-cyan);
   display: inline-block;
   animation: home-blink 1.5s ease-in-out infinite;
 }
@@ -75,7 +76,8 @@
 .home-hero h1 em,
 .home-contact h2 em {
   font-style: italic;
-  background: linear-gradient(90deg, var(--process-magenta) 0%, var(--process-yellow) 100%);
+  /* gradient fixed per director review: cyan→magenta (brand doc authoritative) */
+  background: linear-gradient(90deg, var(--process-cyan) 0%, var(--process-magenta) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

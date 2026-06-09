@@ -7,7 +7,7 @@ import { SiteFooter } from './_components/site/SiteFooter';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
+  weight: ['400', '700', '800', '900'],  /* 800 added for section H2 per director review */
   variable: '--font-montserrat',
   display: 'swap',
 });
