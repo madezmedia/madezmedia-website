@@ -577,7 +577,7 @@ nav.home-nav {
   background: linear-gradient(
     180deg,
     var(--mzm-paper) 0%,
-    color-mix(in oklch, var(--mist) 5%, var(--mzm-paper)) 100%
+    color-mix(in oklch, var(--process-cyan) 5%, var(--mzm-paper)) 100%
   );
 }
 .home-approach h2 {
@@ -764,7 +764,7 @@ nav.home-nav {
   background: linear-gradient(
     180deg,
     var(--mzm-paper) 0%,
-    color-mix(in oklch, var(--ochre) 5%, var(--mzm-paper)) 100%
+    color-mix(in oklch, var(--process-yellow) 5%, var(--mzm-paper)) 100%
   );
 }
 .home-work h2 {

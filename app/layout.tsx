@@ -65,6 +65,12 @@ export const metadata: Metadata = {
     siteName: 'madezmedia',
     locale: 'en_US',
     type: 'website',
+    images: [{
+      url: '/og-default.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'madezmedia — AI-native media systems',
+    }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -72,6 +78,7 @@ export const metadata: Metadata = {
     description:
       'We build AI-native media systems for companies whose audiences live online.',
     site: '@madezmedia',
+    images: ['/og-default.jpg'],
   },
 };
 
