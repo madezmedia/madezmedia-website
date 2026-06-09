@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import './page.css';
 
 export const metadata: Metadata = {
@@ -53,22 +52,7 @@ const microinteractions = [
 
 export default function SystemPage() {
   return (
-    <div className="system-page">
-      <nav className="top">
-        <div className="inner">
-          <Link href="/" className="wordmark">made<span className="pivot">z</span>media</Link>
-          <div className="links">
-            <Link href="/#approach">Approach</Link>
-            <Link href="/#lab">Lab</Link>
-            <Link href="/#work">Work</Link>
-            <Link href="/acmi">ACMI</Link>
-            <Link href="/blog">Notes</Link>
-            <Link href="/system" className="is-active">System</Link>
-          </div>
-          <Link href="/#contact" className="nav-cta">Talk to Bentley</Link>
-        </div>
-      </nav>
-
+    <main className="system-page">
       <section className="system-hero">
         <div className="mzm-eyebrow"><span className="num">N° 00</span>The design language</div>
         <h1>The system that <span className="em">serves the doctrine.</span></h1>
@@ -193,20 +177,6 @@ export default function SystemPage() {
         </p>
       </section>
 
-      <footer className="site-foot">
-        <div className="inner">
-          <div className="left">
-            <strong>madezmedia</strong> · Mad EZ Media &amp; Technology Partners · NC · © 2026
-          </div>
-          <div className="links">
-            <a href="https://github.com/madezmedia">github</a>
-            <a href="https://npmjs.com/~madezmedia">npm</a>
-            <Link href="/acmi">ACMI</Link>
-            <Link href="/blog">notes</Link>
-            <Link href="/">home</Link>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </main>
   );
 }

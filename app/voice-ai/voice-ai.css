@@ -1,0 +1,94 @@
+/* madezmedia · voice-ai page tokens (scoped) · 2026-05-15
+ * Page-local additive tokens. Do NOT load on other routes — this file is
+ * imported only by app/voice-ai/page.tsx. The site-wide tokens.css remains
+ * the locked v3 source of truth for the editorial homepage. */
+
+.voice-ai-page {
+  /* Color · bundle-aligned palette */
+  --ink-950: #0a0a0b;
+  --paper: #faf9f5;
+  --forest-800: #2d4a3e;
+  --forest-600: #5a7d6f;
+  --ember: #C25670;
+  --mist: #7BA2B8;
+  --moss: #6FA08C;
+  --ochre: #C99A3D;
+  --plum: #7A4C73;
+  --bone: #E8DFC8;
+
+  --fg: #0f1115;
+  --fg-meta: #4a4a48;
+  --fg-muted: #6b7280;
+  --border: #e5e5e0;
+
+  /* Type · bundle-aligned families (loaded by layout.tsx) */
+  --font-heading: var(--font-montserrat, 'Montserrat', system-ui, sans-serif);
+  --font-body: var(--font-raleway, 'Raleway', system-ui, sans-serif);
+  --font-mono: var(--font-jetbrains-mono, 'JetBrains Mono', ui-monospace, monospace);
+
+  background: var(--paper);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.voice-ai-page * { box-sizing: border-box; }
+.voice-ai-page section { scroll-margin-top: 80px; }
+
+.va-eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ember);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.va-eyebrow::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ember);
+}
+.va-eyebrow--moss { color: var(--moss); }
+.va-eyebrow--moss::before { background: var(--moss); }
+.va-eyebrow--mist { color: var(--mist); }
+.va-eyebrow--mist::before { background: var(--mist); }
+.va-eyebrow--ochre { color: var(--ochre); }
+.va-eyebrow--ochre::before { background: var(--ochre); }
+
+.va-section { padding: 96px 24px; }
+@media (min-width: 768px) { .va-section { padding: 120px 64px; } }
+
+.va-container { max-width: 1280px; margin: 0 auto; }
+
+.va-h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(36px, 5.5vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin: 24px 0 0;
+  color: var(--forest-800);
+}
+.va-h2 em {
+  font-style: italic;
+  color: var(--ember);
+}
+
+.va-deck {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  max-width: 720px;
+  margin: 20px 0 0;
+}
+
+@keyframes va-pulse { 0%,100% { opacity:1; transform: scale(1); } 50% { opacity:0.5; transform: scale(0.85); } }
+@keyframes va-blink { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes va-bar { 0%,100% { transform: scaleY(0.4); } 50% { transform: scaleY(1.4); } }

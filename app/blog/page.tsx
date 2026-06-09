@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './page.css';
-import { BlogNav, BlogFooter, BlogShell } from './_BlogChrome';
+import { BlogShell } from './_BlogChrome';
 import { getAllPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
@@ -29,8 +29,6 @@ export default async function BlogIndex() {
   const posts = await getAllPosts();
   return (
     <BlogShell>
-      <BlogNav />
-
       <section className="index-hero">
         <div className="mzm-eyebrow"><span className="num">N° 01</span>Notes from the studio</div>
         <h1>Field notes. <span className="em">Working systems.</span></h1>
@@ -63,8 +61,6 @@ export default async function BlogIndex() {
           </Link>
         ))}
       </section>
-
-      <BlogFooter />
     </BlogShell>
   );
 }

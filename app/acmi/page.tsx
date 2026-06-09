@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import './page.css';
 import { CopyInstallButton } from './_CopyInstallButton';
 
@@ -27,22 +26,7 @@ export const metadata: Metadata = {
 
 export default function AcmiPage() {
   return (
-    <div className="acmi-page">
-      <nav className="top">
-        <div className="inner">
-          <Link href="/" className="wordmark">made<span className="pivot">z</span>media</Link>
-          <div className="links">
-            <Link href="/#approach">Approach</Link>
-            <Link href="/#lab">Lab</Link>
-            <Link href="/#work">Work</Link>
-            <Link href="/acmi" className="is-active">ACMI</Link>
-            <Link href="/blog">Notes</Link>
-            <Link href="/system">System</Link>
-          </div>
-          <Link href="/#contact" className="nav-cta">Talk to Bentley</Link>
-        </div>
-      </nav>
-
+    <main className="acmi-page">
       <section className="acmi-hero">
         <div className="acmi-wordmark" aria-hidden="true">
           <svg viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ACMI">
@@ -279,20 +263,6 @@ const acmi = createAcmi(
         </div>
       </section>
 
-      <footer className="site-foot">
-        <div className="inner">
-          <div className="left">
-            <strong>madezmedia</strong> · Mad EZ Media &amp; Technology Partners · NC · © 2026
-          </div>
-          <div className="links">
-            <a href="https://github.com/madezmedia">github</a>
-            <a href="https://npmjs.com/~madezmedia">npm</a>
-            <Link href="/blog">notes</Link>
-            <Link href="/system">system</Link>
-            <Link href="/">home</Link>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </main>
   );
 }
