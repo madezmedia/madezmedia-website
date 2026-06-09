@@ -121,6 +121,38 @@ nav.home-nav {
 @media (max-width: 480px) {
   .home-nav__logo-img { height: 28px; }
 }
+
+/* Text-based wordmark — brand v2 (replaces image logo) */
+.home-nav__wordmark {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  line-height: 1;
+}
+.home-nav__wordmark-madz {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--mzm-ink);
+  letter-spacing: -0.02em;
+}
+.home-nav__wordmark-slash {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--process-cyan);  /* CMYK signal color */
+  margin: 0 2px;
+  line-height: 1;
+}
+.home-nav__wordmark-media {
+  font-family: var(--font-body-v14);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--mzm-ink);
+  letter-spacing: -0.01em;
+}
 .home-nav__links {
   display: none;
   gap: 28px;
