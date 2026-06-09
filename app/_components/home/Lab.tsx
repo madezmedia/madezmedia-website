@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { AcmiEmblem, FolanaEmblem, TonyEmblem, SonicEmblem } from '../ui/LabEmblems';
@@ -80,6 +81,9 @@ export function Lab() {
 
   return (
     <section className="home-lab home-section" id="lab">
+      <div className="home-lab__texture" aria-hidden="true">
+        <Image src="/textures/lab-texture.png" alt="" fill className="home-lab__texture-img" sizes="100vw" />
+      </div>
       <div className="home-lab__inner" ref={ref}>
         <motion.div
           className="home-lab__eyebrow"

@@ -592,8 +592,27 @@ nav.home-nav {
 }
 .home-approach h2 em {
   font-style: italic;
-  color: var(--mist);
+  color: var(--process-cyan);
   font-weight: 700;
+}
+
+/* Texture background layer */
+.home-approach__texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.home-approach__texture-img {
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.07;
+  filter: grayscale(100%) sepia(30%) hue-rotate(180deg); /* mist-blue tint on blueprint */
+}
+.home-approach__inner {
+  position: relative;
+  z-index: 1;
 }
 .home-approach p {
   font-family: var(--font-body-v14);
@@ -633,8 +652,27 @@ nav.home-nav {
 }
 .home-lab h2 em {
   font-style: italic;
-  color: var(--moss);
+  color: var(--process-magenta);
   font-weight: 700;
+}
+
+/* Lab texture background */
+.home-lab__texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.home-lab__texture-img {
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.07;
+  filter: grayscale(100%) sepia(40%) hue-rotate(-20deg); /* magenta tint on constellation */
+}
+.home-lab__inner {
+  position: relative;
+  z-index: 1;
 }
 .home-lab__deck {
   font-family: var(--font-body-v14);
@@ -779,8 +817,26 @@ nav.home-nav {
 }
 .home-work h2 em {
   font-style: italic;
-  color: var(--ochre);
+  color: var(--process-yellow);
   font-weight: 700;
+}
+/* Texture background layer */
+.home-work__texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.home-work__texture-img {
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.07;
+  filter: grayscale(100%) sepia(60%) hue-rotate(20deg); /* warm ochre tint on dots */
+}
+.home-work__inner {
+  position: relative;
+  z-index: 1;
 }
 .home-work__deck {
   font-family: var(--font-body-v14);
@@ -813,7 +869,7 @@ nav.home-nav {
   opacity: 0.85;
 }
 .home-work__slot--open {
-  border-top-color: var(--ochre);
+  border-top-color: var(--process-yellow);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 .home-work__slot--open:hover {
@@ -843,7 +899,7 @@ nav.home-nav {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: #ffffff;
-  background: var(--ochre);
+  background: var(--process-yellow);
   padding: 4px 10px;
   border-radius: 9999px;
 }
