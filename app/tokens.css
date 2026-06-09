@@ -137,6 +137,8 @@
 
   /* ─── v1.4 bundle palette (additive — homepage + voice-ai use these; legacy routes keep --mzm-*) ── */
   --ink-950: #0a0a0b;
+  --ink-900: #141416;  /* elevated cards on dark */
+  --ink-800: #1f1f23;  /* borders on dark */
   --forest-800: #2d4a3e;
   --forest-600: #5a7d6f;
   --ember: #C25670;
@@ -148,6 +150,22 @@
 
   --font-display: var(--font-montserrat, 'Montserrat', system-ui, sans-serif);
   --font-body-v14: var(--font-raleway, 'Raleway', system-ui, sans-serif);
+
+  /* ─── Mad EZ Brand v2 — CMYK Process Accents (2026-06-08) ───────── */
+  /* The primaries of all commercial media — reclaimed as digital-native accents */
+  --process-cyan:    #009FE3;  /* primary signal — CTAs, links, system indicators */
+  --process-magenta: #D63A8F;  /* kinetic energy — live dots, animation peaks */
+  --process-yellow:  #FFDE17;  /* highlights, emphasis, call-to-action */
+  --process-white:   #F2F2F2;  /* screen white for dark surfaces */
+
+  /* Dark-mode text on --ink-950 backgrounds */
+  --fade-100: #ededef;  /* primary text on dark */
+  --fade-200: #c8c8cc;  /* body text on dark */
+  --fade-400: #8a8a94;  /* meta on dark */
+
+  /* ─── Brand v2 motion overrides ────────────────────────────────── */
+  --mzm-dur-slowest: 1000ms;  /* page-load stagger — brand v2 is more dramatic */
+  --mzm-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);  /* spring overshoot for cards */
 }
 
 /* ─── Reset to use the system everywhere by default ─────────────── */
