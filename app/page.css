@@ -796,7 +796,7 @@ nav.home-nav {
   letter-spacing: 0.16em;
   color: var(--mzm-ink-fade);
 }
-.home-work__slot--open .home-work__label { color: var(--ochre); }
+.home-work__slot--open .home-work__label { color: var(--process-cyan); }
 .home-work__pill {
   font-family: var(--mzm-font-mono);
   font-size: 10.5px;
@@ -818,22 +818,25 @@ nav.home-nav {
 /* ─── Contact (dark) ────────────────────────────────────────────── */
 .home-contact {
   background: var(--ink-950);
-  color: #ffffff;
+  color: var(--fade-100);
   position: relative;
   overflow: hidden;
   text-align: center;
 }
-.home-contact__splatter {
+.home-contact__bg {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  max-width: 900px;
-  mix-blend-mode: screen;
-  opacity: 0.35;
-  pointer-events: none;
+  inset: 0;
   z-index: 0;
+}
+.home-contact__bg-img {
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.2;
+}
+.home-contact__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(10,10,11,0.3) 0%, rgba(10,10,11,0.85) 70%);
 }
 .home-contact__inner {
   max-width: var(--max-prose);
@@ -847,14 +850,14 @@ nav.home-nav {
   font-size: clamp(40px, 6vw, 80px);
   line-height: 1.05;
   letter-spacing: -0.025em;
-  color: #ffffff;
+  color: var(--fade-100);
   margin: 0 0 24px;
 }
 .home-contact__deck {
   font-family: var(--font-body-v14);
   font-size: clamp(17px, 1.5vw, 20px);
   line-height: 1.55;
-  color: rgba(203, 213, 225, 0.9);
+  color: var(--fade-200);
   max-width: 55ch;
   margin: 0 auto 40px;
 }
@@ -872,28 +875,30 @@ nav.home-nav {
   align-items: center;
   gap: 8px;
   padding: 14px 28px;
-  background: var(--ember);
-  color: #ffffff;
+  background: var(--process-cyan);
+  color: #0a0a0b;
   text-decoration: none;
   font-weight: 700;
   border-radius: 9999px;
-  transition: transform 200ms, background 200ms;
+  transition: transform 200ms, background 200ms, box-shadow 200ms;
 }
 .home-contact__cta-primary:hover {
-  background: var(--ochre);
-  transform: translateY(-1px);
+  background: var(--process-magenta);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(214, 58, 143, 0.3);
 }
 .home-contact__cta-quiet {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding-bottom: 2px;
   font-weight: 500;
   transition: color 200ms, border-color 200ms;
 }
 .home-contact__cta-quiet:hover {
-  color: var(--ember);
-  border-bottom-color: var(--ember);
+  color: var(--process-yellow);
+  border-bottom-color: var(--process-yellow);
 }
 
 /* ─── Footnotes ────────────────────────────────────────────────── */
