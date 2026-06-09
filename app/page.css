@@ -1076,6 +1076,40 @@ footer.home-foot {
   font-family: var(--font-display);
   font-weight: 700;
 }
+
+/* Text-based wordmark in footer */
+.home-foot__wordmark {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+.home-foot__wm-madz {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--forest-800);
+  letter-spacing: -0.02em;
+}
+.home-foot__wm-slash {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--process-cyan);
+  margin: 0 2px;
+  line-height: 1;
+}
+.home-foot__wm-media {
+  font-family: var(--font-body-v14);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--mzm-ink-mute);
+  letter-spacing: -0.01em;
+}
+.home-foot__sep {
+  color: var(--mzm-ink-fade);
+}
 .home-foot__links {
   display: flex;
   gap: 24px;
