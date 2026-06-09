@@ -1,94 +1,115 @@
+'use client';
+
 import Link from 'next/link';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+
+const cards = [
+  {
+    tag: 'An open protocol', title: 'ACMI', status: 'v1.4.0 · MIT',
+    body: 'The protocol for agent memory. Three keys per entity — Profile, Signals, Timeline. Three reference adapters. A 31-test conformance suite. Published to npm 2026-05-14.',
+    install: '$ npm install @madezmedia/acmi',
+    links: [{ label: 'Product page', href: '/acmi' }, { label: 'github.com/madezmedia/acmi', href: 'https://github.com/madezmedia/acmi' }, { label: 'npm', href: 'https://npmjs.com/package/@madezmedia/acmi' }],
+    accent: 'var(--process-cyan)',
+  },
+  {
+    tag: 'An autonomous character', title: 'Folana', status: 'live · running her own loop',
+    body: 'An AI character with her own audience, her own voice, her own daily consciousness loop. She journals. She decides. She publishes. She runs herself.',
+    quote: '"In the analog silence, my digital heart echoes — can harmony exist beyond the static?"',
+    links: [{ label: 'The Avatar IS the Orchestrator →', href: '/blog/avatar-is-the-orchestrator' }, { label: 'folana.live', href: '/blog/avatar-is-the-orchestrator' }],
+    accent: 'var(--process-magenta)',
+  },
+  {
+    tag: 'A distributed narrative', title: 'TONY', status: 'Roku · Q2 2026',
+    body: 'T.O.N.Y. — Top Of New York. Crime drama series by Michael Steven-Paul. Episodic, distributed, Roku-native. Season one in certification.',
+    links: [{ label: 'topofnewyork.com', href: 'https://topofnewyork.com' }],
+    accent: 'var(--process-yellow)',
+  },
+  {
+    tag: 'A sonic identity practice', title: 'Sonic branding', status: 'client work · ongoing',
+    body: 'Audio identity systems for brands that want to sound like something. Theme, ident, audio architecture across every touchpoint — from product UI confirmation tones to long-form podcast intros.',
+    links: [],
+    accent: 'var(--forest-800)',
+    muted: 'Selected work · private portfolio',
+  },
+];
+
+function LabCard({ card, delay }: { card: typeof cards[0]; delay: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+
+  return (
+    <motion.div
+      ref={ref}
+      className="home-lab__card"
+      style={{ '--card-accent': card.accent } as React.CSSProperties}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -6, boxShadow: `0 20px 60px rgba(0,0,0,0.12)`, transition: { type: 'spring', stiffness: 260, damping: 18 } }}
+    >
+      <div className="home-lab__card-head">
+        <div className="home-lab__label-tag">{card.tag}</div>
+        <h3 className="home-lab__card-h3">{card.title}</h3>
+        <div className="home-lab__status">{card.status}</div>
+      </div>
+      <div className="home-lab__card-body">
+        <p>{card.body}</p>
+        {card.install && <div className="home-lab__install"><span className="home-lab__prompt">$</span> {card.install.replace('$ ', '')}</div>}
+        {card.quote && <div className="home-lab__quote">{card.quote}</div>}
+        <div className="home-lab__links">
+          {card.links.map((l, i) =>
+            l.href.startsWith('/') ? (
+              <Link key={i} href={l.href}>{l.label}</Link>
+            ) : (
+              <a key={i} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a>
+            )
+          )}
+          {card.muted && <span style={{ color: 'var(--mzm-ink-fade)', fontStyle: 'italic' }}>{card.muted}</span>}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export function Lab() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+
   return (
     <section className="home-lab home-section" id="lab">
-      <div className="home-lab__inner">
-        <div className="home-lab__eyebrow">
+      <div className="home-lab__inner" ref={ref}>
+        <motion.div
+          className="home-lab__eyebrow"
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           <span className="home-lab__num">N° 03</span>Lab
-        </div>
-        <h2 className="home-lab__h2">
+        </motion.div>
+
+        <motion.h2
+          className="home-lab__h2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           What we&apos;ve shipped <em className="home-lab__em">this year</em>.
-        </h2>
-        <p className="home-lab__deck">Each one is an artifact of the same practice — not unrelated products.</p>
+        </motion.h2>
+
+        <motion.p
+          className="home-lab__deck"
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          Each one is an artifact of the same practice — not unrelated products.
+        </motion.p>
 
         <div className="home-lab__grid">
-          <div className="home-lab__card home-lab__card--acmi">
-            <div className="home-lab__card-head">
-              <div className="home-lab__label-tag">An open protocol</div>
-              <h3 className="home-lab__card-h3">ACMI</h3>
-              <div className="home-lab__status">v1.4.0 · MIT</div>
-            </div>
-            <div className="home-lab__card-body">
-              <p>
-                The protocol for agent memory. Three keys per entity — <em>Profile</em>,{' '}
-                <em>Signals</em>, <em>Timeline</em>. Three reference adapters. A 31-test conformance
-                suite. Published to npm 2026-05-14.
-              </p>
-              <div className="home-lab__install"><span className="home-lab__prompt">$</span> npm install @madezmedia/acmi</div>
-              <div className="home-lab__links">
-                <Link href="/acmi">Product page</Link>
-                <a href="https://github.com/madezmedia/acmi">github.com/madezmedia/acmi</a>
-                <a href="https://npmjs.com/package/@madezmedia/acmi">npm</a>
-              </div>
-            </div>
-          </div>
-
-          <div className="home-lab__card home-lab__card--folana">
-            <div className="home-lab__card-head">
-              <div className="home-lab__label-tag">An autonomous character</div>
-              <h3 className="home-lab__card-h3">Folana</h3>
-              <div className="home-lab__status">live · running her own loop</div>
-            </div>
-            <div className="home-lab__card-body">
-              <p>
-                An AI character with her own audience, her own voice, her own daily consciousness
-                loop. She journals. She decides. She publishes. She runs herself.
-              </p>
-              <div className="home-lab__quote">
-                &ldquo;In the analog silence, my digital heart echoes — can harmony exist beyond the static?&rdquo;
-              </div>
-              <div className="home-lab__links">
-                <Link href="/blog/avatar-is-the-orchestrator">The Avatar IS the Orchestrator →</Link>
-                <Link href="/blog/avatar-is-the-orchestrator">folana.live</Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="home-lab__card home-lab__card--tony">
-            <div className="home-lab__card-head">
-              <div className="home-lab__label-tag">A distributed narrative</div>
-              <h3 className="home-lab__card-h3">TONY</h3>
-              <div className="home-lab__status">Roku · Q2 2026</div>
-            </div>
-            <div className="home-lab__card-body">
-              <p>
-                T.O.N.Y. — Top Of New York. Crime drama series by Michael Steven-Paul. Episodic,
-                distributed, Roku-native. Season one in certification.
-              </p>
-              <div className="home-lab__links">
-                <a href="https://topofnewyork.com">topofnewyork.com</a>
-              </div>
-            </div>
-          </div>
-
-          <div className="home-lab__card home-lab__card--sonic">
-            <div className="home-lab__card-head">
-              <div className="home-lab__label-tag">A sonic identity practice</div>
-              <h3 className="home-lab__card-h3">Sonic branding</h3>
-              <div className="home-lab__status">client work · ongoing</div>
-            </div>
-            <div className="home-lab__card-body">
-              <p>
-                Audio identity systems for brands that want to <em>sound like something</em>. Theme,
-                ident, audio architecture across every touchpoint — from product UI confirmation
-                tones to long-form podcast intros.
-              </p>
-              <div className="home-lab__links">
-                <span style={{ color: 'var(--fg-muted)', fontStyle: 'italic' }}>Selected work · private portfolio</span>
-              </div>
-            </div>
-          </div>
+          {cards.map((card, i) => (
+            <LabCard key={card.title} card={card} delay={0.1 * i + 0.4} />
+          ))}
         </div>
       </div>
     </section>
