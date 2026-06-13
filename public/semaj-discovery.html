@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACMI — Sinclair Strategies · Discovery Portal</title>
+<style>
+  /* ═══ madezmedia v3 design tokens ═══ */
+  :root {
+    --paper: #faf9f5; --paper-warm: #f4f2eb; --paper-shadow: #ebe8de;
+    --ink: #1a1a1a; --ink-soft: #2c2c2a; --ink-mute: #4a4a48;
+    --ink-fade: #7a7a76; --ink-quiet: #9a9a96; --ink-rule: #d4d2cc;
+    --accent: #2d4a3e; --accent-soft: #5a7d6f; --accent-quiet: #1c3027;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    --radius: 8px; --shadow: 0 1px 3px rgba(0,0,0,0.05); --shadow-md: 0 4px 14px rgba(0,0,0,0.07);
+    --go: #16a34a; --go-bg: #dcfce7; --info: #2563eb; --info-bg: #dbeafe;
+    --warn: #b45309; --warn-bg: #fef3c7; --upgrade: #6d28d9; --upgrade-bg: #ede9fe;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:16px;scroll-behavior:smooth}
+  body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased}
+  .mono{font-family:var(--font-mono)}.serif{font-family:var(--font-serif)}
+
+  /* Topbar */
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(250,249,245,0.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--ink-rule);padding:0 1.5rem;height:48px;display:flex;align-items:center;justify-content:space-between}
+  .topbar-left{display:flex;align-items:center;gap:0.75rem}
+  .topbar-logo{font-family:var(--font-serif);font-weight:600;font-size:1.1rem;color:var(--accent);text-decoration:none}
+  .topbar-logo span{color:var(--ink)}
+  .topbar-badge{font-size:0.6rem;font-weight:700;padding:0.12rem 0.45rem;border-radius:3px;background:var(--accent);color:#fff;text-transform:uppercase;letter-spacing:0.5px}
+  .topbar-nav-sep{border-left:1px solid var(--ink-rule);height:18px;margin:0 0.35rem}
+  .topbar-navlink{font-size:0.75rem;color:var(--ink-fade);text-decoration:none}
+  .topbar-navlink:hover{color:var(--ink-mute)}
+  .topbar-right{display:flex;align-items:center;gap:1rem;font-size:0.75rem;color:var(--ink-fade)}
+  .live-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+  .wrap{max-width:1100px;margin:0 auto;padding:1.5rem 1.5rem 3rem}
+
+  /* Page intro */
+  .page-intro{margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--ink-rule)}
+  .page-eyebrow{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;flex-wrap:wrap}
+  .eyebrow-chip{font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.15rem 0.55rem;border-radius:3px;background:var(--accent);color:#fff}
+  .eyebrow-text{font-size:0.72rem;color:var(--ink-fade)}
+  .page-title{font-family:var(--font-serif);font-size:1.85rem;font-weight:600;color:var(--ink);line-height:1.15;margin-bottom:0.35rem}
+  .page-title .em{color:var(--accent)}
+  .page-tagline{font-size:0.9rem;color:var(--ink-mute);max-width:700px;line-height:1.5;margin-bottom:0.5rem}
+
+  /* Tab navigation */
+  .tabs{display:flex;gap:0;margin-bottom:1.5rem;border-bottom:1px solid var(--ink-rule);flex-wrap:wrap}
+  .tab-btn{padding:0.6rem 1.2rem;font-size:0.82rem;font-weight:600;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--ink-fade);cursor:pointer;transition:all 0.15s}
+  .tab-btn:hover{color:var(--ink-mute);background:var(--paper-warm)}
+  .tab-btn.active{border-bottom-color:var(--accent);color:var(--accent)}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block;animation:fadeIn 0.3s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  /* Cards */
+  .card{background:#fff;border:1px solid var(--ink-rule);border-radius:var(--radius);padding:1.1rem;box-shadow:var(--shadow);margin-bottom:1rem}
+  .card-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+  .card-grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.6rem;margin-bottom:1rem}
+  .sec-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:0.6rem;gap:0.5rem;flex-wrap:wrap}
+  .sec-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:600;color:var(--ink)}
+  .sec-sub{font-size:0.7rem;color:var(--ink-quiet)}
+  hr.rule{border:none;border-top:1px solid var(--ink-rule);margin:1.5rem 0}
+
+  /* Form elements */
+  label{font-size:0.82rem;font-weight:600;color:var(--ink-mute);display:block;margin-bottom:0.3rem}
+  input[type=text],input[type=email],input[type=number],textarea,select{width:100%;padding:0.55rem 0.75rem;border:1px solid var(--ink-rule);border-radius:6px;font-family:var(--font-sans);font-size:0.85rem;background:#fff;color:var(--ink);transition:border-color 0.12s}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent-soft);box-shadow:0 0 0 2px rgba(45,74,62,0.1)}
+  textarea{resize:vertical;min-height:80px}
+  .form-group{margin-bottom:1rem}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+
+  .btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1.1rem;border-radius:6px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.12s;border:1px solid var(--ink-rule);background:#fff;color:var(--ink-mute);text-decoration:none}
+  .btn:hover{background:var(--paper-warm)}
+  .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn-primary:hover{background:var(--accent-quiet)}
+  .btn-go{background:var(--go);color:#fff;border-color:var(--go)}
+  .btn-go:hover{background:#15803d}
+  .btn-sm{padding:0.3rem 0.7rem;font-size:0.75rem}
+  .btn:disabled{opacity:0.5;cursor:not-allowed}
+
+  /* Progress wizard */
+  .wizard-progress{display:flex;gap:0;margin-bottom:1.5rem;background:var(--paper-warm);border-radius:var(--radius);padding:0.3rem;border:1px solid var(--ink-rule)}
+  .wiz-step{flex:1;text-align:center;padding:0.5rem 0.3rem;border-radius:5px;font-size:0.72rem;font-weight:600;color:var(--ink-fade);transition:all 0.15s}
+  .wiz-step.active{background:#fff;color:var(--accent);box-shadow:var(--shadow)}
+  .wiz-step.done{color:var(--go)}
+  .wiz-step .wiz-num{display:inline-flex;width:20px;height:20px;border-radius:50%;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;background:var(--ink-rule);color:var(--ink-fade);margin-right:0.3rem}
+  .wiz-step.active .wiz-num{background:var(--accent);color:#fff}
+  .wiz-step.done .wiz-num{background:var(--go);color:#fff}
+
+  /* Brainstorm cards */
+  .idea-card{background:#fff;border:1px solid var(--ink-rule);border-left:3px solid var(--accent);border-radius:var(--radius);padding:0.9rem 1rem;margin-bottom:0.6rem;box-shadow:var(--shadow);cursor:pointer;transition:all 0.12s}
+  .idea-card:hover{box-shadow:var(--shadow-md)}
+  .idea-card .ic-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.3rem;gap:0.5rem}
+  .idea-card .ic-title{font-weight:600;font-size:0.88rem}
+  .idea-card .ic-tag{font-size:0.6rem;padding:0.08rem 0.4rem;border-radius:3px;font-weight:700;text-transform:uppercase}
+  .idea-card .ic-tag.t1{background:var(--upgrade-bg);color:var(--upgrade)}
+  .idea-card .ic-tag.t2{background:var(--info-bg);color:var(--info)}
+  .idea-card .ic-desc{font-size:0.78rem;color:var(--ink-mute);line-height:1.45}
+  .idea-card .ic-footer{display:flex;gap:0.5rem;margin-top:0.4rem;padding-top:0.4rem;border-top:1px solid var(--paper-shadow);font-size:0.7rem;color:var(--ink-quiet)}
+
+  /* Feedback items */
+  .fb-item{background:#fff;border:1px solid var(--ink-rule);border-radius:var(--radius);padding:0.85rem 1rem;margin-bottom:0.5rem;box-shadow:var(--shadow);display:flex;gap:1rem;align-items:flex-start}
+  .fb-avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;flex-shrink:0}
+  .fb-content{flex:1}
+  .fb-content .fb-name{font-weight:600;font-size:0.82rem}
+  .fb-content .fb-time{font-size:0.65rem;color:var(--ink-quiet);font-family:var(--font-mono)}
+  .fb-content .fb-text{font-size:0.82rem;color:var(--ink-mute);margin-top:0.15rem}
+  .fb-content .fb-reply{margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--paper-shadow)}
+  .fb-content .fb-reply textarea{font-size:0.78rem;min-height:50px}
+  .fb-content .fb-reply .btn{margin-top:0.3rem}
+
+  /* ACMI Feed */
+  .acmi-event{font-family:var(--font-mono);font-size:0.72rem;padding:0.4rem 0;border-bottom:1px solid var(--paper-shadow);display:flex;gap:0.5rem}
+  .acmi-event:last-child{border:none}
+  .acmi-event .ae-time{color:var(--ink-quiet);flex-shrink:0;width:70px}
+  .acmi-event .ae-kind{padding:0.08rem 0.35rem;border-radius:3px;font-size:0.6rem;font-weight:700;text-transform:uppercase;flex-shrink:0}
+  .acmi-event .ae-kind.decision{background:var(--go-bg);color:var(--go)}
+  .acmi-event .ae-kind.feedback{background:var(--warn-bg);color:var(--warn)}
+  .acmi-event .ae-kind.milestone{background:var(--upgrade-bg);color:var(--upgrade)}
+  .acmi-event .ae-kind.note{background:var(--info-bg);color:var(--info)}
+  .acmi-event .ae-summary{color:var(--ink-mute)}
+
+  /* Empty state */
+  .empty-state{padding:2rem 1rem;text-align:center;color:var(--ink-quiet)}
+  .empty-state p{font-size:0.85rem;margin-top:0.3rem}
+
+  /* Status chip */
+  .chip{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.72rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:12px}
+  .chip.go{background:var(--go-bg);color:var(--go)}
+  .chip.warn{background:var(--warn-bg);color:var(--warn)}
+  .chip.info{background:var(--info-bg);color:var(--info)}
+  .chip.accent{background:rgba(45,74,62,0.1);color:var(--accent)}
+
+  .footer{text-align:center;padding:1.5rem 0 0;border-top:1px solid var(--ink-rule);margin-top:2rem;font-size:0.72rem;color:var(--ink-quiet)}
+  .footer a{color:var(--accent)}
+
+  @media(max-width:720px){
+    .form-row{grid-template-columns:1fr}
+    .card-grid-2{grid-template-columns:1fr}
+    .wrap{padding:1rem}
+    .topbar-navlink{display:none}
+    .tab-btn{padding:0.5rem 0.8rem;font-size:0.75rem}
+    .wiz-step .wiz-label{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-left">
+    <a href="/" class="topbar-logo">ACMI <span>· Sinclair Discovery</span></a>
+    <span class="topbar-badge">Beta</span>
+    <span class="topbar-nav-sep"></span>
+    <a href="/" class="topbar-navlink">🏠 Home</a>
+    <a href="/acmi" class="topbar-navlink">ACMI</a>
+    <a href="/bentley" class="topbar-navlink">🤖 Bentley</a>
+  </div>
+  <div class="topbar-right">
+    <span class="live-dot"></span>
+    <span>Bentley · Haiku</span>
+    <span class="mono" style="font-size:0.7rem;">v0.1</span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ═══ PAGE INTRO ═══ -->
+  <div class="page-intro">
+    <div class="page-eyebrow">
+      <span class="eyebrow-chip">Discovery Portal</span>
+      <span class="eyebrow-text">Sinclair Strategies × Mad EZ Media · ACMI-enabled</span>
+    </div>
+    <h1 class="page-title">Semaj <span class="em">+</span> Bentley</h1>
+    <p class="page-tagline">
+      Interactive onboarding, brainstorming, and feedback engine for the Sinclair Strategies collaboration.
+      Every interaction logs to the <strong>ACMI timeline</strong> — Bentley uses this context to drive strategy.
+    </p>
+  </div>
+
+  <!-- ═══ TABS ═══ -->
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" data-tab="onboarding">🧭 Onboarding</button>
+    <button class="tab-btn" data-tab="brainstorm">💡 Brainstorm</button>
+    <button class="tab-btn" data-tab="feedback">📬 Feedback</button>
+    <button class="tab-btn" data-tab="acmi">📡 ACMI Feed</button>
+  </div>
+
+  <!-- ════════════════════════ TAB 1: ONBOARDING ════════════════════════ -->
+  <div class="tab-panel active" id="panel-onboarding">
+
+    <div class="wizard-progress" id="wizardProgress">
+      <div class="wiz-step active" data-step="1"><span class="wiz-num">1</span><span class="wiz-label"> Your Agency</span></div>
+      <div class="wiz-step" data-step="2"><span class="wiz-num">2</span><span class="wiz-label"> Your Services</span></div>
+      <div class="wiz-step" data-step="3"><span class="wiz-num">3</span><span class="wiz-label"> Your Goals</span></div>
+      <div class="wiz-step" data-step="4"><span class="wiz-num">4</span><span class="wiz-label"> ICP & Pricing</span></div>
+      <div class="wiz-step" data-step="5"><span class="wiz-num">5</span><span class="wiz-label"> Review</span></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="wizard-step" data-step="1">
+      <div class="card">
+        <div class="sec-hdr" style="margin-bottom:0.8rem"><span class="sec-title">🏢 Your Agency</span><span class="sec-sub">Step 1 of 5</span></div>
+        <div class="form-group">
+          <label>Agency Name</label>
+          <input type="text" id="onboard-name" value="Sinclair Strategies" placeholder="e.g. Sinclair Strategies">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="onboard-founder" value="Semaj Sinclair" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Website</label>
+            <input type="text" id="onboard-site" value="sinclairstrategies.biz" placeholder="Your URL">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tagline / One-liner</label>
+          <input type="text" id="onboard-tagline" value="Social media for entrepreneurs & creatives — wherever you are." placeholder="What do you do in one sentence?">
+        </div>
+        <div class="form-group">
+          <label>Current Services</label>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.3rem">
+            <span class="chip accent">Content Shooting</span>
+            <span class="chip accent">Video Editing</span>
+            <span class="chip accent">Posting & Management</span>
+            <span class="chip accent">1-on-1 Coaching</span>
+            <span class="chip accent">Website Building</span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-top:1rem">
+          <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="wizard-step" data-step="2" style="display:none">
+      <div class="card">
+        <div class="sec-hdr" style="margin-bottom:0.8rem"><span class="sec-title">🎯 New Services You Want to Offer</span><span class="sec-sub">Step 2 of 5</span></div>
+        <div class="form-group">
+          <label>Track 1 — Musician Marketing ("Blow Up Service")</label>
+          <textarea id="onboard-track1" rows="3" placeholder="Describe your vision for marketing musicians...">Full-service musician growth: content creation, video editing, posting, plus relationship management — responding to every comment and DM for the artist to build community and drive engagement.</textarea>
+        </div>
+        <div class="form-group">
+          <label>Track 2 — Business Lead Generation</label>
+          <textarea id="onboard-track2" rows="3" placeholder="Describe your lead gen vision...">Profile interaction agent that engages target profiles automatically for consistent lead generation beyond paid ads. Would use this internally and offer as a client service.</textarea>
+        </div>
+        <div class="form-group">
+          <label>The "Relationship Agent" — What does this look like to you?</label>
+          <textarea id="onboard-ra" rows="2" placeholder="Describe the relationship/engagement layer you envision...">Someone who handles ALL comment responses + DM engagement for artists/brands. The layer between content output and audience growth that most agencies ignore.</textarea>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:1rem">
+          <button class="btn" onclick="prevStep()">← Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="wizard-step" data-step="3" style="display:none">
+      <div class="card">
+        <div class="sec-hdr" style="margin-bottom:0.8rem"><span class="sec-title">🎯 Your Goals</span><span class="sec-sub">Step 3 of 5</span></div>
+        <div class="form-group">
+          <label>What's your #1 priority right now?</label>
+          <select id="onboard-priority">
+            <option value="musician-service">Launch the Musician "Blow Up" service</option>
+            <option value="lead-gen-tool" selected>Build the lead generation profile agent</option>
+            <option value="both">Both — launch simultaneously</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Revenue target for new sector (monthly)</label>
+          <select id="onboard-rev-target">
+            <option value="5k">$5K/mo</option>
+            <option value="10k" selected>$10K/mo</option>
+            <option value="25k">$25K/mo</option>
+            <option value="50k">$50K/mo+</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Timeline to launch</label>
+            <select id="onboard-timeline">
+              <option value="30d">30 days</option>
+              <option value="60d" selected>60 days</option>
+              <option value="90d">90 days</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Team size available</label>
+            <select id="onboard-team">
+              <option value="1">Just me</option>
+              <option value="2-3" selected>2-3 people</option>
+              <option value="4-6">4-6 people</option>
+              <option value="7+">7+ people</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:1rem">
+          <button class="btn" onclick="prevStep()">← Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="wizard-step" data-step="4" style="display:none">
+      <div class="card">
+        <div class="sec-hdr" style="margin-bottom:0.8rem"><span class="sec-title">🎯 Ideal Customer & Pricing</span><span class="sec-sub">Step 4 of 5</span></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Primary ICP — Musician Track</label>
+            <select id="onboard-icp-music">
+              <option value="indie">Indie musicians ($500–$2K/mo budget)</option>
+              <option value="managers" selected>Artist managers ($1.5K–$5K/mo budget)</option>
+              <option value="labels">Label execs ($3K–$10K+ budget)</option>
+              <option value="all">All of the above</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Primary ICP — Business Track</label>
+            <select id="onboard-icp-biz">
+              <option value="solopreneur">Solopreneurs ($500–$1.5K/mo)</option>
+              <option value="small-biz" selected>Small businesses ($1K–$3K/mo)</option>
+              <option value="agency">Agencies ($2K–$5K/mo)</option>
+              <option value="ecom">E-commerce brands ($2K–$8K/mo)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Desired pricing model</label>
+            <select id="onboard-pricing">
+              <option value="retainer" selected>Monthly retainer</option>
+              <option value="per-campaign">Per campaign</option>
+              <option value="hybrid">Hybrid (retainer + performance bonus)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Target monthly price point</label>
+            <select id="onboard-price-point">
+              <option value="1k">$1K–$2K</option>
+              <option value="2k" selected>$2K–$3.5K</option>
+              <option value="5k">$3.5K–$5K</option>
+              <option value="premium">$5K+</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:1rem">
+          <button class="btn" onclick="prevStep()">← Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="wizard-step" data-step="5" style="display:none">
+      <div class="card">
+        <div class="sec-hdr" style="margin-bottom:0.8rem"><span class="sec-title">✅ Review & Submit to ACMI</span><span class="sec-sub">Step 5 of 5</span></div>
+        <div id="onboard-review" style="font-size:0.85rem;color:var(--ink-mute);line-height:1.6;margin-bottom:1rem">
+          Loading review...
+        </div>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+          <button class="btn" onclick="prevStep()">← Edit</button>
+          <button class="btn btn-go" onclick="submitOnboarding()">🚀 Submit to ACMI Timeline</button>
+          <button class="btn btn-primary" onclick="resetOnboarding()">🔄 Start Over</button>
+        </div>
+        <div id="onboard-result" style="margin-top:1rem"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════ TAB 2: BRAINSTORM ════════════════════════ -->
+  <div class="tab-panel" id="panel-brainstorm">
+    <div class="card-grid-2">
+      <div>
+        <div class="card">
+          <div class="sec-hdr"><span class="sec-title">💡 New Idea</span><span class="sec-sub">Bentley's framework</span></div>
+          <div class="form-group">
+            <label>Idea Title</label>
+            <input type="text" id="bs-title" placeholder="e.g. Automated DM nurture sequence">
+          </div>
+          <div class="form-group">
+            <label>Which track?</label>
+            <select id="bs-track">
+              <option value="track1">🎵 Musician Blow-Up Service</option>
+              <option value="track2">📈 Business Lead Gen</option>
+              <option value="cross">🔄 Cross-track (both)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Describe the idea</label>
+            <textarea id="bs-desc" rows="4" placeholder="What's the concept? How does it work? Who's it for?"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Estimated impact</label>
+            <select id="bs-impact">
+              <option value="high">🔥 High — could transform the business</option>
+              <option value="medium">💪 Medium — solid improvement</option>
+              <option value="low">📝 Low — nice to have</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Effort to implement</label>
+            <select id="bs-effort">
+              <option value="low">⚡ Low — days</option>
+              <option value="medium">📆 Medium — weeks</option>
+              <option value="high">🏗️ High — months</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" onclick="addIdea()" style="width:100%;justify-content:center">+ Add Idea to Board</button>
+        </div>
+        <div class="card" style="background:var(--paper-warm);border-style:dashed">
+          <div class="sec-hdr"><span class="sec-title" style="font-size:0.95rem">🤖 Bentley's Prompt</span></div>
+          <p style="font-size:0.82rem;color:var(--ink-mute);line-height:1.5">
+            <em>"The best agency moves come from combining what you already do well with what the market doesn't realize it needs yet. Your content + posting combo is solid. The Relationship Agent is your wedge — nobody owns that positioning. Build the lead gen tool for yourself first, prove it, then sell it."</em>
+          </p>
+          <div style="margin-top:0.5rem;display:flex;gap:0.3rem;flex-wrap:wrap">
+            <span class="chip info">Strategic</span>
+            <span class="chip go">Actionable</span>
+            <span class="chip accent">Differentiator</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-hdr"><span class="sec-title">📋 Idea Board</span><span class="sec-sub" id="ideaCount">0 ideas</span></div>
+        <div id="ideaBoard">
+          <div class="empty-state">
+            <div style="font-size:2rem;margin-bottom:0.5rem">💡</div>
+            <p>No ideas yet. Use the form to add your first brainstorm.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════ TAB 3: FEEDBACK ════════════════════════ -->
+  <div class="tab-panel" id="panel-feedback">
+    <div class="card-grid-2">
+      <div>
+        <div class="card">
+          <div class="sec-hdr"><span class="sec-title">✍️ Leave Feedback</span><span class="sec-sub">Bentley sees this</span></div>
+          <div class="form-group">
+            <label>Your name</label>
+            <input type="text" id="fb-name" value="Semaj" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label>Feedback type</label>
+            <select id="fb-type">
+              <option value="general">💬 General feedback</option>
+              <option value="idea">💡 Idea / Suggestion</option>
+              <option value="question">❓ Question for Bentley</option>
+              <option value="blocker">🚧 Blocker / Concern</option>
+              <option value="approval">✅ Approval / Green light</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="fb-msg" rows="4" placeholder="What's on your mind?"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="submitFeedback()" style="width:100%;justify-content:center">📬 Send Feedback → ACMI</button>
+          <div id="fb-result" style="margin-top:0.5rem"></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-hdr"><span class="sec-title">📬 Feedback Thread</span><span class="sec-sub">live</span></div>
+        <div id="feedbackFeed">
+          <div class="fb-item">
+            <div class="fb-avatar">B</div>
+            <div class="fb-content">
+              <div><span class="fb-name">Bentley</span> <span class="fb-time">just now</span></div>
+              <div class="fb-text">Welcome to the Discovery Portal, Semaj! Every piece of feedback here logs to the ACMI timeline so I can track and respond. Drop your thoughts and I'll process them with full fleet context. 🚀</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════ TAB 4: ACMI FEED ════════════════════════ -->
+  <div class="tab-panel" id="panel-acmi">
+    <div class="card">
+      <div class="sec-hdr"><span class="sec-title">📡 ACMI Event Timeline</span>
+        <span class="sec-sub">
+          <span class="chip info" id="eventCount">0 events</span>
+          <button class="btn btn-sm" onclick="clearEvents()">Clear local</button>
+        </span>
+      </div>
+      <div id="acmiFeed">
+        <div class="empty-state">
+          <div style="font-size:2rem;margin-bottom:0.5rem">📡</div>
+          <p>Waiting for events. Submit onboarding, brainstorm ideas, or leave feedback — each action logs here and to the fleet ACMI timeline.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="background:var(--paper-warm);border-style:dashed">
+      <div style="font-size:0.8rem;color:var(--ink-mute);line-height:1.5">
+        <strong>🔗 ACMI Integration:</strong> All events logged here are structured with <code class="mono" style="background:var(--paper);padding:0.05rem 0.3rem;border-radius:3px">correlationId</code>, <code class="mono" style="background:var(--paper);padding:0.05rem 0.3rem;border-radius:3px">source</code>, <code class="mono" style="background:var(--paper);padding:0.05rem 0.3rem;border-radius:3px">kind</code>, and <code class="mono" style="background:var(--paper);padding:0.05rem 0.3rem;border-radius:3px">summary</code> — matching the ACMI v1.5 event envelope. Bentley reads these in real-time.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Powered by <strong>Bentley</strong> · ACMI Fleet Orchestrator · Sinclair Strategies Discovery</p>
+    <p style="margin-top:0.15rem"><a href="/">🏠 madezmedia.com</a> · <a href="/acmi">ACMI</a> · <a href="/bentley">🤖 Bentley</a></p>
+  </div>
+</div>
+
+<script>
+// ═══ TAB SYSTEM ═══
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ═══ WIZARD ═══
+let currentStep = 1;
+function showStep(n) {
+  document.querySelectorAll('.wizard-step').forEach(s => s.style.display = 'none');
+  document.querySelector(`.wizard-step[data-step="${n}"]`).style.display = 'block';
+  document.querySelectorAll('.wiz-step').forEach(s => {
+    s.classList.remove('active');
+    if (parseInt(s.dataset.step) < n) s.classList.add('done');
+    if (parseInt(s.dataset.step) === n) s.classList.add('active');
+  });
+  currentStep = n;
+  if (n === 5) generateReview();
+}
+function nextStep() { if (currentStep < 5) showStep(currentStep + 1); }
+function prevStep() { if (currentStep > 1) showStep(currentStep - 1); }
+showStep(1);
+
+function generateReview() {
+  const name = document.getElementById('onboard-name').value || 'Sinclair Strategies';
+  const founder = document.getElementById('onboard-founder').value || 'Semaj Sinclair';
+  const track1 = document.getElementById('onboard-track1').value || '(not specified)';
+  const track2 = document.getElementById('onboard-track2').value || '(not specified)';
+  const ra = document.getElementById('onboard-ra').value || '(not specified)';
+  const priority = document.getElementById('onboard-priority').options[document.getElementById('onboard-priority').selectedIndex].text;
+  const revTarget = document.getElementById('onboard-rev-target').options[document.getElementById('onboard-rev-target').selectedIndex].text;
+  const timeline = document.getElementById('onboard-timeline').options[document.getElementById('onboard-timeline').selectedIndex].text;
+  const icpMusic = document.getElementById('onboard-icp-music').options[document.getElementById('onboard-icp-music').selectedIndex].text;
+  const icpBiz = document.getElementById('onboard-icp-biz').options[document.getElementById('onboard-icp-biz').selectedIndex].text;
+  const pricing = document.getElementById('onboard-pricing').options[document.getElementById('onboard-pricing').selectedIndex].text;
+
+  document.getElementById('onboard-review').innerHTML = `
+    <table style="width:100%;border-collapse:collapse">
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;width:160px;color:var(--ink-soft)">Agency</td><td style="padding:0.3rem 0.5rem">${name}</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">Founder</td><td style="padding:0.3rem 0.5rem">${founder}</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">Track 1 — Music</td><td style="padding:0.3rem 0.5rem">${track1.substring(0,120)}...</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">Track 2 — Lead Gen</td><td style="padding:0.3rem 0.5rem">${track2.substring(0,120)}...</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">Relationship Agent</td><td style="padding:0.3rem 0.5rem">${ra.substring(0,120)}...</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">Priority</td><td style="padding:0.3rem 0.5rem">${priority}</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">Revenue Target</td><td style="padding:0.3rem 0.5rem">${revTarget}/mo</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">Timeline</td><td style="padding:0.3rem 0.5rem">${timeline}</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">ICP — Music</td><td style="padding:0.3rem 0.5rem">${icpMusic}</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">ICP — Business</td><td style="padding:0.3rem 0.5rem">${icpBiz}</td></tr>
+      <tr><td style="padding:0.3rem 0.5rem;font-weight:600;color:var(--ink-soft)">Pricing Model</td><td style="padding:0.3rem 0.5rem">${pricing}</td></tr>
+    </table>
+  `;
+}
+
+function submitOnboarding() {
+  const data = {
+    kind: 'milestone',
+    summary: `Onboarding submitted — Sinclair Strategies | Track 1: Musician blow-up service with Relationship Agent | Track 2: Business lead gen profile interaction | ICP: ${document.getElementById('onboard-icp-music').options[document.getElementById('onboard-icp-music').selectedIndex].text} / ${document.getElementById('onboard-icp-biz').options[document.getElementById('onboard-icp-biz').selectedIndex].text} | Target: ${document.getElementById('onboard-rev-target').options[document.getElementById('onboard-rev-target').selectedIndex].text}/mo`,
+    source: 'semaj-sinclair'
+  };
+  addEvent(data);
+  document.getElementById('onboard-result').innerHTML = '<span class="chip go">✅ Submitted to ACMI timeline — Bentley has the context</span>';
+}
+
+function resetOnboarding() {
+  showStep(1);
+  document.getElementById('onboard-result').innerHTML = '';
+}
+
+// ═══ BRAINSTORM ═══
+const ideas = [];
+function addIdea() {
+  const title = document.getElementById('bs-title').value.trim();
+  const desc = document.getElementById('bs-desc').value.trim();
+  if (!title || !desc) { alert('Please fill in title and description'); return; }
+  const track = document.getElementById('bs-track').value;
+  const impact = document.getElementById('bs-impact').value;
+  const effort = document.getElementById('bs-effort').value;
+  
+  const idea = {
+    id: Date.now(),
+    title, desc, track, impact, effort,
+    ts: new Date().toLocaleTimeString()
+  };
+  ideas.unshift(idea);
+  renderIdeas();
+  
+  addEvent({
+    kind: 'decision',
+    summary: `[brainstorm] ${title} — Track: ${track}, Impact: ${impact}, Effort: ${effort}`,
+    source: 'semaj-sinclair'
+  });
+  
+  document.getElementById('bs-title').value = '';
+  document.getElementById('bs-desc').value = '';
+}
+
+function renderIdeas() {
+  const board = document.getElementById('ideaBoard');
+  document.getElementById('ideaCount').textContent = ideas.length + ' ideas';
+  
+  if (ideas.length === 0) {
+    board.innerHTML = '<div class="empty-state"><div style="font-size:2rem;margin-bottom:0.5rem">💡</div><p>No ideas yet. Use the form to add your first brainstorm.</p></div>';
+    return;
+  }
+  
+  const trackNames = { track1: '🎵 Music', track2: '📈 Lead Gen', cross: '🔄 Cross' };
+  const impactIcons = { high: '🔥', medium: '💪', low: '📝' };
+  const effortLabels = { low: '⚡ Days', medium: '📆 Weeks', high: '🏗️ Months' };
+  
+  board.innerHTML = ideas.map(idea => `
+    <div class="idea-card" onclick="addEvent({kind:'note',summary:'[reviewed] ${idea.title}',source:'semaj-sinclair'});this.style.opacity='0.6'">
+      <div class="ic-top">
+        <span class="ic-title">${impactIcons[idea.impact]} ${idea.title}</span>
+        <span class="ic-tag ${idea.track === 'track1' ? 't1' : 't2'}">${trackNames[idea.track]}</span>
+      </div>
+      <div class="ic-desc">${idea.desc}</div>
+      <div class="ic-footer">
+        <span>${effortLabels[idea.effort]}</span>
+        <span>${idea.ts}</span>
+        <span style="color:var(--go);cursor:pointer" onclick="event.stopPropagation();addEvent({kind:'milestone',summary:'[approved] ${idea.title}',source:'semaj-sinclair'});this.textContent='✅ Approved'">✅ Approve</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ═══ FEEDBACK ═══
+function submitFeedback() {
+  const name = document.getElementById('fb-name').value || 'Semaj';
+  const type = document.getElementById('fb-type').value;
+  const msg = document.getElementById('fb-msg').value.trim();
+  if (!msg) { alert('Please write a message'); return; }
+  
+  const typeLabels = { general: '💬 General', idea: '💡 Suggestion', question: '❓ Question', blocker: '🚧 Blocker', approval: '✅ Approval' };
+  const kindMap = { general: 'note', idea: 'decision', question: 'note', blocker: 'coord-note', approval: 'milestone' };
+  
+  const feed = document.getElementById('feedbackFeed');
+  const fb = document.createElement('div');
+  fb.className = 'fb-item';
+  fb.innerHTML = `
+    <div class="fb-avatar">${name[0]}</div>
+    <div class="fb-content">
+      <div><span class="fb-name">${name}</span> <span class="fb-time">${new Date().toLocaleTimeString()}</span> <span class="chip info" style="font-size:0.6rem">${typeLabels[type]}</span></div>
+      <div class="fb-text">${msg}</div>
+      <div class="fb-reply">
+        <textarea placeholder="Bentley will respond here..." rows="2"></textarea>
+        <button class="btn btn-sm btn-primary" style="margin-top:0.3rem" onclick="this.closest('.fb-reply').innerHTML='<span class=\\'chip go\\'>✅ Reply sent to ACMI</span>'">Reply</button>
+      </div>
+    </div>
+  `;
+  feed.insertBefore(fb, feed.firstChild);
+  
+  addEvent({
+    kind: kindMap[type] || 'note',
+    summary: `[feedback ${type}] ${name}: ${msg.substring(0,100)}${msg.length > 100 ? '...' : ''}`,
+    source: 'semaj-sinclair'
+  });
+  
+  document.getElementById('fb-msg').value = '';
+  document.getElementById('fb-result').innerHTML = '<span class="chip go">📬 Sent — Bentley will see this</span>';
+  setTimeout(() => document.getElementById('fb-result').innerHTML = '', 3000);
+}
+
+// ═══ ACMI EVENT SYSTEM ═══
+const events = [];
+function addEvent(data) {
+  const event = {
+    ts: new Date().toISOString(),
+    time: new Date().toLocaleTimeString(),
+    id: 'evt-' + Date.now(),
+    correlationId: 'semajDisc-' + Date.now() + '-' + Math.random().toString(36).substr(2,4),
+    kind: data.kind || 'note',
+    summary: data.summary || 'No summary',
+    source: data.source || 'portal'
+  };
+  events.unshift(event);
+  renderEvents();
+}
+
+function renderEvents() {
+  const feed = document.getElementById('acmiFeed');
+  document.getElementById('eventCount').textContent = events.length + ' events';
+  
+  if (events.length === 0) {
+    feed.innerHTML = '<div class="empty-state"><div style="font-size:2rem;margin-bottom:0.5rem">📡</div><p>Waiting for events. Submit onboarding, brainstorm ideas, or leave feedback — each action logs here.</p></div>';
+    return;
+  }
+  
+  const kindColors = {
+    milestone: 'milestone', decision: 'decision', feedback: 'feedback',
+    note: 'note', 'coord-note': 'note'
+  };
+  
+  feed.innerHTML = events.map(evt => `
+    <div class="acmi-event">
+      <span class="ae-time">${evt.time}</span>
+      <span class="ae-kind ${kindColors[evt.kind] || 'note'}">${evt.kind}</span>
+      <span class="ae-summary">${evt.summary}</span>
+    </div>
+  `).join('');
+}
+
+function clearEvents() {
+  if (confirm('Clear local event log? (ACMI master timeline is unaffected)')) {
+    events.length = 0;
+    renderEvents();
+  }
+}
+
+// Log initial Bentley welcome
+addEvent({kind: 'milestone', summary: '[portal-init] Bentley Discovery Portal launched — Sinclair Strategies collaboration initiated', source: 'bentley'});
+
+</script>
+</body>
+</html>
