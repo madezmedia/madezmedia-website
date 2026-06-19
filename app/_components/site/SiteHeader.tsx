@@ -8,6 +8,7 @@ const LINKS = [
   { href: '/acmi', label: 'ACMI' },
   { href: '/blog', label: 'Notes' },
   { href: '/system', label: 'System' },
+  { href: '/starter-kit', label: 'AI Kit' },
 ];
 
 export function SiteHeader() {

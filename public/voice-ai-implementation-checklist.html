@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice AI Implementation Checklist — Mad EZ Media</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper:       #faf9f5;
+    --paper-warm:  #f4f2eb;
+    --paper-shadow:#ebe8de;
+    --ink:         #1a1a1a;
+    --ink-soft:    #2c2c2a;
+    --ink-mute:    #4a4a48;
+    --ink-fade:    #7a7a76;
+    --ink-rule:    #d4d2cc;
+    --accent:      #2d4a3e;
+    --accent-soft: #5a7d6f;
+    --accent-deep: #1c3027;
+    --pink:        #E5007D;
+    --cyan:        #00B9F1;
+    --yellow:      #FCDC00;
+    --green-dk:    #1e3529;
+    --radius:      12px;
+  }
+
+  body {
+    font-family: Georgia,'Times New Roman',serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    background: var(--accent);
+    color: white;
+    padding: 56px 0 48px;
+    text-align: center;
+  }
+  header .eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  header h1 em { font-style: normal; color: var(--yellow); }
+  header p {
+    font-size: 16px;
+    opacity: 0.88;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+  header .badge {
+    display: inline-block;
+    margin-top: 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.1em;
+  }
+
+  /* Sticky nav */
+  nav {
+    background: white;
+    border-bottom: 1px solid var(--ink-rule);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav ul {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav ul::-webkit-scrollbar { display: none; }
+  nav li { flex-shrink: 0; }
+  nav a {
+    display: block;
+    padding: 14px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-mute);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+  nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* Sections */
+  section { padding: 56px 0; }
+  section + section { border-top: 1px solid var(--ink-rule); }
+
+  .section-label {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h2 .accent { color: var(--pink); }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  p { color: var(--ink-mute); line-height: 1.75; margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* Callouts */
+  .callout {
+    background: white;
+    border: 1px solid var(--ink-rule);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .callout.pink  { background: #fff0f7; border-color: #ffcce6; border-left: 4px solid var(--pink); }
+  .callout.green { background: #f0f5f3; border-color: #c4d9c8; border-left: 4px solid var(--accent); }
+  .callout.cyan  { background: #f0f9ff; border-color: #b8e6fc; border-left: 4px solid var(--cyan); }
+  .callout.yellow{ background: #fffdf0; border-color: #fef5b8; border-left: 4px solid var(--yellow); }
+  .callout strong { color: var(--ink); }
+  .callout p { margin-bottom: 8px; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* Checklist */
+  .checklist { list-style: none; margin: 24px 0; }
+  .checklist li {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--ink-rule);
+    align-items: flex-start;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    font-size: 14px;
+  }
+  .checklist .content h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .checklist .content p { font-size: 14px; margin-bottom: 0; }
+  .checklist .content .why {
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: var(--paper-warm);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* Questions list */
+  .q-list { list-style: none; margin: 20px 0; }
+  .q-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--ink-rule);
+    font-size: 15px;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .q-list li::before { content: '→'; color: var(--pink); font-weight: 900; flex-shrink: 0; }
+
+  /* Red flags */
+  .red-flags { list-style: none; margin: 20px 0; }
+  .red-flags li {
+    padding: 16px 20px;
+    background: #fff5f5;
+    border: 1px solid #ffcce6;
+    border-left: 4px solid var(--pink);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .red-flags li strong { color: var(--pink); }
+
+  /* Timeline */
+  .timeline { list-style: none; margin: 24px 0; counter-reset: day; }
+  .timeline li {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--ink-rule);
+    align-items: flex-start;
+  }
+  .timeline li:last-child { border-bottom: none; }
+  .timeline .day {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+  }
+  .timeline .day span { font-size: 9px; opacity: 0.7; font-weight: 400; }
+  .timeline .content h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--ink); }
+  .timeline .content p { font-size: 13px; margin-bottom: 0; }
+
+  /* Pricing cards */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .pricing-card {
+    background: white;
+    border: 1px solid var(--ink-rule);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .pricing-card.featured {
+    border-color: var(--accent);
+    border-width: 2px;
+    background: #f0f5f3;
+  }
+  .pricing-card .tier {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 8px;
+  }
+  .pricing-card .price {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+  .pricing-card .price span { font-size: 1rem; font-weight: 400; color: var(--ink-mute); }
+  .pricing-card .desc { font-size: 13px; color: var(--ink-mute); margin-bottom: 16px; }
+  .pricing-card ul { list-style: none; }
+  .pricing-card li {
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding: 4px 0;
+    display: flex;
+    gap: 8px;
+  }
+  .pricing-card li::before { content: '✓'; color: var(--accent); font-weight: 900; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--accent);
+    color: white;
+    text-align: center;
+    padding: 72px 24px;
+  }
+  .cta-section h2 { color: white; margin-bottom: 16px; }
+  .cta-section p { color: rgba(255,255,255,0.85); max-width: 440px; margin: 0 auto 36px; font-size: 16px; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--pink);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.15s;
+    margin: 8px;
+  }
+  .cta-btn:hover { background: #c4006a; transform: translateY(-1px); }
+  .cta-btn.ghost {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .cta-btn.ghost:hover { background: rgba(255,255,255,0.22); }
+
+  footer {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--ink-rule);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  footer p { font-size: 12px; color: var(--ink-fade); }
+
+  @media (max-width: 600px) {
+    h2 { font-size: 1.5rem; }
+    .pricing-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="container">
+    <p class="eyebrow">Mad EZ Media · Free Resource · madezmedia.com</p>
+    <h1>The 7-Point Voice AI<br/><em>Evaluation Checklist</em></h1>
+    <p>Most "AI phone assistants" are auto-attendants with a new name. Use this checklist before you sign any contract — or you'll be paying $300-$2,000/month for something that just takes messages.</p>
+    <span class="badge">v1.0 · June 2026 · Mad EZ Media</span>
+  </div>
+</header>
+
+<!-- ═══ STICKY NAV ═══ -->
+<nav>
+  <div class="container">
+    <ul>
+      <li><a href="#checklist" class="active">The 7 Points</a></li>
+      <li><a href="#questions">Questions to Ask</a></li>
+      <li><a href="#red-flags">Red Flags</a></li>
+      <li><a href="#timeline">5-Day Rollout</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ SECTION 1: THE 7 CHECKLIST POINTS ═══ -->
+<section id="checklist">
+  <div class="container">
+    <p class="section-label">Part 01 · The 7 Evaluation Points</p>
+    <h2>What your AI assistant <span class="accent">must actually do.</span></h2>
+    <p>Before you sign with any vendor, go through each of these 7 points. If they can't pass all 7, you're not buying an AI — you're renting a slightly smarter voicemail system.</p>
+
+    <ul class="checklist">
+      <li>
+        <div class="num">1</div>
+        <div class="content">
+          <h4>Answer calls the way a knowledgeable staff member would</h4>
+          <p>The AI must handle real questions — not just "let me transfer you." It should answer FAQs about your services, pricing, hours, locations, and common objections without transferring. If it transfers everything, it's not an AI assistant. It's a routing system.</p>
+          <div class="why">Why it matters: The whole point is eliminating call volume. If it transfers 80% of calls, your staff is still answering the phone.</div>
+        </div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div class="content">
+          <h4>Capture leads even when it can't help</h4>
+          <p>For questions it can't answer, the AI must collect the caller's info, reason about why they called, and hand off in a structured format — not just "left a message." It should capture: what they wanted, urgency level, and the best time + method to call them back.</p>
+          <div class="why">Why it matters: Most callers hang up if they can't get answers. The AI should be better at capturing the lead than a missed call would be.</div>
+        </div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div class="content">
+          <h4>Integrate with your existing tools (CRM, calendar, messaging)</h4>
+          <p>The AI must write to your CRM, book appointments on your calendar, and send your team a notification — without you manually entering data after every call. If it just sends you a transcript, that's not integration.</p>
+          <div class="why">Why it matters: Manual follow-up is where leads die. If your staff has to enter call notes by hand, the AI is adding work, not removing it.</div>
+        </div>
+      </li>
+      <li>
+        <div class="num">4</div>
+        <div class="content">
+          <h4>Handle multilingual and dialect variation</h4>
+          <p>In markets with significant non-English speaking populations, the AI must handle accented English and other languages naturally. "We don't support that yet" is not an acceptable answer in 2026.</p>
+          <div class="why">Why it matters: If 20% of your callers hang up because they can't communicate with the AI, you're losing 1 in 5 potential customers.</div>
+        </div>
+      </li>
+      <li>
+        <div class="num">5</div>
+        <div class="content">
+          <h4>Sound like your business, not a robot</h4>
+          <p>The AI must adapt to your brand voice — not deliver everything in generic corporate-speak. It should be able to use your industry terminology correctly, match your tone (warm, professional, casual), and represent your business accurately.</p>
+          <div class="why">Why it matters: If a caller says "that sounds like an AI," you've already lost trust. The best AI assistants are indistinguishable from a well-trained receptionist.</div>
+        </div>
+      </li>
+      <li>
+        <div class="num">6</div>
+        <div class="content">
+          <h4>Escalate intelligently — not just "can I speak with someone?"</h4>
+          <p>The AI must know when a situation needs human intervention (angry customer, medical emergency, legal question, high-value prospect) and escalate with full context — not just "transferring you." It should brief the human before the transfer happens.</p>
+          <div class="why">Why it matters: Blind transfers create the worst customer experience. A good AI briefs the human first, so the customer doesn't have to repeat everything.</div>
+        </div>
+      </li>
+      <li>
+        <div class="num">7</div>
+        <div class="content">
+          <h4>Give you visibility into what's happening</h4>
+          <p>You need a dashboard or daily report that shows: call volume, call outcomes, peak hours, common questions, conversion rate, and failed handoffs. If you can't see it, you can't manage it.</p>
+          <div class="why">Why it matters: Running blind is worse than not running at all. You need to know if the AI is handling calls well or if it's creating a negative experience you're not seeing.</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="callout pink">
+      <strong>The one-question gut check:</strong> After a week of use, ask yourself: "Did my staff have to handle fewer calls this week?" If the answer isn't clearly yes — the AI is not doing its job. Keep evaluating.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 2: QUESTIONS TO ASK ═══ -->
+<section id="questions">
+  <div class="container">
+    <p class="section-label">Part 02 · The Hard Questions</p>
+    <h2>Questions that <span class="accent">expose the gaps.</span></h2>
+    <p>Ask every AI phone vendor these. The ones who can't answer clearly are selling marketing, not AI.</p>
+
+    <ul class="q-list">
+      <li>What percentage of calls does your AI handle fully without human transfer? (Acceptable: 60%+)</li>
+      <li>What happens when the AI doesn't know the answer? How does it handle uncertainty?</li>
+      <li>Can it book appointments directly into our scheduling system without a human in the loop?</li>
+      <li>How long does it take to train on our specific business, services, and common questions?</li>
+      <li>What does a typical "failed handoff" look like? How do you notify us?</li>
+      <li>How does it handle heavy accents, background noise, and cross-talk?</li>
+      <li>Can we review and edit how it responds to specific questions after training?</li>
+      <li>What's your actual uptime SLA and what happens if the system goes down mid-call?</li>
+      <li>How do you measure success? What metrics do you track and share?</li>
+      <li>What does the onboarding process look like and who owns it?</li>
+    </ul>
+
+    <div class="callout cyan">
+      <strong>Pro tip:</strong> Ask for a live demo with YOUR business's actual scenarios — not their canned demo. "Show me how it handles a caller asking about pricing for a service we don't advertise on our website." If they can't or won't, that's your answer.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 3: RED FLAGS ═══ -->
+<section id="red-flags">
+  <div class="container">
+    <p class="section-label">Part 03 · Red Flags</p>
+    <h2>5 signs the AI <span class="accent">will disappoint you.</span></h2>
+    <p>These are the warning signs that the vendor is selling hype, not a working system. Walk away or demand proof before signing.</p>
+
+    <ul class="red-flags">
+      <li><strong>"Our AI learns on its own."</strong> — Real AI assistants require training. "It learns on its own" means they haven't built the training infrastructure. Ask what the training process looks like.</li>
+      <li><strong>Pricing is "starting at $99/mo" with no range.</strong> — Real AI phone systems cost $250-$2,000/month depending on call volume and features. Rock-bottom pricing means hidden fees or a system that handles very little.</li>
+      <li><strong>No trial period or pilot option.</strong> — If they won't let you test it with real calls for 3-7 days, they're not confident in the product. A 30-day pilot is standard for real AI vendors.</li>
+      <li><strong>They use generic voice cloning with no brand tuning.</strong> — If every business sounds the same, the AI wasn't built for your business. You should sound like you, not like a stock voice assistant.</li>
+      <li><strong>No dashboard, no reporting, no call logs.</strong> — If you can't see what's happening, you can't improve it. Run. The vendor either doesn't know what's happening or doesn't want you to see it.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ SECTION 4: 5-DAY ROLLOUT ═══ -->
+<section id="timeline">
+  <div class="container">
+    <p class="section-label">Part 04 · The 5-Day Rollout</p>
+    <h2>What a real <span class="accent">implementation looks like.</span></h2>
+    <p>Mad EZ Media's Voice AI goes live in 5 business days — here's exactly what happens in each day, so you know what to expect (and what questions to ask any vendor about their process).</p>
+
+    <ul class="timeline">
+      <li>
+        <div class="day">Day<br/><span>1</span></div>
+        <div class="content">
+          <h4>Discovery call — 30 minutes</h4>
+          <p>We map your call flow: who calls, why they call, what information you need from them, and how you want to follow up. This is the foundation. No generic scripts. Your real business logic.</p>
+        </div>
+      </li>
+      <li>
+        <div class="day">Day<br/><span>2</span></div>
+        <div class="content">
+          <h4>Voice + script development — you review and approve</h4>
+          <p>We create your AI's voice (clone or selection) and write the full call script based on your actual business. You approve every word before anything goes live. Two rounds of revisions included.</p>
+        </div>
+      </li>
+      <li>
+        <div class="day">Day<br/><span>3</span></div>
+        <div class="content">
+          <h4>Technical integration + CRM/calendar setup</h4>
+          <p>We connect to your calendar, CRM, and messaging tools. Your AI starts writing call summaries, booking appointments, and routing leads — automatically, without manual data entry.</p>
+        </div>
+      </li>
+      <li>
+        <div class="day">Day<br/><span>4</span></div>
+        <div class="content">
+          <h4>Testing + your team reviews</h4>
+          <p>We run test calls, you and your team try it out, and we fix anything that doesn't feel right. Your staff gets a walkthrough of the dashboard and handoff reports.</p>
+        </div>
+      </li>
+      <li>
+        <div class="day">Day<br/><span>5</span></div>
+        <div class="content">
+          <h4>Go live + 48-hour monitoring</h4>
+          <p>You forward your number. The AI starts answering. We monitor every call for 48 hours and make real-time adjustments. If anything goes wrong, we fix it before you even know it happened.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="callout green">
+      <strong>What most vendors don't do:</strong> They hand you a dashboard and say "let us know if you have issues." We watch every call for 48 hours. That's the difference between a system that works and a system you babysit.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 5: PRICING ═══ -->
+<section id="pricing">
+  <div class="container">
+    <p class="section-label">Part 05 · Mad EZ Media Pricing</p>
+    <h2>Straightforward <span class="accent">pricing.</span></h2>
+    <p>Three tiers. No setup fees. No per-seat charges. No "call credits" that expire. Here's what you get at each level.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="tier">Starter</div>
+        <div class="price">$250<span>/5 days</span></div>
+        <p class="desc">For businesses getting started with AI phone automation.</p>
+        <ul>
+          <li>1 AI voice agent</li>
+          <li>Up to 50 unique call flows</li>
+          <li>Calendar + CRM integration</li>
+          <li>SMS/email handoff</li>
+          <li>48-hr go-live</li>
+          <li>1 language</li>
+          <li>Standard voice selection</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="tier">Standard ★ Most Popular</div>
+        <div class="price">$500<span>/7 days</span></div>
+        <p class="desc">For established businesses handling real call volume.</p>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Voice clone (sounds like you)</li>
+          <li>Multilingual (3+ languages)</li>
+          <li>CRM webhook + calendar booking</li>
+          <li>Outbound calling</li>
+          <li>Analytics dashboard</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card">
+        <div class="tier">Premium</div>
+        <div class="price">$1,000<span>/10 days</span></div>
+        <p class="desc">For multi-location or high-volume operations.</p>
+        <ul>
+          <li>Everything in Standard</li>
+          <li>3-agent fleet</li>
+          <li>White-label option</li>
+          <li>Dedicated routing + failover</li>
+          <li>Outbound dialer + campaigns</li>
+          <li>Advanced analytics + reporting</li>
+          <li>Custom SLA</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout yellow">
+      <strong>No fit?</strong> This checklist works for evaluating any AI phone vendor — even if it's not us. The 7-point framework above is vendor-agnostic. Use it.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-section">
+  <p class="eyebrow" style="color: var(--cyan); font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 16px;">Mad EZ Media</p>
+  <h2>Ready to stop losing calls?</h2>
+  <p>Book a free 20-minute strategy call. We'll map your current call flow, tell you exactly what Mad EZ Media can handle, and give you a realistic picture of what AI automation would look like for your business.</p>
+  <a href="https://cal.com/mad-ez-media/ai-automation-discovery" class="cta-btn" target="_blank" rel="noopener noreferrer">
+    Book a Free Strategy Call →
+  </a>
+  <a href="https://madezmedia.com" class="cta-btn ghost" target="_blank" rel="noopener noreferrer">
+    madezmedia.com →
+  </a>
+</div>
+
+<footer>
+  <div class="container">
+    <p>Voice AI Implementation Checklist v1.0 — June 2026 — <a href="https://madezmedia.com" style="color: var(--accent);">Mad EZ Media Partners</a></p>
+    <p style="margin-top: 8px;">No spam. Built by practitioners. Your data stays yours.</p>
+  </div>
+</footer>
+
+<script>
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('section[id], div.cta-section');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      const top = s.offsetTop - 80;
+      if (scrollY >= top) current = s.id;
+    });
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+  });
+</script>
+
+</body>
+</html>
