@@ -4,6 +4,7 @@ import './globals.css';
 import './_components/site/site.css';
 import { SiteHeader } from './_components/site/SiteHeader';
 import { SiteFooter } from './_components/site/SiteFooter';
+import { PostHogProvider } from './_components/PostHogProvider';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -93,9 +94,11 @@ export default function RootLayout({
       className={`${montserrat.variable} ${raleway.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <PostHogProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </PostHogProvider>
       </body>
     </html>
   );

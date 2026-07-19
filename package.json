@@ -17,6 +17,8 @@
     "framer-motion": "^12.40.0",
     "gray-matter": "^4.0.3",
     "next": "^14.2.0",
+    "posthog-js": "^1.404.1",
+    "posthog-node": "^5.45.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remark": "^15.0.1",
