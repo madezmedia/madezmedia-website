@@ -1,0 +1,445 @@
+/* /fleet — Private ACMI Autonomous Agent Fleet surface */
+
+.fleet-page {
+  width: 100%;
+  background: var(--mzm-paper);
+  color: var(--mzm-ink);
+}
+
+/* Hero Section */
+.fleet-hero {
+  max-width: var(--mzm-max-content);
+  margin: 0 auto;
+  padding: var(--mzm-space-24) 32px var(--mzm-space-16);
+}
+
+.fleet-hero h1 {
+  font-family: var(--mzm-font-serif);
+  font-weight: var(--mzm-weight-bold);
+  font-size: var(--mzm-text-6xl);
+  line-height: var(--mzm-leading-tight);
+  letter-spacing: var(--mzm-tracking-tight);
+  color: var(--mzm-ink);
+  margin: var(--mzm-space-6) 0 var(--mzm-space-4);
+  max-width: 22ch;
+}
+
+.fleet-hero h1 .em {
+  font-style: italic;
+  border-bottom: 3px double var(--mzm-underline);
+  padding-bottom: 4px;
+}
+
+.fleet-tagline {
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-3xl);
+  font-weight: var(--mzm-weight-bold);
+  color: var(--mzm-accent);
+  margin-bottom: var(--mzm-space-6);
+}
+
+.fleet-hero .hero-deck {
+  font-family: var(--mzm-font-sans);
+  font-size: var(--mzm-text-2xl);
+  line-height: var(--mzm-leading-relaxed);
+  color: var(--mzm-ink-soft);
+  max-width: 65ch;
+  margin-bottom: var(--mzm-space-8);
+}
+
+.fleet-hero .hero-ctas {
+  display: flex;
+  gap: var(--mzm-space-4);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.fleet-hero .cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mzm-space-2);
+  padding: 16px 28px;
+  background: var(--mzm-ink);
+  color: var(--mzm-paper);
+  font-family: var(--mzm-font-sans);
+  font-size: var(--mzm-text-base);
+  font-weight: var(--mzm-weight-medium);
+  border-radius: var(--mzm-radius-sm);
+  text-decoration: none;
+  transition: all var(--mzm-dur-fast) var(--mzm-ease-default);
+}
+
+.fleet-hero .cta-primary:hover {
+  background: var(--mzm-accent);
+  transform: translateY(-1px);
+}
+
+/* Framing Ladder Section */
+.ladder-section {
+  max-width: var(--mzm-max-content);
+  margin: 0 auto;
+  padding: var(--mzm-space-16) 32px var(--mzm-space-20);
+  border-top: 1px solid var(--mzm-ink-rule);
+}
+
+.ladder-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--mzm-space-4);
+  margin-top: var(--mzm-space-10);
+}
+
+.ladder-card {
+  background: var(--mzm-paper-warm);
+  border: 1px solid var(--mzm-ink-rule);
+  border-radius: var(--mzm-radius-md);
+  padding: var(--mzm-space-6);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform var(--mzm-dur-fast) var(--mzm-ease-default), border-color var(--mzm-dur-fast) var(--mzm-ease-default);
+}
+
+.ladder-card.highlight {
+  background: var(--mzm-paper);
+  border: 2px solid var(--mzm-accent);
+  box-shadow: 0 4px 18px rgba(45, 74, 62, 0.1);
+}
+
+.ladder-card:hover {
+  transform: translateY(-2px);
+}
+
+.ladder-level {
+  font-family: var(--mzm-font-mono);
+  font-size: 11px;
+  font-weight: var(--mzm-weight-bold);
+  color: var(--mzm-ink-fade);
+  letter-spacing: var(--mzm-tracking-wide);
+  margin-bottom: var(--mzm-space-2);
+}
+
+.ladder-card.highlight .ladder-level {
+  color: var(--mzm-accent);
+}
+
+.ladder-card h3 {
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-2xl);
+  font-weight: var(--mzm-weight-bold);
+  color: var(--mzm-ink);
+  margin-bottom: var(--mzm-space-4);
+}
+
+.ladder-card .ladder-desc {
+  font-family: var(--mzm-font-sans);
+  font-size: var(--mzm-text-sm);
+  color: var(--mzm-ink-soft);
+  line-height: var(--mzm-leading-normal);
+  margin-bottom: var(--mzm-space-4);
+}
+
+.ladder-box {
+  background: var(--mzm-paper);
+  border: 1px solid var(--mzm-ink-rule);
+  border-radius: var(--mzm-radius-xs);
+  padding: var(--mzm-space-3);
+  margin-top: auto;
+}
+
+.ladder-box-lbl {
+  font-family: var(--mzm-font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: var(--mzm-tracking-wide);
+  color: var(--mzm-ink-fade);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.ladder-box-txt {
+  font-family: var(--mzm-font-sans);
+  font-size: 12px;
+  color: var(--mzm-ink-mute);
+  line-height: var(--mzm-leading-normal);
+}
+
+.ladder-card.highlight .ladder-box-txt {
+  color: var(--mzm-accent);
+  font-weight: var(--mzm-weight-medium);
+}
+
+/* Hard Rule Architecture Section */
+.hardrule-section {
+  max-width: var(--mzm-max-content);
+  margin: 0 auto;
+  padding: var(--mzm-space-16) 32px var(--mzm-space-20);
+  border-top: 1px solid var(--mzm-ink-rule);
+}
+
+.hardrule-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--mzm-space-6);
+  margin-top: var(--mzm-space-10);
+}
+
+.hardrule-card {
+  background: var(--mzm-paper-warm);
+  border: 1px solid var(--mzm-ink-rule);
+  border-left: 4px solid var(--process-cyan);
+  border-radius: var(--mzm-radius-md);
+  padding: var(--mzm-space-6);
+}
+
+.hardrule-card .rule-code {
+  font-family: var(--mzm-font-mono);
+  font-size: var(--mzm-text-xs);
+  font-weight: var(--mzm-weight-bold);
+  color: var(--process-cyan);
+  letter-spacing: var(--mzm-tracking-wide);
+  margin-bottom: var(--mzm-space-3);
+}
+
+.hardrule-card h3 {
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-xl);
+  font-weight: var(--mzm-weight-bold);
+  color: var(--mzm-ink);
+  margin-bottom: var(--mzm-space-3);
+}
+
+.hardrule-card p {
+  font-family: var(--mzm-font-sans);
+  font-size: var(--mzm-text-sm);
+  line-height: var(--mzm-leading-relaxed);
+  color: var(--mzm-ink-soft);
+}
+
+/* Fleet Pricing Tiers */
+.fleet-pricing-section {
+  max-width: var(--mzm-max-content);
+  margin: 0 auto;
+  padding: var(--mzm-space-16) 32px var(--mzm-space-24);
+  border-top: 1px solid var(--mzm-ink-rule);
+}
+
+.fleet-pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--mzm-space-8);
+  margin-top: var(--mzm-space-10);
+}
+
+.fleet-price-card {
+  background: var(--mzm-paper-warm);
+  border: 1px solid var(--mzm-ink-rule);
+  border-radius: var(--mzm-radius-lg);
+  padding: var(--mzm-space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--mzm-dur-fast) var(--mzm-ease-default), border-color var(--mzm-dur-fast) var(--mzm-ease-default);
+}
+
+.fleet-price-card.featured {
+  background: var(--mzm-paper);
+  border: 2px solid var(--mzm-accent);
+  box-shadow: 0 4px 20px rgba(45, 74, 62, 0.12);
+}
+
+.fleet-price-card:hover {
+  transform: translateY(-2px);
+}
+
+.fleet-price-card .tier-badge {
+  font-family: var(--mzm-font-mono);
+  font-size: var(--mzm-text-xs);
+  font-weight: var(--mzm-weight-bold);
+  color: var(--mzm-accent);
+  letter-spacing: var(--mzm-tracking-wide);
+  margin-bottom: var(--mzm-space-2);
+}
+
+.fleet-price-card h3 {
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-3xl);
+  font-weight: var(--mzm-weight-bold);
+  color: var(--mzm-ink);
+  margin-bottom: var(--mzm-space-4);
+}
+
+.fleet-price-card .price-val {
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-5xl);
+  font-weight: var(--mzm-weight-bold);
+  color: var(--mzm-ink);
+  line-height: 1;
+}
+
+.fleet-price-card .price-period {
+  font-family: var(--mzm-font-mono);
+  font-size: var(--mzm-text-xs);
+  color: var(--mzm-ink-fade);
+  margin-bottom: var(--mzm-space-6);
+  margin-top: 4px;
+}
+
+.fleet-price-card .tier-desc {
+  font-family: var(--mzm-font-sans);
+  font-size: var(--mzm-text-base);
+  line-height: var(--mzm-leading-relaxed);
+  color: var(--mzm-ink-soft);
+  margin-bottom: var(--mzm-space-6);
+}
+
+.fleet-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--mzm-space-8) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--mzm-space-3);
+}
+
+.fleet-features li {
+  font-family: var(--mzm-font-sans);
+  font-size: var(--mzm-text-sm);
+  color: var(--mzm-ink-soft);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--mzm-space-2);
+}
+
+.fleet-features li::before {
+  content: "✓";
+  color: var(--mzm-accent);
+  font-weight: bold;
+}
+
+.fleet-cta-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px var(--mzm-space-6);
+  font-family: var(--mzm-font-sans);
+  font-size: var(--mzm-text-base);
+  font-weight: var(--mzm-weight-bold);
+  border-radius: var(--mzm-radius-sm);
+  text-decoration: none;
+  transition: all var(--mzm-dur-fast) var(--mzm-ease-default);
+}
+
+.fleet-cta-btn.primary {
+  background: var(--mzm-accent);
+  color: var(--mzm-paper);
+}
+
+.fleet-cta-btn.primary:hover {
+  background: var(--mzm-ink);
+}
+
+.fleet-cta-btn.secondary {
+  background: var(--mzm-paper);
+  border: 1px solid var(--mzm-ink-rule);
+  color: var(--mzm-ink);
+}
+
+.fleet-cta-btn.secondary:hover {
+  border-color: var(--mzm-accent);
+  color: var(--mzm-accent);
+}
+
+/* Bottom Call to Action Banner */
+.fleet-cta-banner {
+  max-width: var(--mzm-max-content);
+  margin: 0 auto var(--mzm-space-24);
+  padding: 0 32px;
+}
+
+.fleet-banner-inner {
+  background: var(--mzm-ink);
+  color: var(--mzm-paper);
+  border-radius: var(--mzm-radius-lg);
+  padding: var(--mzm-space-12) var(--mzm-space-10);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--mzm-space-8);
+}
+
+.fleet-banner-inner h2 {
+  font-family: var(--mzm-font-serif);
+  font-size: var(--mzm-text-4xl);
+  font-weight: var(--mzm-weight-bold);
+  color: var(--mzm-paper);
+  line-height: var(--mzm-leading-snug);
+}
+
+.fleet-banner-inner h2 .em {
+  font-style: italic;
+  border-bottom: 2px double var(--process-cyan);
+}
+
+.banner-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 28px;
+  background: var(--process-cyan);
+  color: var(--mzm-ink);
+  font-family: var(--mzm-font-sans);
+  font-size: var(--mzm-text-base);
+  font-weight: var(--mzm-weight-bold);
+  border-radius: var(--mzm-radius-sm);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--mzm-dur-fast) var(--mzm-ease-default);
+}
+
+.banner-cta-btn:hover {
+  background: var(--mzm-paper);
+  color: var(--mzm-ink);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .ladder-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--mzm-space-6);
+  }
+
+  .hardrule-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .fleet-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-banner-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .fleet-hero {
+    padding: var(--mzm-space-16) 20px var(--mzm-space-10);
+  }
+
+  .fleet-hero h1 {
+    font-size: var(--mzm-text-4xl);
+  }
+
+  .ladder-section, .hardrule-section, .fleet-pricing-section, .fleet-cta-banner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .ladder-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const LINKS = [
   { href: '/#approach', label: 'Approach' },
@@ -12,6 +15,8 @@ const LINKS = [
 ];
 
 export function SiteHeader() {
+  const pathname = usePathname();
+  if (pathname?.startsWith('/dashboard')) return null;
   return (
     <header className="site-header">
       <div className="site-header__inner">
