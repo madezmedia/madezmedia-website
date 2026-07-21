@@ -23,6 +23,8 @@ export function HomeFooter() {
           <span className="home-foot__legal">Mad EZ Media &amp; Technology Partners · NC · © 2026</span>
         </div>
         <div className="home-foot__links">
+          <Link href="/assessment">assessment</Link>
+          <Link href="/fleet">fleet</Link>
           <a href="https://github.com/madezmedia">github</a>
           <a href="https://npmjs.com/~madezmedia">npm</a>
           <a href="#">discord</a>

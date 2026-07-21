@@ -110,8 +110,13 @@ export function Hero() {
             </Link>
           </motion.div>
           <motion.div variants={fadeUp}>
-            <Link href="/#lab" className="home-hero__btn home-hero__btn--quiet">
-              See the lab
+            <Link href="/assessment" className="home-hero__btn home-hero__btn--quiet">
+              $499 AI Audit →
+            </Link>
+          </motion.div>
+          <motion.div variants={fadeUp}>
+            <Link href="/fleet" className="home-hero__btn home-hero__btn--quiet">
+              $4,500 Fleet Deployment →
             </Link>
           </motion.div>
         </motion.div>

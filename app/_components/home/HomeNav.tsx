@@ -21,6 +21,8 @@ export function HomeNav() {
         <div className="home-nav__links">
           <Link href="/#approach">Approach</Link>
           <Link href="/#lab">Lab</Link>
+          <Link href="/assessment">AI Assessment</Link>
+          <Link href="/fleet">Agent Fleet</Link>
           <Link href="/voice-ai">Voice AI</Link>
           <Link href="/#work">Work</Link>
           <Link href="/acmi">ACMI</Link>

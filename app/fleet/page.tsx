@@ -228,6 +228,59 @@ export default function FleetPage() {
         </div>
       </section>
 
+      {/* Download Collateral Section */}
+      <section className="downloads-section">
+        <div className="section-head">
+          <div className="mzm-eyebrow">
+            <span className="num">N° 05</span>DOWNLOADABLE COLLATERAL &amp; SPECS
+          </div>
+          <h2>
+            Download Fleet <span className="em">One-Pagers &amp; Specs.</span>
+          </h2>
+          <p className="section-sub">
+            Printable architectural one-pagers, framing ladders, and enterprise security guarantees for your team.
+          </p>
+        </div>
+
+        <div className="downloads-grid">
+          <div className="download-card">
+            <div className="card-top">
+              <span className="download-type">PRINT &amp; PDF READY</span>
+              <h3>ACMI Fleet One-Pager</h3>
+              <p className="download-desc">
+                Executive architectural summary of single-tenant ACMI fleet infrastructure, Hermes agents, and background cron workers.
+              </p>
+            </div>
+            <a
+              href="/downloads/acmi-fleet-one-pager.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="download-cta-btn primary"
+            >
+              Download ACMI Fleet One-Pager (PDF/Print) →
+            </a>
+          </div>
+
+          <div className="download-card">
+            <div className="card-top">
+              <span className="download-type">COMPARISON SHEET</span>
+              <h3>Chatbot vs Fleet Comparison</h3>
+              <p className="download-desc">
+                Detailed comparison breakdown comparing ephemeral ChatGPT tabs vs. Level 4 autonomous ACMI agent swarms.
+              </p>
+            </div>
+            <a
+              href="/downloads/chatbot-vs-fleet-sell-sheet.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="download-cta-btn secondary"
+            >
+              Download Chatbot vs Fleet Comparison Sheet →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA Banner */}
       <div className="fleet-cta-banner">
         <div className="fleet-banner-inner">

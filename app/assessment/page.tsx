@@ -254,6 +254,59 @@ export default function AssessmentPage() {
         </div>
       </section>
 
+      {/* Download Collateral Section */}
+      <section className="downloads-section">
+        <div className="section-head">
+          <div className="mzm-eyebrow">
+            <span className="num">N° 04</span>EXECUTIVE COLLATERAL &amp; TEMPLATES
+          </div>
+          <h2>
+            Download Executive <span className="em">Audit Collateral.</span>
+          </h2>
+          <p className="section-sub">
+            Review our complete audit methodology, report structure, and printable sell sheets before your discovery session.
+          </p>
+        </div>
+
+        <div className="downloads-grid">
+          <div className="download-card">
+            <div className="card-top">
+              <span className="download-type">PRINT &amp; PDF READY</span>
+              <h3>Executive Sell Sheet</h3>
+              <p className="download-desc">
+                Printable 1-page executive overview detailing the 7 operational leaks, audit timeline, and 5+ hr/wk returned guarantee.
+              </p>
+            </div>
+            <a
+              href="/downloads/ai-tools-assessment-sell-sheet.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="download-cta-btn primary"
+            >
+              Download Executive Sell Sheet (PDF/Print) →
+            </a>
+          </div>
+
+          <div className="download-card">
+            <div className="card-top">
+              <span className="download-type">MARKDOWN TEMPLATE</span>
+              <h3>6-Page Kami Audit Template</h3>
+              <p className="download-desc">
+                Our raw 6-page Kami-typeset audit report template used during live client diagnostic sessions.
+              </p>
+            </div>
+            <a
+              href="/downloads/kami-assessment-report-template.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="download-cta-btn secondary"
+            >
+              Download 6-Page Kami Audit Template (.md) →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Guarantee Banner */}
       <div className="guarantee-banner">
         <div className="guarantee-inner">

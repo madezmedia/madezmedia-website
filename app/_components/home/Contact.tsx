@@ -66,7 +66,10 @@ export function Contact() {
             <Link href="/bentley" className="home-contact__btn home-contact__btn--primary">Talk to Bentley →</Link>
           </motion.div>
           <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
-            <a href="https://cal.com/duane-madezmedia" className="home-contact__btn home-contact__btn--quiet">or book Duane direct</a>
+            <Link href="/assessment" className="home-contact__btn home-contact__btn--quiet">$499 AI Assessment →</Link>
+          </motion.div>
+          <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
+            <Link href="/fleet" className="home-contact__btn home-contact__btn--quiet">$4,500 Agent Fleet →</Link>
           </motion.div>
         </motion.div>
       </div>
