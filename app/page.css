@@ -562,14 +562,38 @@ nav.home-nav {
 .home-bridge__inner {
   max-width: 640px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
-.home-bridge p {
-  font-family: var(--font-body-v14);
-  font-style: italic;
-  font-size: 19px;
-  line-height: 1.65;
+.home-bridge__eyebrow {
+  font-family: var(--mzm-font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mzm-ink-fade);
+}
+.home-bridge__h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1.3;
   color: var(--mzm-ink);
   margin: 0;
+}
+.home-bridge__em {
+  font-style: italic;
+  color: var(--home-pink);
+}
+.home-bridge__deck {
+  font-family: var(--font-body-v14);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--mzm-ink-soft);
+  margin: 0;
+  max-width: 580px;
 }
 
 /* ─── Leaks (before/after 3-card row) ────────────────────────────── */
@@ -625,11 +649,8 @@ nav.home-nav {
   margin: 0 0 4px;
 }
 .home-leaks__arrow {
-  display: block;
   color: var(--card-accent, var(--forest-800));
-  font-size: 18px;
-  line-height: 1;
-  margin: 10px 0;
+  font-weight: 900;
 }
 .home-leaks__after {
   font-family: var(--font-body-v14);
@@ -758,26 +779,23 @@ nav.home-nav {
   align-items: center;
 }
 @media (min-width: 768px) {
-  .home-founder__inner { grid-template-columns: 220px 1fr; gap: 48px; }
+  .home-founder__inner { grid-template-columns: 150px 1fr; gap: 28px; }
 }
 .home-founder__photo {
   position: relative;
-  width: 100%;
-  max-width: 220px;
-  aspect-ratio: 1;
+  width: 150px;
+  height: 150px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
-.home-founder__photo img { object-fit: cover; }
+.home-founder__photo img { object-fit: cover; object-position: top; }
 .home-founder__h2 {
   font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(28px, 3.6vw, 42px);
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-  color: var(--forest-800);
-  margin: 0 0 18px;
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 1.3;
+  color: var(--mzm-ink);
+  margin: 0 0 8px;
 }
 .home-founder__h2 em { font-style: italic; color: var(--mzm-ink); }
 .home-founder p {
@@ -1112,6 +1130,13 @@ nav.home-nav {
 .home-contact h2 em {
   position: relative;
   z-index: 1;
+}
+.home-contact h2 em.home-contact__em-yellow {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--process-yellow);
+  font-style: italic;
 }
 .home-contact__deck {
   font-family: var(--font-body-v14);

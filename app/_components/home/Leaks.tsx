@@ -6,21 +6,21 @@ import { fadeUp, staggerContainer } from '../ui/Animations';
 
 const LEAKS = [
   {
-    name: 'The four-day follow-up',
-    before: 'A lead sits in the inbox until someone remembers to reply.',
-    after: 'Every lead gets a same-day response — drafted, approved, sent.',
+    name: 'Missed calls',
+    before: 'Rings out, goes to the next plumber',
+    after: 'Answered and booked, day or night',
+    accent: 'var(--home-pink)',
+  },
+  {
+    name: 'Slow quotes',
+    before: 'Written up two days later',
+    after: 'Sent the same hour, from your price book',
     accent: 'var(--process-cyan)',
   },
   {
-    name: 'The Tuesday copy-paste',
-    before: 'Someone manually moves numbers between three tools, every single week.',
-    after: "The report assembles itself and lands in Slack before you're at your desk.",
-    accent: 'var(--process-magenta)',
-  },
-  {
-    name: 'The 2am inbox scroll',
-    before: "You're the only one who remembers what the business needs next.",
-    after: 'A system tracks it, timestamps it, and surfaces it — memory stops being your job.',
+    name: 'No reviews',
+    before: 'Happy customers, quiet Google page',
+    after: 'Asked automatically the moment the job closes',
     accent: 'var(--forest-800)',
   },
 ];
@@ -32,25 +32,6 @@ export function Leaks() {
   return (
     <section className="home-leaks home-section" id="leaks" ref={ref}>
       <div className="home-leaks__inner">
-        <motion.div
-          className="home-eyebrow home-leaks__eyebrow"
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          variants={fadeUp}
-        >
-          <span className="num">N° 02</span>Where the hours go
-        </motion.div>
-
-        <motion.h2
-          className="home-leaks__h2"
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          variants={fadeUp}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          Three leaks we <em>close</em> first.
-        </motion.h2>
-
         <motion.div
           className="home-leaks__grid"
           initial="hidden"
@@ -66,8 +47,9 @@ export function Leaks() {
             >
               <div className="home-leaks__name">{leak.name}</div>
               <p className="home-leaks__before">{leak.before}</p>
-              <span className="home-leaks__arrow" aria-hidden="true">↓</span>
-              <p className="home-leaks__after">{leak.after}</p>
+              <p className="home-leaks__after">
+                <span className="home-leaks__arrow" aria-hidden="true">→</span> {leak.after}
+              </p>
             </motion.div>
           ))}
         </motion.div>

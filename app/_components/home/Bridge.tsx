@@ -17,11 +17,15 @@ export function Bridge() {
         animate={inView ? 'visible' : 'hidden'}
         variants={fadeUp}
       >
-        <p>
-          The fix isn&apos;t a chief AI officer or a six-month roadmap. It&apos;s a small
-          senior team that&apos;s already built this — in public, on retainer, on their own
-          infrastructure — and can show you the system running instead of a slide describing
-          it.
+        <span className="home-bridge__eyebrow">Here&apos;s the bridge</span>
+        <p className="home-bridge__h2">
+          What if the call got answered{' '}
+          <em className="home-bridge__em">without you picking up the phone?</em>
+        </p>
+        <p className="home-bridge__deck">
+          We build a small team of AI agents that answer, book, quote, and follow up — using
+          the same hours, pricing, and history you already have. It doesn&apos;t replace you.
+          It just never misses.
         </p>
       </motion.div>
     </section>

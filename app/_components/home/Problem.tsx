@@ -18,30 +18,19 @@ export function Problem() {
         variants={staggerContainer}
       >
         <motion.div className="home-eyebrow home-problem__eyebrow" variants={fadeUp}>
-          <span className="num">N° 01</span>The problem
+          <span className="num">N° 01</span>Sound familiar?
         </motion.div>
 
         <motion.h2 className="home-problem__h2" variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }}>
-          You don&apos;t have an AI problem.
+          You&apos;re under a sink when the phone rings. It goes to voicemail.{' '}
+          <em>They call the next guy.</em>
         </motion.h2>
 
         <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.2 }}>
-          You have a hundred small manual tasks, and AI happens to be the tool that finally
-          fixes them.
-        </motion.p>
-        <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.3 }}>
-          You&apos;ve probably already tried the free tools. They help for an afternoon. Then
-          someone forgets to use them, or the output needs so much cleanup that it stops
-          saving anyone time.
-        </motion.p>
-        <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.4 }}>
-          Meanwhile the real backlog doesn&apos;t move. The lead that sat in the inbox for
-          four days. The follow-up nobody sent. The report you copy-pasted between three
-          tools last Tuesday, by hand, again.
-        </motion.p>
-        <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.5 }}>
-          That&apos;s not a discipline problem. It&apos;s a systems problem — and systems
-          problems need systems, not another tool with a login screen.
+          Multiply that by every missed call, every quote that goes out two days late,
+          every happy customer who was never asked for a review. That&apos;s not bad luck —
+          it&apos;s just what happens when one person is doing the job and the office work
+          at the same time.
         </motion.p>
       </motion.div>
     </section>
