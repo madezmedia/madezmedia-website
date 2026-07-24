@@ -5,11 +5,10 @@ import { usePathname } from 'next/navigation';
 
 const LINKS = [
   { href: '/#problem', label: 'Problem' },
-  { href: '/#lab', label: 'Lab' },
+  { href: '/#shipped', label: 'Proof' },
   { href: '/assessment', label: 'AI Assessment' },
   { href: '/fleet', label: 'Agent Fleet' },
   { href: '/voice-ai', label: 'Voice AI' },
-  { href: '/#work', label: 'Work' },
   { href: '/acmi', label: 'ACMI' },
   { href: '/blog', label: 'Notes' },
   { href: '/system', label: 'System' },

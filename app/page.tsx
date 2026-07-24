@@ -5,9 +5,7 @@ import { Hero } from './_components/home/Hero';
 import { Problem } from './_components/home/Problem';
 import { Bridge } from './_components/home/Bridge';
 import { Leaks } from './_components/home/Leaks';
-import { ProofFeed } from './_components/home/ProofFeed';
-import { Lab } from './_components/home/Lab';
-import { Work } from './_components/home/Work';
+import { Shipped } from './_components/home/Shipped';
 import { Contact } from './_components/home/Contact';
 import { Footnotes } from './_components/home/Footnotes';
 
@@ -19,9 +17,7 @@ export default function HomePage() {
       <Problem />
       <Bridge />
       <Leaks />
-      <ProofFeed />
-      <Lab />
-      <Work />
+      <Shipped />
       <Contact />
       <Footnotes />
     </main>
