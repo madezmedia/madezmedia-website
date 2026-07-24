@@ -30,7 +30,7 @@ export function Approach() {
           variants={fadeUp}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="home-approach__num">N° 02</span>Approach
+          <span className="home-approach__num">N° 03</span>Approach
         </motion.div>
 
         <motion.h2

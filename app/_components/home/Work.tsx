@@ -36,7 +36,7 @@ export function Work() {
           variants={fadeUp}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="home-work__num">N° 04</span>Active engagements
+          <span className="home-work__num">N° 05</span>Active engagements
         </motion.div>
 
         <motion.h2

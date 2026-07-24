@@ -91,7 +91,7 @@ export function Lab() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="home-lab__num">N° 03</span>Lab
+          <span className="home-lab__num">N° 04</span>Lab
         </motion.div>
 
         <motion.h2

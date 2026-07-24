@@ -1,9 +1,9 @@
 import './page.css';
 import { ScrollReveal } from './_components/MilestoneFeed';
 import { Hero } from './_components/home/Hero';
-import { ProofFeed } from './_components/home/ProofFeed';
-import { ThreeKeys } from './_components/home/ThreeKeys';
+import { WhatWeBuild } from './_components/home/WhatWeBuild';
 import { Approach } from './_components/home/Approach';
+import { ProofFeed } from './_components/home/ProofFeed';
 import { Lab } from './_components/home/Lab';
 import { Work } from './_components/home/Work';
 import { Contact } from './_components/home/Contact';
@@ -14,9 +14,9 @@ export default function HomePage() {
     <main className="home-page">
       <ScrollReveal />
       <Hero />
-      <ProofFeed />
-      <ThreeKeys />
+      <WhatWeBuild />
       <Approach />
+      <ProofFeed />
       <Lab />
       <Work />
       <Contact />
