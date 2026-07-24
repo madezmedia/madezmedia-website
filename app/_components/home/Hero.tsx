@@ -1,113 +1,57 @@
 'use client';
 
-import { useRef } from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { heroStagger, fadeUp } from '../ui/Animations';
+import { BentleyChat } from '../../bentley/_BentleyChat';
+
+/* Owner/prospect-facing quick prompts — questions a business owner evaluating
+ * this studio would ask. Not end-customer-facing questions about whatever
+ * that owner's own business does. */
+const HERO_PROMPTS = [
+  'Will this work for my business?',
+  'What does this actually cost?',
+  'How many hours could I get back?',
+  "What's the catch?",
+  'How is this different from an agency?',
+  'What happens in the first 30 days?',
+];
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-
-  /* ─── Parallax — hero image 15% slower than scroll ───────────── */
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start']
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
-  const blobY = useTransform(scrollYProgress, [0, 1], ['0%', '5%']);
-
   return (
-    <section ref={ref} className="home-hero">
-      {/* Hero image — kinetic logo, dark background */}
-      <motion.div
-        className="home-hero__image-wrap"
-        aria-hidden="true"
-        style={{ y: imageY }}
-      >
-        <Image
-          src="/brand/logo-kinetic-hero.jpg"
-          alt=""
-          fill
-          priority
-          className="home-hero__bg-image"
-          sizes="100vw"
-        />
-        <div className="home-hero__image-overlay" />
-      </motion.div>
-
-      {/* Decorative blobs — CMYK energy, parallax 5% */}
-      <motion.div
-        className="home-hero__blob home-hero__blob--cyan"
-        aria-hidden="true"
-        style={{ y: blobY }}
-      />
-      <motion.div
-        className="home-hero__blob home-hero__blob--magenta"
-        aria-hidden="true"
-        style={{ y: blobY }}
-      />
-
+    <section className="home-hero" id="hero">
       <div className="home-hero__inner">
-        {/* Staggered entrance — eyebrow → location → H1 → deck → CTAs */}
-        <motion.div
-          className="home-hero__meta"
-          initial="hidden"
-          animate="visible"
-          variants={heroStagger}
-        >
-          <motion.div variants={fadeUp}>
-            <div className="home-hero__eyebrow">
-              <span className="home-hero__num">N° 01</span>The Studio
-            </div>
+        <motion.div initial="hidden" animate="visible" variants={heroStagger}>
+          <motion.div variants={fadeUp} className="home-hero__eyebrow">
+            <span className="home-hero__pink-dot" aria-hidden="true" />
+            Ask Bentley anything
           </motion.div>
-          <motion.div variants={fadeUp} className="home-hero__where">
-            Mad EZ Media &amp; Technology Partners{' '}
-            <span className="home-hero__dot">·</span> Charlotte, NC{' '}
-            <span className="home-hero__dot">·</span>{' '}
-            <span className="slot">Slot 2 of 3 open</span>
+
+          <motion.h1 variants={fadeUp} className="home-hero__h1">
+            We build the AI infrastructure your business{' '}
+            <em className="home-hero__em">actually</em> needs.
+          </motion.h1>
+
+          <motion.p variants={fadeUp} className="home-hero__deck">
+            Skip the sales deck. Ask Bentley — our AI agent, live below — what&apos;s
+            possible, what it costs, and whether we&apos;re the right shop. He&apos;ll tell
+            you the truth, even when the truth is &ldquo;not us.&rdquo;
+          </motion.p>
+
+          <motion.div variants={fadeUp} className="home-hero__chat-wrap">
+            <BentleyChat variant="compact" quickPrompts={HERO_PROMPTS} />
           </motion.div>
-        </motion.div>
 
-        <motion.h1
-          className="home-hero__h1"
-          initial="hidden"
-          animate="visible"
-          variants={heroStagger}
-        >
-          <motion.span variants={fadeUp} style={{ display: 'block' }}>
-            We build{' '}
-            <em className="home-hero__em-gradient">AI-native media</em>{' '}
-            systems for companies whose audiences{' '}
-          </motion.span>
-          <motion.span variants={fadeUp} style={{ display: 'block' }}>
-            <em className="home-hero__em-gradient">live online</em>.
-          </motion.span>
-        </motion.h1>
-
-        <motion.p
-          className="home-hero__deck"
-          initial="hidden"
-          animate="visible"
-          variants={heroStagger}
-        >
-          Custom platforms, autonomous characters, sonic identities, and protocol-grade
-          infrastructure — designed, built, and operated by a small senior team.
-          We do not ship decks. We ship <strong>working systems</strong>.<sup>
-            <a href="#fn-1">1</a>
-          </sup>
-        </motion.p>
-
-        <motion.div
-          className="home-hero__actions"
-          initial="hidden"
-          animate="visible"
-          variants={heroStagger}
-        >
           <motion.div variants={fadeUp}>
-            <Link href="/#contact" className="home-hero__cta-primary">
-              Talk to Bentley →
+            <Link href="/bentley" className="home-hero__link-quiet">
+              Prefer more room? Open the full conversation →
             </Link>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="home-hero__meta">
+            Mad EZ Media &amp; Technology Partners <span className="home-hero__dot">·</span>{' '}
+            Charlotte, NC <span className="home-hero__dot">·</span>{' '}
+            <span className="slot">Slot 2 of 3 open</span>
           </motion.div>
         </motion.div>
       </div>

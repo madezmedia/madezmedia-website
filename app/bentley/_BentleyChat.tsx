@@ -4,7 +4,23 @@ import { useState, useRef, useEffect } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
 
-export function BentleyChat() {
+interface BentleyChatProps {
+  /** 'full' = the dedicated /bentley page surface. 'compact' = embedded in the
+   * homepage hero or the floating bubble panel — shorter, tighter padding. */
+  variant?: 'full' | 'compact';
+  /** Owner/prospect-facing quick-prompt chips shown before the first message
+   * is sent. Omit to render the composer only (matches original /bentley UX). */
+  quickPrompts?: string[];
+  placeholder?: string;
+  className?: string;
+}
+
+export function BentleyChat({
+  variant = 'full',
+  quickPrompts,
+  placeholder = 'Ask Bentley anything…',
+  className = '',
+}: BentleyChatProps) {
   const [input, setInput] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -29,18 +45,25 @@ export function BentleyChat() {
     }
   }, [messages, status]);
 
+  const isThinking = status === 'submitted' || status === 'streaming';
+  const hasStarted = messages.length > 0;
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!input.trim() || status === 'streaming' || status === 'submitted') return;
+    if (!input.trim() || isThinking) return;
     setErrorMessage(null);
     sendMessage({ text: input });
     setInput('');
   }
 
-  const isThinking = status === 'submitted' || status === 'streaming';
+  function handleChip(prompt: string) {
+    if (isThinking) return;
+    setErrorMessage(null);
+    sendMessage({ text: prompt });
+  }
 
   return (
-    <div className="bentley-chat">
+    <div className={`bentley-chat bentley-chat--${variant} ${className}`.trim()}>
       <div className="messages" ref={scrollRef}>
         {messages.length === 0 && (
           <div className="msg msg-bentley intro">
@@ -77,12 +100,28 @@ export function BentleyChat() {
         )}
       </div>
 
+      {quickPrompts && quickPrompts.length > 0 && !hasStarted && (
+        <div className="chips" role="group" aria-label="Suggested questions">
+          {quickPrompts.map((prompt) => (
+            <button
+              key={prompt}
+              type="button"
+              className="chip"
+              onClick={() => handleChip(prompt)}
+              disabled={isThinking}
+            >
+              {prompt}
+            </button>
+          ))}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="composer">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask Bentley anything…"
+          placeholder={placeholder}
           aria-label="Message Bentley"
           disabled={isThinking}
         />

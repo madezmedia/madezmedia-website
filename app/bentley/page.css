@@ -69,6 +69,33 @@
 .bentley-chat .composer button:hover:not(:disabled) { background: var(--mzm-accent); }
 .bentley-chat .composer button:disabled { opacity: 0.5; cursor: not-allowed; }
 
+/* Compact variant — homepage hero + floating bubble panel */
+.bentley-chat--compact { min-height: 380px; max-height: 480px; border-radius: var(--mzm-radius-lg); }
+.bentley-chat--compact .messages { padding: var(--mzm-space-4); gap: var(--mzm-space-3); }
+.bentley-chat--compact .msg .body { font-size: var(--mzm-text-base); padding: var(--mzm-space-3) var(--mzm-space-4); }
+
+/* Quick-prompt chips — shown before the first message is sent */
+.bentley-chat .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 var(--mzm-space-4) var(--mzm-space-3);
+}
+.bentley-chat .chip {
+  font-family: var(--mzm-font-sans);
+  font-size: 12.5px;
+  font-weight: var(--mzm-weight-medium);
+  color: var(--mzm-ink);
+  background: var(--mzm-paper);
+  border: 1px solid var(--mzm-ink-rule);
+  border-radius: var(--mzm-radius-pill);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: border-color 160ms var(--mzm-ease-default), color 160ms var(--mzm-ease-default), background 160ms var(--mzm-ease-default);
+}
+.bentley-chat .chip:hover:not(:disabled) { border-color: var(--mzm-accent); color: var(--mzm-accent); background: #ffffff; }
+.bentley-chat .chip:disabled { opacity: 0.5; cursor: not-allowed; }
+
 @media (max-width: 600px) { .bentley-page .bentley-hero { padding: var(--mzm-space-20) 20px var(--mzm-space-8); } .bentley-page .touchpoints { padding: 0 20px var(--mzm-space-8); } .bentley-page .chat-section { padding: var(--mzm-space-8) 20px var(--mzm-space-12); } }
 
 .bentley-page footer.site-foot { max-width: var(--mzm-max-content); margin: 0 auto; padding: var(--mzm-space-10) 32px var(--mzm-space-12); border-top: 1px solid var(--mzm-ink-rule); font-family: var(--mzm-font-sans); font-size: 13px; color: var(--mzm-ink-fade); }
