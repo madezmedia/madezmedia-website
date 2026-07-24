@@ -32,7 +32,7 @@ export function Contact() {
           variants={fadeUp}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="home-contact__num">N° 05</span>Talk to the studio
+          <span className="home-contact__num">N° 06</span>Talk to the studio
         </motion.div>
 
         <motion.h2
@@ -42,7 +42,7 @@ export function Contact() {
           variants={fadeUp}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Three ways <em className="home-contact__em-gradient">to start.</em>
+          One call. <em className="home-contact__em-gradient">No decks.</em>
         </motion.h2>
 
         <motion.p
@@ -63,13 +63,13 @@ export function Contact() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
-            <Link href="/bentley" className="home-contact__btn home-contact__btn--primary">Talk to Bentley →</Link>
+            <Link href="/bentley" className="home-contact__cta-primary">Talk to Bentley →</Link>
           </motion.div>
           <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
-            <Link href="/assessment" className="home-contact__btn home-contact__btn--quiet">$499 AI Assessment →</Link>
+            <Link href="/assessment" className="home-contact__cta-quiet">AI Assessment →</Link>
           </motion.div>
           <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
-            <Link href="/fleet" className="home-contact__btn home-contact__btn--quiet">$4,500 Agent Fleet →</Link>
+            <Link href="/fleet" className="home-contact__cta-quiet">Agent Fleet →</Link>
           </motion.div>
         </motion.div>
       </div>
