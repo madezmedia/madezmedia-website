@@ -65,7 +65,7 @@ export function Hero() {
             Mad EZ Media &amp; Technology Partners{' '}
             <span className="home-hero__dot">·</span> Charlotte, NC{' '}
             <span className="home-hero__dot">·</span>{' '}
-            <span className="home-hero__slot">Slot 2 of 3 open</span>
+            <span className="slot">Slot 2 of 3 open</span>
           </motion.div>
         </motion.div>
 
@@ -105,18 +105,8 @@ export function Hero() {
           variants={heroStagger}
         >
           <motion.div variants={fadeUp}>
-            <Link href="/#contact" className="home-hero__btn home-hero__btn--primary">
+            <Link href="/#contact" className="home-hero__cta-primary">
               Talk to Bentley →
-            </Link>
-          </motion.div>
-          <motion.div variants={fadeUp}>
-            <Link href="/assessment" className="home-hero__btn home-hero__btn--quiet">
-              $499 AI Audit →
-            </Link>
-          </motion.div>
-          <motion.div variants={fadeUp}>
-            <Link href="/fleet" className="home-hero__btn home-hero__btn--quiet">
-              $4,500 Fleet Deployment →
             </Link>
           </motion.div>
         </motion.div>
