@@ -4,6 +4,7 @@ import { ScrollReveal } from './_components/MilestoneFeed';
 import { Hero } from './_components/home/Hero';
 import { Problem } from './_components/home/Problem';
 import { Bridge } from './_components/home/Bridge';
+import { Leaks } from './_components/home/Leaks';
 import { ProofFeed } from './_components/home/ProofFeed';
 import { Lab } from './_components/home/Lab';
 import { Work } from './_components/home/Work';
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Hero />
       <Problem />
       <Bridge />
+      <Leaks />
       <ProofFeed />
       <Lab />
       <Work />
