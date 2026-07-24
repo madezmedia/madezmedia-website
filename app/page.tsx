@@ -6,6 +6,7 @@ import { Problem } from './_components/home/Problem';
 import { Bridge } from './_components/home/Bridge';
 import { Leaks } from './_components/home/Leaks';
 import { Shipped } from './_components/home/Shipped';
+import { Founder } from './_components/home/Founder';
 import { Contact } from './_components/home/Contact';
 import { Footnotes } from './_components/home/Footnotes';
 
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Bridge />
       <Leaks />
       <Shipped />
+      <Founder />
       <Contact />
       <Footnotes />
     </main>

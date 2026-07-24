@@ -9,6 +9,7 @@ const LINKS = [
   { href: '/assessment', label: 'AI Assessment' },
   { href: '/fleet', label: 'Agent Fleet' },
   { href: '/voice-ai', label: 'Voice AI' },
+  { href: '/#founder', label: 'Founder' },
   { href: '/acmi', label: 'ACMI' },
   { href: '/blog', label: 'Notes' },
   { href: '/system', label: 'System' },
