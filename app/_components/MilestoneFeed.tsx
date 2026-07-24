@@ -12,6 +12,8 @@ type Milestone = {
 };
 
 const MILESTONES: Milestone[] = [
+  { ts: '2026-07-20T15:22:00Z', src: 'sales-command', verb: 'shipped', target: 'Sales Command · AI CRM v1', summary: 'full pipeline live · Vapi voice + Slack approval + Resend + Postgres + Mux', href: '#' },
+  { ts: '2026-07-21T13:05:00Z', src: 'sales-command', verb: 'generated', target: 'first AI voice-audit + tech/SEO assessment PDFs', summary: 'lead discovery → qualification → outreach, now offered as a client build', href: '#' },
   { ts: '2026-05-01T13:38:01Z', src: 'npm', verb: 'published', target: '@madezmedia/acmi v1.2.0', summary: 'first public release · 31/31 conformance pass · MIT', href: 'https://www.npmjs.com/package/@madezmedia/acmi' },
   { ts: '2026-05-01T13:42:42Z', src: 'registry', verb: 'cdn-live', target: '@madezmedia/acmi', summary: 'npm install reachable · ~4min CDN propagation', href: 'https://www.npmjs.com/package/@madezmedia/acmi' },
   { ts: '2026-05-02T15:11:00Z', src: 'github', verb: 'merged', target: 'madezmedia/acmi · ROADMAP.md', summary: 'Sigil v2.0 roadmap entry · cryptographic identity layer · post-5K-stars', href: 'https://github.com/madezmedia/acmi/blob/main/ROADMAP.md' },
