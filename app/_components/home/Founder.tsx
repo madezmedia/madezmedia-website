@@ -20,37 +20,26 @@ export function Founder() {
       >
         <motion.div className="home-founder__photo" variants={fadeUp}>
           <Image
-            src="/blog/mikey-author.jpg"
-            alt="Michael &#8220;Mikey&#8221; Shaw, founder of Mad EZ Media"
+            src="/brand/mikey-shaw.png"
+            alt="Mikey Shaw"
             fill
-            sizes="(min-width: 768px) 220px, 60vw"
+            sizes="150px"
           />
         </motion.div>
 
         <div>
           <motion.div className="home-eyebrow home-founder__eyebrow" variants={fadeUp}>
-            <span className="num">N° 04</span>Who&apos;s behind it
+            <span className="num">N° 04</span>Founder
           </motion.div>
 
           <motion.h2 className="home-founder__h2" variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }}>
-            Twenty-plus years. Three companies founded.{' '}
-            <em>One thing that stayed true.</em>
+            Mikey Shaw — Mad EZ Media
           </motion.h2>
 
           <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.2 }}>
-            Michael &ldquo;Mikey&rdquo; Shaw has spent two decades building media and
-            technology companies — three of them his own — before turning the same operator
-            instincts on AI infrastructure the month ChatGPT shipped.
+            20+ years running operations — from a 25-person restaurant floor to founding 6
+            technology companies. Real deployments, real businesses, real hours reclaimed.
           </motion.p>
-          <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.3 }}>
-            Mad EZ Media is the fourth build. It&apos;s the first one that talks back:
-            Bentley, the agent in this chat, runs on the same memory protocol the studio
-            publishes in the open.
-          </motion.p>
-
-          <motion.div className="home-founder__meta" variants={fadeUp} transition={{ duration: 0.5, delay: 0.4 }}>
-            Charlotte, NC · building in public since 2022
-          </motion.div>
         </div>
       </motion.div>
     </section>
