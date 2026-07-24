@@ -9,6 +9,7 @@ import { Shipped } from './_components/home/Shipped';
 import { Founder } from './_components/home/Founder';
 import { Contact } from './_components/home/Contact';
 import { Footnotes } from './_components/home/Footnotes';
+import { ChatBubble } from './_components/home/ChatBubble';
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Founder />
       <Contact />
       <Footnotes />
+      <ChatBubble />
     </main>
   );
 }

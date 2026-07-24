@@ -1274,6 +1274,86 @@ footer.home-foot {
   border-bottom-color: var(--ember);
 }
 
+/* ─── Floating chat bubble (persistent across scroll) ────────────── */
+.home-bubble-launcher {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--forest-800);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 14px 22px;
+  font-family: var(--font-body-v14);
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: transform 200ms, background 200ms;
+}
+.home-bubble-launcher:hover {
+  background: var(--forest-600);
+  transform: translateY(-2px);
+}
+.home-bubble-launcher__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--process-cyan);
+  animation: home-blink 1.6s ease-in-out infinite;
+}
+.home-bubble-panel {
+  position: fixed;
+  bottom: 88px;
+  right: 24px;
+  z-index: 61;
+  width: min(380px, calc(100vw - 32px));
+  max-height: min(600px, calc(100vh - 120px));
+  background: var(--mzm-paper);
+  border: 1px solid var(--mzm-ink-rule);
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.home-bubble-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: var(--forest-800);
+  color: #ffffff;
+  font-family: var(--font-body-v14);
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.home-bubble-panel__close {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+}
+.home-bubble-panel .bentley-chat {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  max-height: none;
+  flex: 1;
+}
+@media (max-width: 480px) {
+  .home-bubble-launcher__label { display: none; }
+  .home-bubble-launcher { padding: 14px; }
+}
+
 /* ─── Animations + utilities ────────────────────────────────────── */
 @keyframes home-pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
