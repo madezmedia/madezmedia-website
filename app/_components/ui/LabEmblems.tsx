@@ -70,3 +70,22 @@ export function SonicEmblem({ color = 'var(--forest-800)', size = 48 }: EmblemPr
     </svg>
   );
 }
+
+export function SalesCommandEmblem({ color = 'var(--plum)', size = 48 }: EmblemProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      {/* Pipeline funnel — discovery → qualification → outreach */}
+      <path
+        d="M8 10 H40 L28 26 V38 L20 34 V26 Z"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinejoin="round"
+        fill={color}
+        fillOpacity="0.15"
+      />
+      <circle cx="8" cy="10" r="2.5" fill={color} opacity="0.9" />
+      <circle cx="40" cy="10" r="2.5" fill={color} opacity="0.9" />
+      <circle cx="24" cy="38" r="2.5" fill={color} opacity="0.9" />
+    </svg>
+  );
+}

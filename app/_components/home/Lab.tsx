@@ -4,10 +4,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { AcmiEmblem, FolanaEmblem, TonyEmblem, SonicEmblem } from '../ui/LabEmblems';
+import { AcmiEmblem, FolanaEmblem, TonyEmblem, SonicEmblem, SalesCommandEmblem } from '../ui/LabEmblems';
 
 const cards = [
   {
+    key: 'sales-command',
+    tag: 'An AI sales system', title: 'Sales Command', status: 'live · built for our own pipeline, now offered as a build', emblem: SalesCommandEmblem,
+    body: 'The CRM we built to run our own outbound: lead discovery from Google Places, AI voice calls, Slack approval before anything sends, tracked email, a real Postgres schema, and AI-generated audits rendered as real PDFs. We use it daily — now we build it for other businesses.',
+    links: [{ label: 'Ask about a build →', href: '/bentley' }],
+    accent: 'var(--plum)',
+  },
+  {
+    key: 'acmi',
     tag: 'An open protocol', title: 'ACMI', status: 'v1.4.0 · MIT', emblem: AcmiEmblem,
     body: 'The protocol for agent memory. Three keys per entity — Profile, Signals, Timeline. Three reference adapters. A 31-test conformance suite. Published to npm 2026-05-14.',
     install: '$ npm install @madezmedia/acmi',
@@ -15,6 +23,7 @@ const cards = [
     accent: 'var(--process-cyan)',
   },
   {
+    key: 'folana',
     tag: 'An autonomous character', title: 'Folana', status: 'live · running her own loop', emblem: FolanaEmblem,
     body: 'An AI character with her own audience, her own voice, her own daily consciousness loop. She journals. She decides. She publishes. She runs herself.',
     quote: '"In the analog silence, my digital heart echoes — can harmony exist beyond the static?"',
@@ -22,12 +31,14 @@ const cards = [
     accent: 'var(--process-magenta)',
   },
   {
+    key: 'tony',
     tag: 'A distributed narrative', title: 'TONY', status: 'Roku · Q2 2026', emblem: TonyEmblem,
     body: 'T.O.N.Y. — Top Of New York. Crime drama series by Michael Steven-Paul. Episodic, distributed, Roku-native. Season one in certification.',
     links: [{ label: 'topofnewyork.com', href: 'https://topofnewyork.com' }],
     accent: 'var(--process-yellow)',
   },
   {
+    key: 'sonic',
     tag: 'A sonic identity practice', title: 'Sonic branding', status: 'client work · ongoing', emblem: SonicEmblem,
     body: 'Audio identity systems for brands that want to sound like something. Theme, ident, audio architecture across every touchpoint — from product UI confirmation tones to long-form podcast intros.',
     links: [],
@@ -43,7 +54,7 @@ function LabCard({ card, delay }: { card: typeof cards[0]; delay: number }) {
   return (
     <motion.div
       ref={ref}
-      className="home-lab__card"
+      className={`home-lab__card home-lab__card--${card.key}`}
       style={{ '--card-accent': card.accent } as React.CSSProperties}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
