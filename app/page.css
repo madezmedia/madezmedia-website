@@ -519,6 +519,59 @@ nav.home-nav {
   border-bottom: 1px solid var(--mist);
 }
 
+/* ─── Problem (single-column centered pain narrative) ────────────── */
+.home-problem {
+  background: var(--mzm-paper);
+  text-align: center;
+}
+.home-problem__inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.home-problem__eyebrow {
+  justify-content: center;
+}
+.home-problem__h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(28px, 3.6vw, 42px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--mzm-ink);
+  margin: 0 0 32px;
+}
+.home-problem p {
+  font-family: var(--font-body-v14);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--mzm-ink-soft);
+  margin: 0 0 22px;
+}
+.home-problem p:last-child {
+  margin-bottom: 0;
+  color: var(--mzm-ink);
+  font-weight: 600;
+}
+
+/* ─── Bridge (short transition paragraph) ────────────────────────── */
+.home-bridge.home-section {
+  background: var(--mzm-paper-warm);
+  padding: 56px 20px;
+  text-align: center;
+}
+.home-bridge__inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.home-bridge p {
+  font-family: var(--font-body-v14);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--mzm-ink);
+  margin: 0;
+}
+
 /* ─── Lab ───────────────────────────────────────────────────────── */
 .home-lab {
   background: var(--mzm-paper);

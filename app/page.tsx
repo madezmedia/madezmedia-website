@@ -2,8 +2,8 @@ import './page.css';
 import './bentley/page.css';
 import { ScrollReveal } from './_components/MilestoneFeed';
 import { Hero } from './_components/home/Hero';
-import { WhatWeBuild } from './_components/home/WhatWeBuild';
-import { Approach } from './_components/home/Approach';
+import { Problem } from './_components/home/Problem';
+import { Bridge } from './_components/home/Bridge';
 import { ProofFeed } from './_components/home/ProofFeed';
 import { Lab } from './_components/home/Lab';
 import { Work } from './_components/home/Work';
@@ -15,8 +15,8 @@ export default function HomePage() {
     <main className="home-page">
       <ScrollReveal />
       <Hero />
-      <WhatWeBuild />
-      <Approach />
+      <Problem />
+      <Bridge />
       <ProofFeed />
       <Lab />
       <Work />
