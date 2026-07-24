@@ -13,6 +13,8 @@ interface BentleyChatProps {
   quickPrompts?: string[];
   placeholder?: string;
   className?: string;
+  /** Skip the "hey, i'm bentley" intro bubble — just the composer + chips. */
+  hideIntro?: boolean;
 }
 
 export function BentleyChat({
@@ -20,6 +22,7 @@ export function BentleyChat({
   quickPrompts,
   placeholder = 'Ask Bentley anything…',
   className = '',
+  hideIntro = false,
 }: BentleyChatProps) {
   const [input, setInput] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -62,10 +65,14 @@ export function BentleyChat({
     sendMessage({ text: prompt });
   }
 
+  const isMinimal = hideIntro && !hasStarted;
+
   return (
-    <div className={`bentley-chat bentley-chat--${variant} ${className}`.trim()}>
+    <div
+      className={`bentley-chat bentley-chat--${variant} ${isMinimal ? 'bentley-chat--minimal' : ''} ${className}`.trim()}
+    >
       <div className="messages" ref={scrollRef}>
-        {messages.length === 0 && (
+        {messages.length === 0 && !hideIntro && (
           <div className="msg msg-bentley intro">
             <div className="who">Bentley</div>
             <div className="body">
@@ -125,8 +132,8 @@ export function BentleyChat({
           aria-label="Message Bentley"
           disabled={isThinking}
         />
-        <button type="submit" disabled={isThinking || !input.trim()}>
-          {isThinking ? '…' : 'Send'}
+        <button type="submit" disabled={isThinking || !input.trim()} aria-label="Send">
+          {isThinking ? '…' : isMinimal ? '→' : 'Send'}
         </button>
       </form>
     </div>

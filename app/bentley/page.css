@@ -74,6 +74,35 @@
 .bentley-chat--compact .messages { padding: var(--mzm-space-4); gap: var(--mzm-space-3); }
 .bentley-chat--compact .msg .body { font-size: var(--mzm-text-base); padding: var(--mzm-space-3) var(--mzm-space-4); }
 
+/* Minimal — no messages yet, no intro bubble: just the pill composer + chips,
+   matching the approved Claude Design hero mock (no empty message well). */
+.bentley-chat--minimal { min-height: 0; max-height: none; background: transparent; border: none; }
+.bentley-chat--minimal .messages { display: none; }
+.bentley-chat--minimal .composer {
+  background: #ffffff;
+  border: 1.5px solid var(--mzm-ink-rule);
+  border-top: 1.5px solid var(--mzm-ink-rule);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(45, 74, 62, 0.08);
+  padding: 8px 8px 8px 20px;
+  gap: 10px;
+}
+.bentley-chat--minimal .composer input {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 14px;
+}
+.bentley-chat--minimal .composer input:focus { box-shadow: none; }
+.bentley-chat--minimal .composer button {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  padding: 0;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
 /* Quick-prompt chips — shown before the first message is sent */
 .bentley-chat .chips {
   display: flex;
