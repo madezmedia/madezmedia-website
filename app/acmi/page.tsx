@@ -37,18 +37,22 @@ export default function AcmiPage() {
             <line x1="10" y1="80" x2="148" y2="80" stroke="#2d4a3e" strokeWidth="2.5" />
           </svg>
         </div>
-        <div className="mzm-eyebrow"><span className="num">N° 01</span>An open protocol · v1.2 · MIT</div>
+        <div className="mzm-eyebrow"><span className="num">N° 01</span>An open protocol · v1.3 · MIT</div>
         <h1>
           Your agents remember everything.
           <br /><span className="em">Do you?</span>
         </h1>
         <p className="deck">
-          Run two or more AI agents and you already know the problem: your fleet generates
-          decisions, events, and lessons every hour — and none of it survives the next session.
-          Or worse: it survives, but you can&apos;t see it. ACMI is the{' '}
-          <strong>agent memory protocol</strong> that gives every entity in your fleet
-          persistent, queryable memory — three keys, one pattern, zero lock-in.
+          Every AI agent we build — the one that answers your calls, the one that quotes your
+          jobs — remembers everything, permanently. Not in a black box you have to trust us
+          about. ACMI is the <strong>memory system itself</strong>, published open-source, so
+          you can see exactly what your agent knows and how it stays yours if you ever leave.
         </p>
+
+        <div className="acmi-hero-ctas">
+          <a href="/bentley" className="acmi-hero-cta-primary">Talk to Bentley →</a>
+          <span className="acmi-hero-cta-or">or, if you build software:</span>
+        </div>
 
         <div className="install-card">
           <div className="install-text"><span className="prompt">$</span>npm install @madezmedia/acmi</div>
@@ -56,10 +60,10 @@ export default function AcmiPage() {
         </div>
 
         <div className="hero-stats">
-          <div className="hero-stat"><span className="num"><span className="accent-c">v1.3</span></span><span className="label">Latest spec</span></div>
-          <div className="hero-stat"><span className="num">31<span className="accent-c">/31</span></span><span className="label">Conformance pass</span></div>
-          <div className="hero-stat"><span className="num">3</span><span className="label">Reference adapters</span></div>
-          <div className="hero-stat"><span className="num">MIT</span><span className="label">License</span></div>
+          <div className="hero-stat"><span className="num">Open</span><span className="label">Not a black box</span></div>
+          <div className="hero-stat"><span className="num">MIT</span><span className="label">Never locked in</span></div>
+          <div className="hero-stat"><span className="num">31<span className="accent-c">/31</span></span><span className="label">Tests pass, every release</span></div>
+          <div className="hero-stat"><span className="num">Every</span><span className="label">Fleet we run, including ours</span></div>
         </div>
       </section>
 

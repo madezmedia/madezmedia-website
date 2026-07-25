@@ -32,6 +32,10 @@
 .acmi-page .acmi-hero .deck strong { font-weight: var(--mzm-weight-semibold); color: var(--mzm-ink); }
 .acmi-page .acmi-hero .deck em { font-style: italic; color: var(--mzm-ink); border-bottom: 2px double var(--mzm-underline); padding-bottom: 2px; }
 
+.acmi-page .acmi-hero-ctas { display: flex; align-items: center; gap: var(--mzm-space-5); margin-bottom: var(--mzm-space-5); flex-wrap: wrap; }
+.acmi-page .acmi-hero-cta-primary { background: var(--mzm-ink); color: var(--mzm-paper); font-family: var(--mzm-font-sans); font-weight: var(--mzm-weight-medium); font-size: 15px; padding: 13px 26px; border-radius: var(--mzm-radius-sm); text-decoration: none; transition: background var(--mzm-dur-fast) var(--mzm-ease-default); }
+.acmi-page .acmi-hero-cta-primary:hover { background: var(--mzm-accent); }
+.acmi-page .acmi-hero-cta-or { font-family: var(--mzm-font-sans); font-size: 13px; color: var(--mzm-ink-fade); }
 .acmi-page .install-card { background: var(--mzm-paper-warm); border: 1px solid var(--mzm-ink-rule); border-radius: var(--mzm-radius-md); padding: var(--mzm-space-5) var(--mzm-space-6); display: flex; align-items: center; gap: var(--mzm-space-4); max-width: 520px; margin-bottom: var(--mzm-space-8); }
 .acmi-page .install-card .install-text { flex: 1; font-family: var(--mzm-font-mono); font-size: 15px; color: var(--mzm-ink); user-select: all; overflow-x: auto; }
 .acmi-page .install-card .install-text .prompt { color: var(--mzm-ink-quiet); margin-right: 6px; }
