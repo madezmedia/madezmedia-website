@@ -20,52 +20,52 @@ export const metadata: Metadata = {
 const LEAKS = [
   {
     num: 'LEAK 01',
-    tag: 'INBOUND LEAD LOSS',
+    tag: 'MISSED CALLS',
     pain: '"You miss the call, they call the next guy."',
-    trigger: 'Inbound lead submits contact form or calls outside regular business hours (5pm–9am).',
-    action: 'Autonomous AI voice/SMS agent qualifies the lead, answers intake questions, and books calendar in under 60 seconds.',
+    trigger: 'A call comes in while you’re under a sink or on a roof, and it rings out.',
+    action: 'An AI agent answers immediately, day or night, and books the job before they hang up.',
   },
   {
     num: 'LEAK 02',
-    tag: 'BACK-OFFICE SLAVERY',
+    tag: 'SLOW QUOTES',
     pain: '"It\'s 9pm and you\'re still doing invoices."',
-    trigger: 'Unmatched receipts, vendor PDFs, or repetitive manual line-item entry into accounting software.',
-    action: 'Automated OCR & ledger pipeline parses line items, cross-references POs, and posts to Xero/QuickBooks with zero manual typing.',
+    trigger: 'Quotes and paperwork wait until you’re home and exhausted, so they go out two days late.',
+    action: 'Quotes and invoices get written and sent the same hour, pulled straight from your price book.',
   },
   {
     num: 'LEAK 03',
-    tag: 'CONTEXT SWAPPING FRICTION',
-    pain: '"Copy-pasting context between 10 browser tabs all day."',
-    trigger: 'Updating client CRM state, project status, and internal comms across fragmented web tools.',
-    action: 'Shared ACMI state relay synchronizes context across tools automatically, preserving active task memory.',
+    tag: 'NO REVIEWS',
+    pain: '"Happy customers, but your Google page hasn’t moved in months."',
+    trigger: 'The job finishes, everyone moves on, and nobody remembers to ask for a review.',
+    action: 'A review request goes out automatically the moment the job closes — while it’s still fresh.',
   },
   {
     num: 'LEAK 04',
-    tag: 'PROMPT GUESSWORK BOTTLENECKS',
-    pain: '"Your team spent 3 hours writing an email you didn\'t ask for."',
-    trigger: 'Vague instructions fed to raw ChatGPT windows without stored brand guidelines or structured output constraints.',
-    action: 'Pre-tuned agent skills enforce brand voice, client tone, and structured deliverables in seconds.',
+    tag: 'SCHEDULING PING-PONG',
+    pain: '"Ten texts back and forth just to land on a time."',
+    trigger: 'A customer wants to book, and you’re both juggling calendars over text between jobs.',
+    action: 'The agent checks your real calendar and locks in a time in one message — no back-and-forth.',
   },
   {
     num: 'LEAK 05',
-    tag: 'LIVE CLIENT HALLUCINATIONS',
-    pain: '"ChatGPT hallucinated customer data on a live pitch call."',
-    trigger: 'Relying on ephemeral web chats with zero internal ground-truth data or enterprise access controls.',
-    action: 'Dedicated single-tenant vector retrieval anchors every response strictly to verified internal knowledge bases.',
+    tag: 'REPEAT QUESTIONS',
+    pain: '"Do you service my area?" — for the hundredth time this month.',
+    trigger: 'The same handful of questions come in every single day, eating minutes between jobs.',
+    action: 'The agent answers instantly and the same way every time, without you lifting a finger.',
   },
   {
     num: 'LEAK 06',
-    tag: 'UNUSED SAAS SEAT SPRAWL',
-    pain: '"Paying $30/mo per head for 5 separate AI subscriptions nobody uses."',
-    trigger: 'Fragmented AI tool purchases by team members without central workflow orchestration.',
-    action: 'Consolidated autonomous fleet infrastructure providing single-tenant control and zero subscription bloat.',
+    tag: 'NO-SHOWS',
+    pain: '"You show up. They forgot. Or worse, they never actually confirmed."',
+    trigger: 'An appointment gets booked, but nobody follows up to confirm it’s still on.',
+    action: 'Automatic confirmation and reminder texts go out before every appointment, no exceptions.',
   },
   {
     num: 'LEAK 07',
-    tag: 'ONBOARDING DELAYS',
-    pain: '"Manual client onboarding taking 4 days instead of 4 minutes."',
-    trigger: 'New client signs contract or completes checkout payment.',
-    action: 'Automated sequence provisions shared drives, dispatches welcome collateral, and schedules kickoff calls instantly.',
+    tag: 'SLOW ONBOARDING',
+    pain: '"A new client signs, then waits four days to hear from anyone."',
+    trigger: 'A new client pays or signs, and the welcome, paperwork, and kickoff sit in a queue.',
+    action: 'Welcome messages, paperwork, and the first appointment go out within minutes, automatically.',
   },
 ];
 
@@ -78,11 +78,13 @@ export default function AssessmentPage() {
           <span className="num">N° 01</span>AI TOOLS ASSESSMENT
         </div>
         <h1>
-          Stop Buying AI That Forgets Your Business{' '}
-          <span className="em">Every Time You Close The Tab.</span>
+          Your business is leaking hours somewhere.{' '}
+          <span className="em">We&apos;ll show you exactly where.</span>
         </h1>
         <p className="hero-deck">
-          Most AI implementations fail because generic tools lack persistent operational memory. Our 90-Minute White-Glove Audit pinpoints your exact workflow leaks and maps your custom ACMI fleet path.
+          Most AI tools forget everything the moment you close the tab. Our 90-minute audit
+          finds your real leaks — missed calls, slow quotes, no-shows — and shows you exactly
+          what fixing them is worth.
         </p>
         <div className="hero-ctas">
           <a
@@ -111,10 +113,11 @@ export default function AssessmentPage() {
             <span className="num">N° 02</span>DIAGNOSTIC FRAMEWORK
           </div>
           <h2>
-            The 7 Hidden Leaks <span className="em">Draining Your Billable Hours.</span>
+            The 7 Leaks <span className="em">Costing You Jobs and Hours.</span>
           </h2>
           <p className="section-sub">
-            Pain-first trigger-action diagnostics. We audit these 7 friction points in your current operations to recover waste.
+            The same 7 problems show up in almost every service business we look at. Here&apos;s
+            what each one costs you, and what fixing it actually looks like.
           </p>
         </div>
 
@@ -130,11 +133,11 @@ export default function AssessmentPage() {
               </div>
               <div className="trigger-action-box">
                 <div className="pair-item">
-                  <span className="pair-lbl trigger">Trigger (Current Friction)</span>
+                  <span className="pair-lbl trigger">What&apos;s happening now</span>
                   <p className="pair-txt">{leak.trigger}</p>
                 </div>
                 <div className="pair-item">
-                  <span className="pair-lbl action">Action (Automated Fleet Fix)</span>
+                  <span className="pair-lbl action">What changes</span>
                   <p className="pair-txt">{leak.action}</p>
                 </div>
               </div>
@@ -155,10 +158,11 @@ export default function AssessmentPage() {
             <span className="num">N° 03</span>TRANSPARENT ENGAGEMENT
           </div>
           <h2>
-            Approved Pricing Ladder <span className="em">For Modern Operations.</span>
+            Three Ways <span className="em">to Start.</span>
           </h2>
           <p className="section-sub">
-            Start with a free consult, validate with a 90-minute audit, or scale immediately with a private ACMI agent fleet.
+            Start with a free conversation, validate it with a 90-minute audit, or go straight to
+            having your own agents built and running.
           </p>
         </div>
 
@@ -174,12 +178,13 @@ export default function AssessmentPage() {
               <div className="price-amount">$0</div>
               <div className="price-sub">Zero commitment · 15 minutes</div>
               <p className="price-desc">
-                Brief exploratory call with our team to evaluate your tool stack and identify low-hanging AI leverage points.
+                A quick call to hear what&apos;s actually slowing your business down and tell you
+                honestly whether we&apos;re a fit.
               </p>
               <ul className="features-list">
-                <li>Initial workflow fit assessment</li>
-                <li>Tool stack review</li>
-                <li>High-level AI opportunity roadmap</li>
+                <li>Walk through how your business runs today</li>
+                <li>An honest read on where AI would and wouldn&apos;t help</li>
+                <li>A plain-English next step, whatever we decide</li>
               </ul>
             </div>
             <a
@@ -203,13 +208,14 @@ export default function AssessmentPage() {
               <div className="price-amount">$499</div>
               <div className="price-sub">One-time investment · 5+ hr/wk returned guarantee</div>
               <p className="price-desc">
-                Deep-dive diagnostic session mapping your top 7 operational leaks, data structures, and custom fleet roadmap.
+                A 90-minute session where we walk through your business and find exactly where
+                you&apos;re losing hours and jobs — then map out what fixing it looks like.
               </p>
               <ul className="features-list">
-                <li>90-minute live deep-dive session</li>
-                <li>7 Leaks Audit &amp; Bottleneck Report</li>
-                <li>Custom ACMI Fleet Architecture Blueprint</li>
-                <li>Backed by 5+ hr/wk returned guarantee</li>
+                <li>90-minute live working session, not a slide deck</li>
+                <li>A written report on your 7 leaks, in plain English</li>
+                <li>A clear plan for what to build first</li>
+                <li>Backed by our 5+ hr/wk returned guarantee</li>
               </ul>
             </div>
             <a
@@ -229,17 +235,18 @@ export default function AssessmentPage() {
                 <span>TIER 2</span>
                 <span>PRODUCTION FLEET</span>
               </div>
-              <h3>Private ACMI Fleet Deployment</h3>
+              <h3>Private Agent Fleet Deployment</h3>
               <div className="price-amount">$4,500</div>
-              <div className="price-sub">Setup &amp; deployment · Private infrastructure</div>
+              <div className="price-sub">One-time setup · your own private system</div>
               <p className="price-desc">
-                Production-grade deployment of dedicated autonomous agents with persistent memory and background execution.
+                We build and deploy your own AI agents — live, answering calls and doing real
+                work, not a demo.
               </p>
               <ul className="features-list">
-                <li>Dedicated Client Redis Instance (zero cross-bleed)</li>
-                <li>2 Pre-configured Hermes Autonomous Agents</li>
-                <li>Background cron workers &amp; triggers</li>
-                <li>Full ACMI state memory relay integration</li>
+                <li>Your own private system — never shared with another client</li>
+                <li>Two agents configured and running for your business</li>
+                <li>Runs automatically in the background, all day</li>
+                <li>Remembers every call, quote, and customer, permanently</li>
               </ul>
             </div>
             <a
@@ -261,10 +268,11 @@ export default function AssessmentPage() {
             <span className="num">N° 04</span>EXECUTIVE COLLATERAL &amp; TEMPLATES
           </div>
           <h2>
-            Download Executive <span className="em">Audit Collateral.</span>
+            See the Audit <span className="em">Before You Book It.</span>
           </h2>
           <p className="section-sub">
-            Review our complete audit methodology, report structure, and printable sell sheets before your discovery session.
+            Take a look at exactly what the audit covers and how the report is structured,
+            before you book a call.
           </p>
         </div>
 
@@ -272,9 +280,10 @@ export default function AssessmentPage() {
           <div className="download-card">
             <div className="card-top">
               <span className="download-type">PRINT &amp; PDF READY</span>
-              <h3>Executive Sell Sheet</h3>
+              <h3>One-Page Overview</h3>
               <p className="download-desc">
-                Printable 1-page executive overview detailing the 7 operational leaks, audit timeline, and 5+ hr/wk returned guarantee.
+                A one-page rundown of the 7 leaks, how the audit works, and the 5+ hr/wk
+                returned guarantee.
               </p>
             </div>
             <a
@@ -283,16 +292,17 @@ export default function AssessmentPage() {
               rel="noopener noreferrer"
               className="download-cta-btn primary"
             >
-              Download Executive Sell Sheet (PDF/Print) →
+              Download the Overview (PDF) →
             </a>
           </div>
 
           <div className="download-card">
             <div className="card-top">
-              <span className="download-type">MARKDOWN TEMPLATE</span>
-              <h3>6-Page Kami Audit Template</h3>
+              <span className="download-type">SAMPLE REPORT</span>
+              <h3>What You Actually Get</h3>
               <p className="download-desc">
-                Our raw 6-page Kami-typeset audit report template used during live client diagnostic sessions.
+                The real, 6-page report template we fill out with you during the live audit
+                session.
               </p>
             </div>
             <a
@@ -301,7 +311,7 @@ export default function AssessmentPage() {
               rel="noopener noreferrer"
               className="download-cta-btn secondary"
             >
-              Download 6-Page Kami Audit Template (.md) →
+              Download the Sample Report →
             </a>
           </div>
         </div>
