@@ -67,7 +67,7 @@ export function IntakeCTA() {
               background: 'var(--ember)',
               color: '#fff',
               textDecoration: 'none',
-              fontFamily: 'var(--font-body)',
+              fontFamily: 'var(--font-body-v14)',
               fontWeight: 700, fontSize: 18,
               boxShadow: '0 20px 60px rgba(194,86,112,0.45)',
             }}
@@ -84,7 +84,7 @@ export function IntakeCTA() {
               background: 'transparent',
               color: '#fff',
               textDecoration: 'none',
-              fontFamily: 'var(--font-body)',
+              fontFamily: 'var(--font-body-v14)',
               fontWeight: 700, fontSize: 18,
               border: '1px solid rgba(255,255,255,0.25)',
             }}
@@ -95,7 +95,7 @@ export function IntakeCTA() {
 
         <p style={{
           marginTop: 36,
-          fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 12,
+          fontFamily: 'var(--mzm-font-mono)', fontWeight: 700, fontSize: 12,
           letterSpacing: '0.32em', textTransform: 'uppercase',
           color: 'rgba(255,255,255,0.5)',
         }}>

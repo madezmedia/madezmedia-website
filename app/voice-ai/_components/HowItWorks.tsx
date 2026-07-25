@@ -58,7 +58,7 @@ export function HowItWorks() {
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                 <span style={{
-                  fontFamily: 'var(--font-heading)',
+                  fontFamily: 'var(--font-display)',
                   fontWeight: 900, fontSize: 56,
                   color: step.accent,
                   opacity: 0.65,
@@ -68,14 +68,14 @@ export function HowItWorks() {
               </div>
               <h3 style={{
                 margin: 0,
-                fontFamily: 'var(--font-heading)',
+                fontFamily: 'var(--font-display)',
                 fontWeight: 800, fontSize: 26,
                 letterSpacing: '-0.02em',
                 color: 'var(--forest-800)',
               }}>{step.title}</h3>
               <p style={{
                 margin: 0,
-                fontFamily: 'var(--font-body)',
+                fontFamily: 'var(--font-body-v14)',
                 fontSize: 16, lineHeight: 1.55,
                 color: 'var(--fg-muted)',
               }}>{step.desc}</p>

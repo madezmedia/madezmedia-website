@@ -77,7 +77,7 @@ export function Pricing() {
               {tier.featured && (
                 <span style={{
                   position: 'absolute', top: 16, right: 16,
-                  fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 11,
+                  fontFamily: 'var(--mzm-font-mono)', fontWeight: 700, fontSize: 11,
                   letterSpacing: '0.22em', textTransform: 'uppercase',
                   background: '#fff', color: 'var(--ember)',
                   padding: '6px 12px', borderRadius: 9999,
@@ -85,18 +85,18 @@ export function Pricing() {
               )}
               <p style={{
                 margin: 0,
-                fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 14,
+                fontFamily: 'var(--mzm-font-mono)', fontWeight: 700, fontSize: 14,
                 letterSpacing: '0.22em', textTransform: 'uppercase',
                 color: tier.featured ? 'rgba(255,255,255,0.85)' : tier.accent,
               }}>{tier.name}</p>
               <p style={{
                 margin: 0,
-                fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: 80,
+                fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 80,
                 letterSpacing: '-0.04em', lineHeight: 1, color: '#fff',
               }}>{tier.price}</p>
               <p style={{
                 margin: 0,
-                fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 14,
+                fontFamily: 'var(--mzm-font-mono)', fontWeight: 700, fontSize: 14,
                 letterSpacing: '0.05em',
                 color: tier.featured ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.6)',
               }}>
@@ -112,7 +112,7 @@ export function Pricing() {
               }}>
                 {tier.features.map((f) => (
                   <li key={f} style={{
-                    fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.5,
+                    fontFamily: 'var(--font-body-v14)', fontSize: 15, lineHeight: 1.5,
                     color: tier.featured ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.8)',
                     paddingLeft: 18, position: 'relative',
                   }}>
@@ -135,7 +135,7 @@ export function Pricing() {
                   textDecoration: 'none',
                   background: tier.featured ? '#fff' : 'rgba(255,255,255,0.08)',
                   color: tier.featured ? 'var(--ember)' : '#fff',
-                  fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: 15,
+                  fontFamily: 'var(--font-body-v14)', fontWeight: 700, fontSize: 15,
                   border: tier.featured ? '0' : '1px solid rgba(255,255,255,0.15)',
                 }}
               >

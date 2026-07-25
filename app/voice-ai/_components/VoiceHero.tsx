@@ -93,7 +93,7 @@ export function VoiceHero() {
               animation: 'va-pulse 2s ease-in-out infinite',
             }} />
             <span style={{
-              fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 10,
+              fontFamily: 'var(--mzm-font-mono)', fontWeight: 700, fontSize: 10,
               letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--ember)',
             }}>
               Voice AI · Now booking Charlotte builds
@@ -101,7 +101,7 @@ export function VoiceHero() {
           </div>
 
           <h1 style={{
-            fontFamily: 'var(--font-heading)', fontWeight: 900,
+            fontFamily: 'var(--font-display)', fontWeight: 900,
             fontSize: 'clamp(40px, 6.5vw, 88px)',
             lineHeight: 1.05, letterSpacing: '-0.035em',
             margin: '0 0 28px', color: '#fff',
@@ -120,7 +120,7 @@ export function VoiceHero() {
           </h1>
 
           <p style={{
-            fontFamily: 'var(--font-body)', fontWeight: 500,
+            fontFamily: 'var(--font-body-v14)', fontWeight: 500,
             fontSize: 20, lineHeight: 1.55,
             color: 'rgba(203,213,225,0.92)',
             maxWidth: 560, margin: '0 0 40px',
@@ -133,14 +133,14 @@ export function VoiceHero() {
               display: 'inline-flex', alignItems: 'center', gap: 8,
               background: '#fff', color: 'var(--ink-950)',
               padding: '20px 36px', borderRadius: 8, textDecoration: 'none',
-              fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: 17,
+              fontFamily: 'var(--font-body-v14)', fontWeight: 700, fontSize: 17,
             }}>Book Intake Call</a>
             <a href="#pricing" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               border: '1px solid rgba(255,255,255,0.2)',
               background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)',
               color: '#fff', padding: '20px 36px', borderRadius: 8, textDecoration: 'none',
-              fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: 17,
+              fontFamily: 'var(--font-body-v14)', fontWeight: 700, fontSize: 17,
             }}>See Pricing</a>
           </div>
         </div>
@@ -152,7 +152,7 @@ export function VoiceHero() {
           backdropFilter: 'blur(12px)',
         }}>
           <p style={{
-            fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 10,
+            fontFamily: 'var(--mzm-font-mono)', fontWeight: 700, fontSize: 10,
             letterSpacing: '0.2em', textTransform: 'uppercase',
             color: 'rgba(203,213,225,0.6)', margin: '0 0 18px',
             display: 'flex', alignItems: 'center', gap: 8,
@@ -165,13 +165,13 @@ export function VoiceHero() {
             Live Demo · No setup required
           </p>
           <p style={{
-            fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 20,
+            fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20,
             letterSpacing: '-0.01em', margin: '0 0 8px', color: '#fff',
           }}>
             Hear Bentley answer a call.
           </p>
           <p style={{
-            fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.55,
+            fontFamily: 'var(--font-body-v14)', fontSize: 14, lineHeight: 1.55,
             color: 'rgba(203,213,225,0.7)', margin: '0 0 22px',
           }}>
             One click. Sample call about an HVAC tune-up booking.
@@ -184,7 +184,7 @@ export function VoiceHero() {
               cursor: demoState === 'idle' ? 'pointer' : 'default',
               background: demoState === 'live' ? 'var(--moss)' : 'var(--ember)',
               color: '#fff', border: 0,
-              fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: 15,
+              fontFamily: 'var(--font-body-v14)', fontWeight: 700, fontSize: 15,
               transition: 'background 300ms',
             }}>
             {demoState === 'idle' && 'Start the demo call'}

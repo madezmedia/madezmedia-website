@@ -70,7 +70,7 @@ export function FAQ() {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     gap: 16,
-                    fontFamily: 'var(--font-heading)',
+                    fontFamily: 'var(--font-display)',
                     fontWeight: 700,
                     fontSize: 18,
                     letterSpacing: '-0.01em',
@@ -86,7 +86,7 @@ export function FAQ() {
                     color: isOpen ? '#fff' : 'var(--fg-meta)',
                     display: 'inline-flex',
                     alignItems: 'center', justifyContent: 'center',
-                    fontFamily: 'var(--font-mono)',
+                    fontFamily: 'var(--mzm-font-mono)',
                     fontWeight: 700, fontSize: 16,
                     transition: 'background 200ms',
                   }}>
@@ -96,7 +96,7 @@ export function FAQ() {
                 {isOpen && (
                   <div style={{
                     padding: '0 26px 22px',
-                    fontFamily: 'var(--font-body)',
+                    fontFamily: 'var(--font-body-v14)',
                     fontSize: 16,
                     lineHeight: 1.6,
                     color: 'var(--fg-meta)',

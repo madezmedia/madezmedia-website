@@ -51,7 +51,7 @@ export function UseCases() {
               gap: 16,
             }}>
               <h3 style={{
-                fontFamily: 'var(--font-heading)',
+                fontFamily: 'var(--font-display)',
                 fontWeight: 800,
                 fontSize: 24,
                 letterSpacing: '-0.015em',
@@ -68,7 +68,7 @@ export function UseCases() {
               }}>
                 {uc.items.map((item) => (
                   <li key={item} style={{
-                    fontFamily: 'var(--font-body)',
+                    fontFamily: 'var(--font-body-v14)',
                     fontSize: 15,
                     lineHeight: 1.5,
                     color: 'var(--fg-meta)',
