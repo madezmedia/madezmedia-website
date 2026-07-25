@@ -32,6 +32,11 @@ export function Hero() {
             <em className="home-hero__em">Just ask.</em>
           </motion.h1>
 
+          <motion.p variants={fadeUp} className="home-hero__deck">
+            We build AI agents that answer your phones, quote your jobs, and follow up with
+            customers — so nothing falls through the cracks while you&apos;re on a job site.
+          </motion.p>
+
           <motion.div variants={fadeUp} className="home-hero__chat-wrap">
             <BentleyChat
               variant="compact"
