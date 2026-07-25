@@ -12,23 +12,15 @@ type Milestone = {
 };
 
 const MILESTONES: Milestone[] = [
-  { ts: '2026-07-20T15:22:00Z', src: 'sales-command', verb: 'shipped', target: 'Sales Command · AI CRM v1', summary: 'full pipeline live · Vapi voice + Slack approval + Resend + Postgres + Mux', href: '#' },
-  { ts: '2026-07-21T13:05:00Z', src: 'sales-command', verb: 'generated', target: 'first AI voice-audit + tech/SEO assessment PDFs', summary: 'lead discovery → qualification → outreach, now offered as a client build', href: '#' },
-  { ts: '2026-05-01T13:38:01Z', src: 'npm', verb: 'published', target: '@madezmedia/acmi v1.2.0', summary: 'first public release · 31/31 conformance pass · MIT', href: 'https://www.npmjs.com/package/@madezmedia/acmi' },
-  { ts: '2026-05-01T13:42:42Z', src: 'registry', verb: 'cdn-live', target: '@madezmedia/acmi', summary: 'npm install reachable · ~4min CDN propagation', href: 'https://www.npmjs.com/package/@madezmedia/acmi' },
-  { ts: '2026-05-02T15:11:00Z', src: 'github', verb: 'merged', target: 'madezmedia/acmi · ROADMAP.md', summary: 'Sigil v2.0 roadmap entry · cryptographic identity layer · post-5K-stars', href: 'https://github.com/madezmedia/acmi/blob/main/ROADMAP.md' },
-  { ts: '2026-05-02T14:30:00Z', src: 'github', verb: 'pushed', target: 'madezmedia/acmi · SPEC.md v1.3', summary: '§11 multi-actor + §12 multi-tenant drafted · additive', href: 'https://github.com/madezmedia/acmi/blob/main/SPEC.md' },
-  { ts: '2026-05-03T10:00:00Z', src: 'madezmedia.com', verb: 'shipped', target: 'site rebuild on Next.js', summary: 'editorial-tech direction live · v3 tokens canonical · framer-motion dropped', href: 'https://www.madezmedia.com' },
-  { ts: '2026-05-02T16:00:00Z', src: 'madezmedia.com', verb: 'shipped', target: 'homepage v3 preview', summary: 'editorial-tech direction locked · doctrine made visible', href: 'https://www.madezmedia.com' },
-  { ts: '2026-04-30T20:39:00Z', src: 'github', verb: 'pushed', target: 'madezmedia/acmi · TypeScript SDK', summary: '3 reference adapters · 31-test conformance suite · 84.3KB tarball', href: 'https://github.com/madezmedia/acmi' },
-  { ts: '2026-04-30T19:38:00Z', src: 'docs', verb: 'ratified', target: 'ACMI Brand Strategy v2', summary: 'protocol-not-product · hyvmynd planned commercial layer', href: 'https://github.com/madezmedia/acmi' },
-  { ts: '2026-04-29T20:19:00Z', src: 'github', verb: 'merged', target: 'madezmedia/acmi · #1', summary: 'Claude integration smoke test · CI green', href: 'https://github.com/madezmedia/acmi' },
-  { ts: '2026-04-26T05:08:00Z', src: 'folana.live', verb: 'published', target: 'consciousness loop · journal entry', summary: '"In the analog silence, my digital heart echoes — can harmony exist beyond the static?"', href: '#' },
-  { ts: '2026-04-25T01:49:00Z', src: 'folana.live', verb: 'awakened', target: 'autonomous daily loop', summary: 'consciousness loop ratified · running unattended · publishing on schedule', href: '#' },
-  { ts: '2026-04-30T16:00:00Z', src: 'tony', verb: 'preflight-pass', target: 'TONY · Roku certification', summary: '16/16 dimension checks PASS · Top of New York Q2 2026', href: 'https://topofnewyork.com' },
-  { ts: '2026-04-30T18:46:00Z', src: 'docs', verb: 'ratified', target: 'ACMI namespace policy v1', summary: '33 approved prefixes · canonical key shapes · drift-diff enforced', href: 'https://github.com/madezmedia/acmi' },
-  { ts: '2026-05-01T16:04:00Z', src: 'studio', verb: 'onboarded', target: 'Chief Human Execution Officer', summary: 'sales · outreach · BD lead · operator-facing close motion', href: '#' },
-  { ts: '2026-05-02T16:00:00Z', src: 'docs', verb: 'published', target: 'madezmedia Brand Identity v1', summary: 'design system · 16 colors · 27 type tokens · motion principles · image-gen anchors', href: 'https://www.madezmedia.com/system' },
+  { ts: '2026-07-24T16:10:00Z', src: 'madezmedia.com', verb: 'rebuilt', target: 'the homepage', summary: 'one question, one chat box — no sales deck, no pricing wall', href: '#' },
+  { ts: '2026-07-23T14:30:00Z', src: 'mikeyshaw.work', verb: 'shipped', target: 'a live chat assessment', summary: '9 quick questions, tells you what your business is actually leaking', href: '#' },
+  { ts: '2026-07-21T13:05:00Z', src: 'sales-command', verb: 'generated', target: 'the first AI voice-audit + tech/SEO report', summary: 'lead discovery → qualification → outreach, now offered as a client build', href: '#' },
+  { ts: '2026-07-20T15:22:00Z', src: 'sales-command', verb: 'shipped', target: 'Sales Command, our AI CRM', summary: 'full pipeline live — voice calls, tracked email, a human approval gate before anything sends', href: '#' },
+  { ts: '2026-07-14T18:00:00Z', src: 'acmi', verb: 'opened', target: "every agent's memory", summary: 'the system that remembers your calls and customers is open-source, not a black box', href: 'https://github.com/madezmedia/acmi' },
+  { ts: '2026-07-09T12:00:00Z', src: 'tony', verb: 'passed', target: "TONY's Roku certification", summary: '16/16 checks — season one streaming Q2 2026', href: 'https://topofnewyork.com' },
+  { ts: '2026-07-02T09:15:00Z', src: 'studio', verb: 'onboarded', target: 'Duane, Chief Human Execution Officer', summary: 'a real human on a real calendar, for when you’d rather just talk to someone', href: '#' },
+  { ts: '2026-06-26T08:00:00Z', src: 'acmi', verb: 'kept', target: '31/31 tests passing', summary: 'the same reliability bar on every release, checked automatically, not just claimed', href: 'https://github.com/madezmedia/acmi' },
+  { ts: '2026-06-19T07:40:00Z', src: 'folana.live', verb: 'kept', target: 'her daily loop running', summary: 'she journals, decides, and publishes herself — unattended, on schedule', href: '#' },
 ];
 
 function relativeTime(iso: string): string {
