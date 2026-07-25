@@ -24,17 +24,17 @@ export function Hero() {
         <motion.div initial="hidden" animate="visible" variants={heroStagger}>
           <motion.div variants={fadeUp} className="home-hero__eyebrow">
             <span className="home-hero__pink-dot" aria-hidden="true" />
-            Ask us anything
+            For plumbers, HVAC &amp; service businesses
           </motion.div>
 
           <motion.h1 variants={fadeUp} className="home-hero__h1">
-            Will this actually work for my business? What does it cost?{' '}
-            <em className="home-hero__em">Just ask.</em>
+            AI agents that <em className="home-hero__em">answer your phones</em>, quote your
+            jobs, and follow up with customers.
           </motion.h1>
 
           <motion.p variants={fadeUp} className="home-hero__deck">
-            We build AI agents that answer your phones, quote your jobs, and follow up with
-            customers — so nothing falls through the cracks while you&apos;re on a job site.
+            So nothing falls through the cracks while you&apos;re on a job site. Will this
+            actually work for your business? Just ask below.
           </motion.p>
 
           <motion.div variants={fadeUp} className="home-hero__chat-wrap">
