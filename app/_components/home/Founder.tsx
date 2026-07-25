@@ -29,7 +29,7 @@ export function Founder() {
 
         <div>
           <motion.div className="home-eyebrow home-founder__eyebrow" variants={fadeUp}>
-            <span className="num">N° 04</span>Founder
+            <span className="num">N° 03</span>Founder
           </motion.div>
 
           <motion.h2 className="home-founder__h2" variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }}>

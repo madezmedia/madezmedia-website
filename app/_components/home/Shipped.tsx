@@ -58,7 +58,7 @@ export function Shipped() {
           variants={fadeUp}
         >
           <span className="home-live-dot" />
-          <span className="num">N° 03</span>Proof, not promises
+          <span className="num">N° 02</span>Proof, not promises
         </motion.div>
 
         <motion.h2
