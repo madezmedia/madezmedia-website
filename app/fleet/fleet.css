@@ -14,7 +14,7 @@
 }
 
 .fleet-hero h1 {
-  font-family: var(--mzm-font-serif);
+  font-family: var(--font-display);
   font-weight: var(--mzm-weight-bold);
   font-size: var(--mzm-text-6xl);
   line-height: var(--mzm-leading-tight);
@@ -31,7 +31,7 @@
 }
 
 .fleet-tagline {
-  font-family: var(--mzm-font-serif);
+  font-family: var(--font-display);
   font-size: var(--mzm-text-3xl);
   font-weight: var(--mzm-weight-bold);
   color: var(--mzm-accent);
@@ -124,7 +124,7 @@
 }
 
 .ladder-card h3 {
-  font-family: var(--mzm-font-serif);
+  font-family: var(--font-display);
   font-size: var(--mzm-text-2xl);
   font-weight: var(--mzm-weight-bold);
   color: var(--mzm-ink);
@@ -202,7 +202,7 @@
 }
 
 .hardrule-card h3 {
-  font-family: var(--mzm-font-serif);
+  font-family: var(--font-display);
   font-size: var(--mzm-text-xl);
   font-weight: var(--mzm-weight-bold);
   color: var(--mzm-ink);
@@ -262,7 +262,7 @@
 }
 
 .fleet-price-card h3 {
-  font-family: var(--mzm-font-serif);
+  font-family: var(--font-display);
   font-size: var(--mzm-text-3xl);
   font-weight: var(--mzm-weight-bold);
   color: var(--mzm-ink);
@@ -270,7 +270,7 @@
 }
 
 .fleet-price-card .price-val {
-  font-family: var(--mzm-font-serif);
+  font-family: var(--font-display);
   font-size: var(--mzm-text-5xl);
   font-weight: var(--mzm-weight-bold);
   color: var(--mzm-ink);
@@ -370,7 +370,7 @@
 }
 
 .fleet-banner-inner h2 {
-  font-family: var(--mzm-font-serif);
+  font-family: var(--font-display);
   font-size: var(--mzm-text-4xl);
   font-weight: var(--mzm-weight-bold);
   color: var(--mzm-paper);
@@ -486,7 +486,7 @@
 }
 
 .download-card h3 {
-  font-family: var(--mzm-font-serif);
+  font-family: var(--font-display);
   font-size: var(--mzm-text-2xl);
   font-weight: var(--mzm-weight-bold);
   color: var(--mzm-ink);
