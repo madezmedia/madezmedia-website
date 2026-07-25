@@ -7,7 +7,7 @@ import { fadeUp, staggerContainer } from '../ui/Animations';
 
 export function Contact() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const inView = useInView(ref, { margin: '0px' });
 
   return (
     <section className="home-contact home-section" id="contact">

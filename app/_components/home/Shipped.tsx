@@ -46,7 +46,7 @@ const TILES = [
 
 export function Shipped() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const inView = useInView(ref, { margin: '0px' });
 
   return (
     <section className="home-shipped home-section" id="shipped" ref={ref}>

@@ -27,7 +27,7 @@ const LEAKS = [
 
 export function Leaks() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const inView = useInView(ref, { margin: '0px' });
 
   return (
     <section className="home-leaks home-section" id="leaks" ref={ref}>
