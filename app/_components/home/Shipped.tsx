@@ -7,16 +7,14 @@ import { MilestoneFeed } from '../MilestoneFeed';
 import { AcmiEmblem, FolanaEmblem, TonyEmblem, SonicEmblem } from '../ui/LabEmblems';
 import { fadeUp, staggerContainer } from '../ui/Animations';
 
+const ACMI_SIGNALS = [
+  { value: 'Open source', label: 'Not a black box' },
+  { value: 'MIT licensed', label: 'Never locked in' },
+  { value: '31/31', label: 'Tests pass, every release' },
+  { value: 'Every fleet', label: 'Including our own' },
+];
+
 const TILES = [
-  {
-    tag: 'An open protocol',
-    title: 'ACMI',
-    emblem: AcmiEmblem,
-    body: 'The protocol for agent memory. Published to npm 2026-05-14, 31/31 conformance tests passing.',
-    href: '/acmi',
-    label: 'Product page →',
-    accent: 'var(--process-cyan)',
-  },
   {
     tag: 'An autonomous character',
     title: 'Folana',
@@ -91,6 +89,34 @@ export function Shipped() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <MilestoneFeed />
+        </motion.div>
+
+        <motion.div
+          className="home-shipped__acmi"
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          variants={fadeUp}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <div className="home-shipped__acmi-emblem"><AcmiEmblem color="var(--process-cyan)" size={56} /></div>
+          <div className="home-shipped__acmi-body">
+            <span className="tag">The system underneath everything we build</span>
+            <h3>ACMI — your agent&apos;s memory</h3>
+            <p>
+              Every AI agent we build remembers everything — every call, every quote, every
+              customer, permanently. It&apos;s not proprietary. The memory system itself is
+              open-source, so nothing about what your agent knows is hidden from you.
+            </p>
+            <div className="home-shipped__acmi-signals">
+              {ACMI_SIGNALS.map((s) => (
+                <div key={s.label} className="signal">
+                  <span className="signal-value">{s.value}</span>
+                  <span className="signal-label">{s.label}</span>
+                </div>
+              ))}
+            </div>
+            <Link href="/acmi" className="home-shipped__acmi-cta">See how it works →</Link>
+          </div>
         </motion.div>
 
         <motion.div
