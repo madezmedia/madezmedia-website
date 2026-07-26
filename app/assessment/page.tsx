@@ -3,13 +3,13 @@ import './assessment.css';
 import { ROICalculator } from './_components/ROICalculator';
 
 export const metadata: Metadata = {
-  title: '$499 AI Tools Assessment — Stop Buying AI That Forgets Your Business | madezmedia',
+  title: '$499 AI Tools Assessment — Find Where Your Business Is Leaking Hours | madezmedia',
   description:
-    'Uncover the 7 operational leaks draining your billable hours. 90-minute white-glove audit backed by our 5+ hr/wk returned guarantee.',
+    'A 90-minute audit that finds your 7 leaks — missed calls, slow quotes, no reviews — and shows you what fixing them is worth. Backed by our 5+ hr/wk returned guarantee.',
   openGraph: {
     title: '$499 AI Tools Assessment — madezmedia',
     description:
-      'Stop buying AI that forgets your business every time you close the tab. 90-minute White-Glove AI Audit.',
+      'Your business is leaking hours somewhere. A 90-minute audit shows you exactly where.',
     url: 'https://www.madezmedia.com/assessment',
     siteName: 'madezmedia',
     type: 'website',

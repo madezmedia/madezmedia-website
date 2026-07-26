@@ -78,8 +78,8 @@
 @media (max-width: 600px) { .acmi-page .code { font-size: 12px; padding: var(--mzm-space-4); } }
 
 .acmi-page .three-keys-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--mzm-space-6); margin-top: var(--mzm-space-8); }
-.acmi-page .three-keys-grid .key-card { background: var(--mzm-paper-warm); border: 1px solid var(--mzm-ink-rule); border-radius: var(--mzm-radius-md); padding: var(--mzm-space-6); transition: transform var(--mzm-dur-fast) var(--mzm-ease-default), border-color var(--mzm-dur-fast) var(--mzm-ease-default); }
-.acmi-page .three-keys-grid .key-card:hover { transform: translateY(-2px); border-color: var(--mzm-accent); }
+.acmi-page .three-keys-grid .key-card { background: #ffffff; border-radius: var(--mzm-radius-md); padding: var(--mzm-space-6); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04); transition: transform var(--mzm-dur-fast) var(--mzm-ease-default), box-shadow var(--mzm-dur-fast) var(--mzm-ease-default); }
+.acmi-page .three-keys-grid .key-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08); }
 .acmi-page .three-keys-grid .key-card .key-head { display: flex; align-items: center; gap: var(--mzm-space-3); margin-bottom: var(--mzm-space-4); }
 .acmi-page .three-keys-grid .key-card .chip { width: 28px; height: 28px; border-radius: 50%; background: var(--mzm-accent); color: var(--mzm-paper); display: inline-flex; align-items: center; justify-content: center; font-family: var(--mzm-font-mono); font-size: 13px; font-weight: var(--mzm-weight-semibold); }
 .acmi-page .three-keys-grid .key-card .key-name { font-family: var(--mzm-font-serif); font-size: var(--mzm-text-xl); font-weight: var(--mzm-weight-medium); color: var(--mzm-ink); }
