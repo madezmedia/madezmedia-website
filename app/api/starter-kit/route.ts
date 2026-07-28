@@ -39,7 +39,7 @@ export async function POST(req: Request) {
             kind: 'kit-download-request',
             summary: `[lead-intake @madezmedia] ${firstName} ${email} requested Voice AI Checklist (biz: ${businessType})`
           })],
-          ['ZADD', 'acmi:bus:relay:events', ts.toString(), JSON.stringify({
+          ['ZADD', 'acmi:madez:bus:events', ts.toString(), JSON.stringify({
             ts,
             source: 'agent:bentley',
             kind: 'lead-captured',
